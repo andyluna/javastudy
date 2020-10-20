@@ -18,6 +18,16 @@ public class MapTest {
 
         int MAXIMUM_CAPACITY2 = 1 << 32;
         System.out.println(MAXIMUM_CAPACITY1);
+
+
+        int a = 1;
+        int b = 2;
+        System.out.println(a);
+        System.out.println(b);
+        a=b=3;
+
+        System.out.println(a);
+        System.out.println(b);
     }
 
 
