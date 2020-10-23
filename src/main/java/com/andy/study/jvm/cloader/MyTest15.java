@@ -13,6 +13,7 @@ import java.io.InputStream;
  */
 public class MyTest15 extends ClassLoader{
     private String classLoaderName;
+    private String path;
     public static final String fileExtension = ".class";
     public MyTest15(String classLoaderName){
         super();
@@ -24,6 +25,10 @@ public class MyTest15 extends ClassLoader{
         this.classLoaderName = classLoaderName;
     }
 
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     @Override
     public String toString() {
         return "classloader:"+classLoaderName;
@@ -31,6 +36,7 @@ public class MyTest15 extends ClassLoader{
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
+        System.out.println("myfindClass:"+name);
         byte[] data = getBytesByName(name);
         Class<?> aClass = super.defineClass(name, data, 0, data.length);
         return aClass;
@@ -40,9 +46,8 @@ public class MyTest15 extends ClassLoader{
         InputStream in = null;
         byte[] data = null;
         ByteArrayOutputStream baos = null;
-        classLoaderName = name.replace(".", "/");
         try {
-            in = new FileInputStream(new File(classLoaderName + fileExtension));
+            in = new FileInputStream(new File(path+name.replace(".", "/") + fileExtension));
             baos = new ByteArrayOutputStream();
             int c = 0;
 
@@ -67,15 +72,11 @@ public class MyTest15 extends ClassLoader{
     }
 
     public static void main(String[] args) throws Exception {
-        MyTest15 myTest15 = new MyTest15("hello");
 
-        System.out.println(myTest15);
+        MyTest15 myTest15 = new MyTest15("hello");
+        myTest15.setPath("/Users/xiangdan/IdeaProjects/javastudy/target/classes2/");
         Class<?> aClass = myTest15.loadClass("com.andy.study.jvm.cloader.MyTest1");
         System.out.println(aClass);
-        System.out.println(aClass.getClassLoader());
-        Object o = aClass.newInstance();
-
-        System.out.println(o);
 
     }
 }
