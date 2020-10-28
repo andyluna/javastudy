@@ -14,6 +14,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.Buffer;
 import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -24,6 +30,7 @@ public class ServerSokectTest {
     public static final String QUIT = "quit";
     public static final int DEFAULT_PORT = 8888;
     public static AtomicInteger count = new AtomicInteger(0);
+
     public static void main(String[] args) throws IOException {
         ServerSokectTest serverSocket = new ServerSokectTest();
         serverSocket.init(DEFAULT_PORT);
@@ -32,18 +39,34 @@ public class ServerSokectTest {
 
 
     public void init(int port)  {
+        ServerSocket serverSocket = null;
+        ExecutorService executorService = null;
         try{
-            int i=0;
-            ServerSocket serverSocket = new ServerSocket();
+            //executorService = Executors.newFixedThreadPool(3);
+
+            executorService = new ThreadPoolExecutor(2, 5, 60, TimeUnit.SECONDS,
+                    new LinkedBlockingQueue<>(100)) ;
+            serverSocket = new ServerSocket();
             serverSocket.setReuseAddress(true); //设置 ServerSocket 的选项
             serverSocket.bind(new InetSocketAddress(port));
             System.out.println("server 启动 监听:"+port+"端口");
             while(true){
                 Socket socket = serverSocket.accept();
-                new HandlerThread(socket).start();
+                executorService.submit(new HandlerThread(socket));
             }
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            if(serverSocket!=null){
+                try {
+                    serverSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(executorService!=null){
+                executorService.shutdown();
+            }
         }
 
     }
@@ -66,7 +89,7 @@ public class ServerSokectTest {
                 out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 String str = null;
                 while((str=in.readLine()) != null){
-                    System.out.println("客户端发送过来的消息:"+str);
+                    System.out.println("客户端["+count.get()+"端口:"+socket.getPort()+"]发送过来的消息:"+str);
                     out.write("服务端:"+str+"! ");
                     out.newLine();
                     out.flush();
