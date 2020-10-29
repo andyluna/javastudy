@@ -1,17 +1,17 @@
-package com.andy.study.io;
+package com.andy.study.nio;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * @time: 2020/10/28 十月 21:55
+ * @time: 2020/10/29 十月 20:46
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-public class ChatClientInputHandler implements Runnable {
-    private ChatClient chatClient;
+public class NioClientIputHandler  implements Runnable{
+    private NioChatClient nioChatClient;
 
-    public ChatClientInputHandler(ChatClient chatClient) {
-        this.chatClient = chatClient;
+    public NioClientIputHandler(NioChatClient nioChatClient) {
+        this.nioChatClient = nioChatClient;
     }
 
     @Override
@@ -19,12 +19,14 @@ public class ChatClientInputHandler implements Runnable {
         BufferedReader br = null;
         try {
             br = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("请开始聊天");
             String line = null;
             while(true){
                 line = br.readLine();
 
-                chatClient.sendMessage(line);
-                if(chatClient.readToQuit(line)){
+                nioChatClient.sendMessage(line);
+                if(nioChatClient.readToQuit(line)){
+                    System.out.println("客户端退出");
                     break;
                 }
 

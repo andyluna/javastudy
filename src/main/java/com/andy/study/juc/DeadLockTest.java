@@ -1,7 +1,5 @@
 package com.andy.study.juc;
 
-import org.junit.Test;
-
 /**
  * TODO:
  *

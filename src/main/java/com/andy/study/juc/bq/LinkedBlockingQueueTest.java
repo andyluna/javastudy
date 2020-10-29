@@ -1,6 +1,5 @@
 package com.andy.study.juc.bq;
 
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
