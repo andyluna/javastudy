@@ -1,0 +1,6 @@
+syntax = "proto3";//版本
+option java_outer_classname = "StudentVO";//生成外部类名
+message Student{//会在StudentVO生成一个Student内部类
+  int32 id = 1;//1表示属性序号 不是真正的值
+  string name = 2;
+}
