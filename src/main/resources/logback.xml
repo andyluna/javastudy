@@ -8,9 +8,11 @@
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
             <layout class="ch.qos.logback.classic.PatternLayout">
                 <!--
+                %m
                 <pattern>[${applicationName}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%-40.40logger{39}] %-3.3L %-5p: %msg%n</pattern>
                  -->
-                <pattern>%yellow([${applicationName}]) %blue(%d{yyyy-MM-dd HH:mm:ss.SSS}) %cyan(%-40.40logger{39}) %green(%-3.3L) %highlight(%-5p): %msg%n</pattern>
+                megent
+                <pattern>%yellow([${applicationName}]) %blue(%d{yyyy-MM-dd HH:mm:ss.SSS}) %red([%-10.10t]) %cyan(%-40.40logger{39}) %green(%-3.3L) %highlight(%-5p): %msg%n</pattern>
             </layout>
         </encoder>
     </appender>
@@ -71,7 +73,7 @@
         <level value="info" />
         <appender-ref ref="STDOUT" />
     </root>
-
+    <logger  level="DEBUG"    name="com.andy.study" />
     <!--<logger  level="WARN"    name="ch.qos" />
     <logger  level="INFO"    name="org.apache" />
     <logger  level="WARN"    name="org.apache.zookeeper" />
