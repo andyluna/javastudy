@@ -1,5 +1,6 @@
 package com.andy.study.dubbo.xml.provider;
 
+import com.andy.study.dubbo.embedded.EmbeddedZookeeper;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -10,7 +11,11 @@ import java.io.IOException;
  */
 public class XmlProviderMain {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+
+//        new EmbeddedZookeeper(2182, false).start();
+//        Thread.sleep(1000);
+
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("dubbo/xml/provider.xml");
 
         context.start();

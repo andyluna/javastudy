@@ -1,5 +1,6 @@
 package com.andy.study.dubbo.xml.vo;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -7,7 +8,8 @@ import java.util.Objects;
  * @time: 2020/11/4 十一月 21:52
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-public class UserVO {
+public class UserVO implements Serializable {
+    private static final long serialVersionUID = -6821531997381348801L;
     private Integer id;
     private String name;
     private Integer age;

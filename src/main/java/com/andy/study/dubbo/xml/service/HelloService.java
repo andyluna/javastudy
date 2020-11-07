@@ -19,6 +19,6 @@ public interface HelloService {
 
     UserVO getUserVOById(Integer id);
 
-    List<UserVO> getAllUserVO(Integer id);
+    List<UserVO> getAllUsers();
 
 }
