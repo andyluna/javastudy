@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="c1" class="com.andy.study.spring.pojo.Car"
+            init-method="xmlinit" destroy-method="xmldestory"
+            lazy-init="true">
+        <property name="id" value="1"/>
+        <property name="name" value="bmw"/>
+        <property name="price" value="18.89"/>
+    </bean>
+    <alias name="c1" alias="mycar"/>
+
+    <bean id="exampleBean" class="com.andy.study.spring.pojo.ExampleBean">
+        <constructor-arg index="0" ref="anotherBean">
+        </constructor-arg>
+        <constructor-arg name="yetAnotherBean" ref="yetAnotherBean"/>
+        <constructor-arg type="int" value="4"/>
+        <constructor-arg type="java.lang.String" value="abc" />
+
+        <property name="car" ref="c1"/>
+    </bean>
+    <bean id="exampleBean2" class="com.andy.study.spring.pojo.ExampleBean"
+          c:anotherBean-ref="anotherBean"
+          c:yetAnotherBean-ref="yetAnotherBean"
+          c:i="3"
+          c:name="xiangdan">
+
+        <property name="car" ref="c1"/>
+    </bean>
+    <bean id="anotherBean" class="com.andy.study.spring.pojo.AnotherBean"></bean>
+    <bean id="yetAnotherBean" class="com.andy.study.spring.pojo.YetAnotherBean"></bean>
+
+    <bean id="mya1" class="com.andy.study.spring.circular.A1">
+        <property name="b1" ref="myb1"/>
+    </bean>
+    <bean id="myb1" class="com.andy.study.spring.circular.B1">
+        <property name="a1" ref="mya1"/>
+    </bean>
+
+    <bean id="mappings"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+        <!-- typed as a java.util.Properties -->
+        <property name="properties">
+            <value>
+                jdbc.driver.className=com.mysql.jdbc.Driver
+                jdbc.url=jdbc:mysql://localhost:3306/mydb
+            </value>
+        </property>
+    </bean>
+
+    <bean id="mytestc1" class="com.andy.study.spring.circular.C1" p:name1="123">
+        <property name="list">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+                <value>ddd</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value>s1</value>
+                <value>s2</value>
+                <value>s3</value>
+            </set>
+        </property>
+        <property name="map" >
+            <map key-type="java.lang.String" value-type="java.lang.Float">
+                <entry key="a" value="3.24"></entry>
+                <entry key="b" value="4.24"></entry>
+                <entry key="c" value="5.24"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="a1">b1</prop>
+                <prop key="a2">b2</prop>
+                <prop key="a3">b3</prop>
+            </props>
+        </property>
+        <property name="name2" >
+            <null></null>
+        </property>
+
+        <property name="d1" ref="myd1"/>
+
+    </bean>
+
+    <bean id="myf1" class="com.andy.study.spring.circular.F1" >
+        <property name="name" value="xiangdan"></property>
+    </bean>
+    <bean id="myd1" class="com.andy.study.spring.circular.D1" depends-on="myf1" >
+        <property name="f1" ref="myf1"/>
+    </bean>
+
+    <bean id="myd2" class="com.andy.study.spring.circular.D1">
+        <property name="f1.name" value="hello"/>
+    </bean>
+
+
+    <!-- a stateful bean deployed as a prototype (non-singleton) -->
+    <bean id="myCommand" class="com.andy.study.spring.di.impl.AsyncCommand" scope="prototype">
+        <!-- inject dependencies here as required -->
+    </bean>
+
+    <bean id="commandManager" class="com.andy.study.spring.di.CommandManager">
+        <lookup-method name="createCommand" bean="myCommand"></lookup-method>
+    </bean>
+
+</beans>
