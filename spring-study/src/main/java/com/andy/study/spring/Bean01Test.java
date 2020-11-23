@@ -13,8 +13,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @time: 2020/11/20 十一月 13:50
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-public class ContextTest {
-    private static  Logger logger = LoggerFactory.getLogger(ContextTest.class);
+public class Bean01Test {
+    private static  Logger logger = LoggerFactory.getLogger(Bean01Test.class);
     public static void main(String[] args) {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean01.xml");
