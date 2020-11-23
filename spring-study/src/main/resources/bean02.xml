@@ -6,7 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="c1" class="com.andy.study.spring.pojo.Car"
+    <bean name="c1" class="com.andy.study.spring.xml.pojo.Car"
             init-method="xmlinit" destroy-method="xmldestory"
             lazy-init="true">
         <property name="id" value="1"/>
@@ -14,21 +14,21 @@
         <property name="price" value="18.89"/>
     </bean>
 
-    <bean class="com.andy.study.spring.factoryPostProcessor.PriorityOrderedFactoryProcessor01"></bean>
-    <bean class="com.andy.study.spring.factoryPostProcessor.PriorityOrderedFactoryProcessor02"></bean>
-    <bean class="com.andy.study.spring.factoryPostProcessor.PriorityOrderedFactoryProcessor03"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.PriorityOrderedFactoryProcessor01"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.PriorityOrderedFactoryProcessor02"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.PriorityOrderedFactoryProcessor03"></bean>
 
-    <bean class="com.andy.study.spring.factoryPostProcessor.OrderedFactoryProcessor01"></bean>
-    <bean class="com.andy.study.spring.factoryPostProcessor.OrderedFactoryProcessor02"></bean>
-    <bean class="com.andy.study.spring.factoryPostProcessor.OrderedFactoryProcessor03"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.OrderedFactoryProcessor01"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.OrderedFactoryProcessor02"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.OrderedFactoryProcessor03"></bean>
 
-    <bean class="com.andy.study.spring.factoryPostProcessor.NormalFactroryPostProcessor01"></bean>
-    <bean class="com.andy.study.spring.factoryPostProcessor.NormalFactroryPostProcessor02"></bean>
-    <bean class="com.andy.study.spring.factoryPostProcessor.NormalFactroryPostProcessor03"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.NormalFactroryPostProcessor01"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.NormalFactroryPostProcessor02"></bean>
+    <bean class="com.andy.study.spring.xml.factoryPostProcessor.NormalFactroryPostProcessor03"></bean>
 
    <!--
-    <bean class="com.andy.study.spring.MyLiefeCycle"></bean>
-    <bean id="instantiationTracingBeanPostProcessor" class="com.andy.study.spring.beanpostprocessor.InstantiationTracingBeanPostProcessor"></bean>
+    <bean class="com.andy.study.spring.xml.lifecycle.MyLiefeCycle"></bean>
+    <bean id="instantiationTracingBeanPostProcessor" class="com.andy.study.spring.xml.beanpostprocessor.InstantiationTracingBeanPostProcessor"></bean>
     -->
 
 
