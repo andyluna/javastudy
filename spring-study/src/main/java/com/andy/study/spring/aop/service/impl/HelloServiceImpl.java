@@ -10,9 +10,27 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class HelloServiceImpl implements HelloService {
+
+    private String a;
+
+    public String getA() {
+        return a;
+    }
+
+    public void setA(String a) {
+        this.a = a;
+    }
+
     @Override
     public String sayHello(String name) {
         log.debug("你好:{}",name);
         return "hello:"+name;
+    }
+
+    @Override
+    public String toString() {
+        return "HelloServiceImpl{" +
+                "a='" + a + '\'' +
+                '}';
     }
 }

@@ -19,12 +19,15 @@
 
 
     <aop:config >
+
         <aop:pointcut id="mypointcut" expression="execution(public * com.andy.study.spring.aop.service.impl.HelloServiceImpl.*(..))"/>
 
         <!--
         <aop:advisor id="myadvisor001" order="1" advice-ref="emailAdvice" pointcut-ref="mypointcut" ></aop:advisor>
         <aop:advisor id="myadvisor002" order="2" advice-ref="jdbcAdvice" pointcut-ref="mypointcut" ></aop:advisor>
         -->
+
+
 
        <aop:aspect id="mylogaspect01" ref="logAspect">
             <aop:before method="beforeLog" pointcut-ref="mypointcut"></aop:before>
