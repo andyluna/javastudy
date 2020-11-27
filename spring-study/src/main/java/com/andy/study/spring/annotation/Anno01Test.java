@@ -4,6 +4,7 @@ import com.andy.study.spring.annotation.config.Config01;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.env.Environment;
 
 /**
  * @TODO: javastudy
@@ -20,6 +21,9 @@ public class Anno01Test {
         for (int i = 0; i < names.length; i++) {
             System.out.printf("%d.%s = %s \n",i+1,names[i],context.getBean(names[i]));
         }
+
+        Environment bean = context.getBean(Environment.class);
+        System.out.println(bean);
 
     }
 

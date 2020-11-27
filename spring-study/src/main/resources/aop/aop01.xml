@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="helloService" class="com.andy.study.spring.aop.service.impl.HelloServiceImpl"></bean>
+
+    <bean id="logAspect" class="com.andy.study.spring.aop.aspect.LogAspect" p:name="log01"></bean>
+   <!-- <bean id="logAspect1" class="com.andy.study.spring.aop.aspect.LogAspect" p:name="log02"></bean>
+    <bean id="emailAdvice" class="com.andy.study.spring.aop.advise.EmailAdvice"></bean>
+    <bean id="jdbcAdvice" class="com.andy.study.spring.aop.advise.JdbcAdvice"></bean>
+-->
+
+
+    <aop:config >
+        <aop:pointcut id="mypointcut" expression="execution(public * com.andy.study.spring.aop.service.impl.HelloServiceImpl.*(..))"/>
+
+        <!--
+        <aop:advisor id="myadvisor001" order="1" advice-ref="emailAdvice" pointcut-ref="mypointcut" ></aop:advisor>
+        <aop:advisor id="myadvisor002" order="2" advice-ref="jdbcAdvice" pointcut-ref="mypointcut" ></aop:advisor>
+        -->
+
+       <aop:aspect id="mylogaspect01" ref="logAspect">
+            <aop:before method="beforeLog" pointcut-ref="mypointcut"></aop:before>
+        </aop:aspect>
+        <!--
+    <aop:aspect id="mylogaspect02" ref="logAspect1">
+        <aop:before method="beforeLog" pointcut-ref="mypointcut"></aop:before>
+    </aop:aspect>-->
+    </aop:config>
+</beans>
