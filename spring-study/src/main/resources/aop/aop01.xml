@@ -29,8 +29,9 @@
 
 
 
-       <aop:aspect id="mylogaspect01" ref="logAspect">
-            <aop:before method="beforeLog" pointcut-ref="mypointcut"></aop:before>
+       <aop:aspect id="mylogaspect01" ref="logAspect"   >
+            <aop:before method="beforeLog" pointcut-ref="mypointcut"  ></aop:before>
+
         </aop:aspect>
         <!--
     <aop:aspect id="mylogaspect02" ref="logAspect1">
