@@ -12,13 +12,18 @@
     <bean id="helloService" class="com.andy.study.spring.aop.service.impl.HelloServiceImpl"></bean>
 
     <bean id="logAspect" class="com.andy.study.spring.aop.aspect.LogAspect" p:name="log01"></bean>
+
+    <bean id="sayHelloApject" class="com.andy.study.spring.aop.aspect.SayHelloApject">
+        <property name="name" value="nihao"></property>
+    </bean>
    <!-- <bean id="logAspect1" class="com.andy.study.spring.aop.aspect.LogAspect" p:name="log02"></bean>
     <bean id="emailAdvice" class="com.andy.study.spring.aop.advise.EmailAdvice"></bean>
     <bean id="jdbcAdvice" class="com.andy.study.spring.aop.advise.JdbcAdvice"></bean>
 -->
+    <bean id="myDebugInterceptor" class="com.andy.study.spring.aop.proxy.interceptor.DebugInterceptor"/>
 
 
-    <aop:config >
+    <aop:config expose-proxy="true" >
 
         <aop:pointcut id="mypointcut" expression="execution(public * com.andy.study.spring.aop.service.impl.HelloServiceImpl.*(..))"/>
 
@@ -27,15 +32,19 @@
         <aop:advisor id="myadvisor002" order="2" advice-ref="jdbcAdvice" pointcut-ref="mypointcut" ></aop:advisor>
         -->
 
+        <aop:advisor id="hhhh" advice-ref="myDebugInterceptor" order="3" pointcut-ref="mypointcut"/>
 
 
-       <aop:aspect id="mylogaspect01" ref="logAspect"   >
+       <aop:aspect id="mylogaspect01" ref="logAspect"  order="0" >
             <aop:before method="beforeLog" pointcut-ref="mypointcut"  ></aop:before>
 
         </aop:aspect>
-        <!--
-    <aop:aspect id="mylogaspect02" ref="logAspect1">
-        <aop:before method="beforeLog" pointcut-ref="mypointcut"></aop:before>
-    </aop:aspect>-->
+        <aop:aspect id="myaspject02" ref="sayHelloApject" order="1">
+            <aop:before method="beforeLog" pointcut-ref="mypointcut"></aop:before>
+        </aop:aspect>
+
+
+
     </aop:config>
+
 </beans>
