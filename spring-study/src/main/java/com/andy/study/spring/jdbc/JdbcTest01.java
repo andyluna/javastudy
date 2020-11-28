@@ -32,9 +32,10 @@ public class JdbcTest01 {
         StudentService studentService = context.getBean(StudentService.class);
 //        List<Student> all = studentService.getAll();
 //        log.debug("查询所有all :{}",all);
-        for(int i=0;i<1000;i++){
-            studentService.saveStudent("xiangdan"+i, LocalDateTime.now());
-        }
+//        for(int i=0;i<1000;i++){
+//            studentService.saveStudent("xiangdan"+i, LocalDateTime.now());
+//        }
+        studentService.saveStudent("xiangdan" , LocalDateTime.now());
         studentService.getById(1);
     }
 }
