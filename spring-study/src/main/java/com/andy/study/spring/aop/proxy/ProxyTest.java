@@ -7,7 +7,6 @@ import com.andy.study.spring.aop.proxy.interceptor.DebugInterceptor;
 import com.andy.study.spring.aop.proxy.service.T1;
 import com.andy.study.spring.aop.proxy.service.advice.RetryAdvice;
 import com.andy.study.spring.aop.proxy.service.impl.T1Impl;
-import com.oracle.tools.packager.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;

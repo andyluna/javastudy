@@ -1,7 +1,6 @@
 package com.andy.study.spring.xml;
 
 import com.andy.study.spring.xml.ext.MyClasspathXmlApplicationContext;
-import com.andy.study.spring.xml.factoryPostProcessor.MyBeanFactory001PostProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;

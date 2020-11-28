@@ -2,13 +2,10 @@ package com.andy.study.spring.annotation;
 
 import com.andy.study.spring.annotation.config.Config01;
 import org.junit.Test;
-import org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
-import org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
 import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
 
 /**
  * @time: 2020/11/27 十一月 09:11

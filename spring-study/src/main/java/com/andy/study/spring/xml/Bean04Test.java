@@ -3,9 +3,6 @@ package com.andy.study.spring.xml;
 import com.andy.study.spring.xml.ext.MyClasspathXmlApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
-
-import java.util.Map;
 
 /**
  * @time: 2020/11/20 十一月 13:50

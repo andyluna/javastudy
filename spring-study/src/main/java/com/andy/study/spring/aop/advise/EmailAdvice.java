@@ -3,7 +3,6 @@ package com.andy.study.spring.aop.advise;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
-import org.springframework.aop.ThrowsAdvice;
 
 import java.lang.reflect.Method;
 

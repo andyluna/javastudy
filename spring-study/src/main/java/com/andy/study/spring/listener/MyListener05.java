@@ -3,7 +3,6 @@ package com.andy.study.spring.listener;
 import com.andy.study.spring.event.MyEvent01;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextClosedEvent;
 
 /**
  * @time: 2020/11/24 十一月 10:48

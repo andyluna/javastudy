@@ -1,14 +1,10 @@
 package com.andy.study.spring.jdbc;
 
-import com.andy.study.spring.jdbc.entity.Student;
 import com.andy.study.spring.jdbc.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 /**
  * @time: 2020/11/28 十一月 15:28
@@ -36,7 +32,7 @@ public class JdbcTest01 {
         StudentService studentService = context.getBean(StudentService.class);
 //        List<Student> all = studentService.getAll();
 //        log.debug("查询所有all :{}",all);
-        for(int i=0;i<100000;i++){
+        for(int i=0;i<1000;i++){
             studentService.saveStudent("xiangdan"+i, LocalDateTime.now());
         }
         studentService.getById(1);

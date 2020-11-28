@@ -21,8 +21,6 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 
-import java.io.IOException;
-
 /**
  * @time: 2020/11/20 十一月 13:50
  * @author: xiangdan/xiangdan@dtxytech.com

@@ -15,9 +15,6 @@
  */
 package io.netty.example.dns.udp;
 
-import java.net.InetSocketAddress;
-import java.util.concurrent.TimeUnit;
-
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.Channel;
@@ -41,6 +38,9 @@ import io.netty.handler.codec.dns.DnsRecord;
 import io.netty.handler.codec.dns.DnsRecordType;
 import io.netty.handler.codec.dns.DnsSection;
 import io.netty.util.NetUtil;
+
+import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
 public final class DnsClient {
 
