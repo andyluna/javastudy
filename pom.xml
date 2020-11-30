@@ -23,6 +23,7 @@
         <module>spring-study</module>
         <module>spring-aspect</module>
         <module>spring-web</module>
+        <module>spring-boot-study</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

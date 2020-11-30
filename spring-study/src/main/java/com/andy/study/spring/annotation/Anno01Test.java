@@ -1,8 +1,21 @@
 package com.andy.study.spring.annotation;
 
 import com.andy.study.spring.annotation.config.Config01;
+import com.andy.study.spring.annotation.config.bean.Cat;
+import com.andy.study.spring.annotation.config.im.MyImportService01;
+import com.andy.study.spring.annotation.config.im.MyImportService02;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
+import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanNameGenerator;
+import org.springframework.beans.factory.support.DefaultBeanNameGenerator;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.Environment;
 
@@ -27,4 +40,21 @@ public class Anno01Test {
 
     }
 
+
+    @Test
+    public void test01(){
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        BeanDefinition bdf = new RootBeanDefinition(Cat.class);
+        BeanNameGenerator beanNameGenerator = new DefaultBeanNameGenerator();
+        String s = beanNameGenerator.generateBeanName(bdf, beanFactory);
+
+        log.debug("s1:{}",s);
+
+
+        AnnotatedGenericBeanDefinition abd = new AnnotatedGenericBeanDefinition(MyImportService02.class);
+        AnnotationBeanNameGenerator instance = AnnotationBeanNameGenerator.INSTANCE;
+        s = instance.generateBeanName(abd, beanFactory);
+        log.debug("s2:{}",s);
+
+    }
 }
