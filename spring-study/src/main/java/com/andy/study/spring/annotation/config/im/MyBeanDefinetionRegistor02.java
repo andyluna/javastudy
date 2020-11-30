@@ -1,6 +1,5 @@
 package com.andy.study.spring.annotation.config.im;
 
-import com.andy.study.spring.annotation.config.bean.Jerry02;
 import com.andy.study.spring.annotation.config.bean.Jerry03;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;

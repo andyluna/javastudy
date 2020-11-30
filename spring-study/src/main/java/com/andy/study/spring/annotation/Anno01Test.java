@@ -2,14 +2,11 @@ package com.andy.study.spring.annotation;
 
 import com.andy.study.spring.annotation.config.Config01;
 import com.andy.study.spring.annotation.config.bean.Cat;
-import com.andy.study.spring.annotation.config.im.MyImportService01;
 import com.andy.study.spring.annotation.config.im.MyImportService02;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.beans.factory.support.DefaultBeanNameGenerator;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

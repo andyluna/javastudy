@@ -1,6 +1,5 @@
 package com.andy.study.spring.annotation.config.im;
 
-import com.andy.study.spring.annotation.config.bean.Jerry;
 import com.andy.study.spring.annotation.config.bean.Jerry01;
 import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
