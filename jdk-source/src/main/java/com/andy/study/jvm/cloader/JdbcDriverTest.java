@@ -1,7 +1,7 @@
 package com.andy.study.jvm.cloader;
 
 
-import sun.reflect.Reflection;
+//import sun.reflect.Reflection;
 
 /**
  * @time: 2020/10/23 十月 14:06
@@ -21,9 +21,9 @@ public class JdbcDriverTest {
     public static void test1(){
 
 
-        Class<?> callerClass = Reflection.getCallerClass();
+       // Class<?> callerClass = Reflection.getCallerClass();
 
-        System.out.println(callerClass);
+//        System.out.println(callerClass);
     }
 
 }
@@ -37,13 +37,13 @@ class CC{
 
 
     public  void test2(){
-        System.out.println(Reflection.getCallerClass(-1));
-        System.out.println(Reflection.getCallerClass(0));
-        System.out.println(Reflection.getCallerClass(1));
-        System.out.println(Reflection.getCallerClass(2));
-        System.out.println(Reflection.getCallerClass(3));
-        System.out.println(Reflection.getCallerClass(4));
-        System.out.println(Reflection.getCallerClass(5));
+//        System.out.println(Reflection.getCallerClass(-1));
+//        System.out.println(Reflection.getCallerClass(0));
+//        System.out.println(Reflection.getCallerClass(1));
+//        System.out.println(Reflection.getCallerClass(2));
+//        System.out.println(Reflection.getCallerClass(3));
+//        System.out.println(Reflection.getCallerClass(4));
+//        System.out.println(Reflection.getCallerClass(5));
     }
 
 }
