@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy.study</groupId>
-    <artifactId>spring-web</artifactId>
+    <artifactId>spring-web-annotation</artifactId>
     <packaging>war</packaging>
     <dependencies>
 

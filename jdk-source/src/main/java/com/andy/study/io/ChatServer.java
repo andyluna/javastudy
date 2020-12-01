@@ -36,8 +36,7 @@ public class ChatServer {
         executorService = new ThreadPoolExecutor(3, 5,
                 60, TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>(1000));
-        lineSeparator = java.security.AccessController.doPrivileged(
-                new sun.security.action.GetPropertyAction("line.separator"));
+        lineSeparator = System.getProperty("line.separator");
     }
 
     public void addClient(Socket socket) throws IOException {

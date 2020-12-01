@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="applicationName" value="spring" />
+    <contextName>${applicationName}</contextName>
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%yellow([${applicationName}]) %blue(%d{yyyy-MM-dd HH:mm:ss.SSS}) %magenta([%-10.10t]) %cyan(%-40.40logger{39}) %green(%-3.3L) %highlight(%-5p): %msg%n</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+
+
+    <root>
+        <level value="info" />
+        <appender-ref ref="STDOUT" />
+    </root>
+    <logger  level="trace"    name="com.andy.study" />
+    <logger  level="trace"    name="org.springframework" />
+
+</configuration>
+

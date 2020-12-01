@@ -23,8 +23,7 @@ public class ChatClient {
     private BufferedWriter writer = null;
 
     public ChatClient(){
-        lineSeparator = java.security.AccessController.doPrivileged(
-                new sun.security.action.GetPropertyAction("line.separator"));
+        lineSeparator = System.getProperty("line.separator");
     }
 
     public static void main(String[] args) {
