@@ -75,7 +75,6 @@ public class JacksonTest01 {
         om.registerModule(javaTimeModule);
         String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(person);
         //String s1 = om.writer(new DefaultPrettyPrinter()).writeValueAsString(person);
-
         log.debug("s = \n{} ",s);
 
         Person person = om.readValue(s, Person.class);

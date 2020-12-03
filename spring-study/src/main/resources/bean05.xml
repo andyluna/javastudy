@@ -10,4 +10,12 @@
         <property name="age" value="#{T(java.lang.Math).random() *200}"/>
         <property name="random" value="#{T(java.lang.Math).random() *100}"/>
     </bean>
+
+    <bean name="dateTimeFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
+        <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"> </constructor-arg>
+    </bean>
+
+    <bean name="dateFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
+        <constructor-arg index="0" value="yyyy-MM-dd"> </constructor-arg>
+    </bean>
 </beans>
