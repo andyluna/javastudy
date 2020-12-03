@@ -1,10 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+   <mvc:annotation-driven conversion-service="conversionService" >
+
+        <mvc:message-converters register-defaults="true" >
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="defaultCharset" value="UTF-8"/>
+                <property name="prettyPrint" value="true"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>application/problem+json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="objectMapper" ref="objectMapper"/>
+            </bean>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="writeAcceptCharset" value="false"/>
+                <property name="defaultCharset" value="UTF-8"/>
+            </bean>
+            <bean class="org.springframework.http.converter.ObjectToStringHttpMessageConverter">
+                <constructor-arg name="conversionService" ref="conversionService"/>
+                <constructor-arg name="defaultCharset" value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <mvc:default-servlet-handler/>
+
+    <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss" />
+    </bean>
+
+    <bean id="conversionService" class="org.springframework.format.support.DefaultFormattingConversionService">
+
+    </bean>
 
 
 
+    <mvc:resources location="/js/" mapping="/js1/**" order="1"/>
 
+   <mvc:view-controller path="/hello2" view-name="hello" status-code="200" />
+   <mvc:redirect-view-controller path="/hello3" redirect-url="/hello2" />
+<!--    <mvc:groovy-configurer  />-->
+<!--    <mvc:view-resolvers>-->
+<!--        <bean ></bean>-->
+<!--    </mvc:view-resolvers>-->
+<!--    <mvc:redirect-view-controller path="controller" redirect-url=""/>-->
+    <bean id="requestMappingHandlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+        <property name="order" value="1"/>
+    </bean>
+
+    <bean id="beanNameUrlHandlerMapping " class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" >
+        <property name="order" value="2"/>
+    </bean>
+    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="order" value="3"/>
+        <property name="mappings">
+            <props>
+                <prop key="/mysimple/hello">mySimpleUrl01Controller</prop>
+                <prop key="/**">defaultServletHttpRequestHandler</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="defaultServletHttpRequestHandler" class="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler"></bean>
+    <bean id="myController" class="com.andy.study.springmvc.controller.MyController"></bean>
+    <bean id="myController01" class="com.andy.study.springmvc.controller.MyController01"></bean>
+
+    <bean id="/myBeanName01" class="com.andy.study.springmvc.controller.MyBeanName01Controller"></bean>
+    <bean id="mySimpleUrl01Controller" class="com.andy.study.springmvc.controller.MySimpleUrl01Controller"></bean>
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="1"/>
+        <property name="prefix" value="/jsp/beanname/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 </beans>

@@ -4,7 +4,7 @@ package com.andy.study.spring.spel;
  * @time: 2020/11/24 十一月 21:18
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-public class MySpel {
+public class        MySpel {
     private String name;
 
     private Integer age;

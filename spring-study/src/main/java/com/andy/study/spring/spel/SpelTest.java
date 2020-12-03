@@ -2,16 +2,27 @@ package com.andy.study.spring.spel;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.MutablePropertySources;
+import org.springframework.core.env.PropertiesPropertySource;
+import org.springframework.core.env.PropertyResolver;
+import org.springframework.core.env.PropertySource;
+import org.springframework.core.env.PropertySources;
+import org.springframework.core.env.PropertySourcesPropertyResolver;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.SimpleEvaluationContext;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @time: 2020/11/24 十一月 20:52
@@ -82,6 +93,50 @@ public class SpelTest {
 
     }
 
+    @Test
+    public void test09(){
+        //1.准备表达式
+        String express1 = "Hello,测试用户:${user1}  --- ${deptName} --- ${userName} --- ${userId}  -->系统属性:${user.home}";
+        //2.准备参数
+        //2.1准备map参数
+        Map<String,Object> paraMap=new HashMap<>();
+        paraMap.put("user1","赵聪");
+        paraMap.put("deptName","组织部");
+        paraMap.put("userName","zhaocong");
+        paraMap.put("userId","MyUserId");
+
+        MutablePropertySources propertySources = new MutablePropertySources();
+        propertySources.addLast(new MapPropertySource("param1",paraMap));
+        //2.2放入系统参数
+        propertySources.addLast(new PropertiesPropertySource("param2",System.getProperties()));
+
+        //3.创建解析器
+        PropertySourcesPropertyResolver psp = new PropertySourcesPropertyResolver(propertySources);
+        //4.解析
+        String res1 = psp.resolvePlaceholders(express1);
+        System.out.println(res1);
+    }
+
+    public static class Student{
+        private int id;
+        private String name;
+        public Student(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+        public int getId() {
+            return id;
+        }
+        public void setId(int id) {
+            this.id = id;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 
 }
 class Simple {

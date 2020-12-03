@@ -13,6 +13,7 @@ import com.andy.study.spring.annotation.config.im.MyImportService03;
 import com.andy.study.spring.annotation.config.im.MySelector01;
 import com.andy.study.spring.annotation.config.im.MySelector02;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.annotation.Import;
 
@@ -27,6 +28,7 @@ import org.springframework.context.annotation.Import;
         MyDeferredSelector01.class, MyDeferredSelector02.class,
         MyBeanDefinetionRegistor01.class, MyBeanDefinetionRegistor02.class
 })
+@Configuration
 public class Config01 {
 
     @Bean
