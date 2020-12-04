@@ -6,7 +6,12 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven conversion-service="conversionService" >
+    <mvc:annotation-driven
+            conversion-service="conversionService"
+            content-negotiation-manager="contentNegotiationManager"
+            enable-matrix-variables="true"
+            ignore-default-model-on-redirect="true">
+
         <mvc:message-converters register-defaults="true" >
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="defaultCharset" value="UTF-8"/>
@@ -14,11 +19,16 @@
                 <property name="supportedMediaTypes">
                     <list>
                         <value>application/json;charset=UTF-8</value>
-                        <value>application/problem+json;charset=UTF-8</value>
                     </list>
                 </property>
                 <property name="objectMapper" ref="objectMapper"/>
             </bean>
+            <bean id="mappingJackson2XmlHttpMessageConverter" class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter">
+                <property name="prettyPrint" value="false"/>
+                <property name="defaultCharset" value="UTF-8"/>
+                <property name="objectMapper" ref="xmlMapper"/>
+            </bean>
+
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="writeAcceptCharset" value="false"/>
                 <property name="defaultCharset" value="UTF-8"/>
@@ -29,9 +39,93 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+<!--
     <mvc:default-servlet-handler/>
+-->
+
+    <mvc:interceptors >
+       <!-- <mvc:interceptor>
+            <mvc:mapping path="/content/**"/>
+            <bean class="com.andy.study.springmvc.interceptor.MyInterceptor01"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/content/**"/>
+            <bean class="com.andy.study.springmvc.interceptor.MyInterceptor02"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/content/**"/>
+            <bean class="com.andy.study.springmvc.interceptor.MyInterceptor03"></bean>
+        </mvc:interceptor>-->
+
+
+        <mvc:interceptor>
+            <mvc:mapping path="/content/**"/>
+            <bean class="com.andy.study.springmvc.interceptor.MyWebRequestInterceptor01"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+<!--    <mvc:cors>
+        <mvc:mapping path="/**" allowed-headers="*"/>
+
+    </mvc:cors>-->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="mediaTypes">
+            <props>
+                <prop key="json">application/json</prop>
+                <prop key="xml">application/xml</prop>
+                <prop key="csv">application/csv</prop>
+            </props>
+        </property>
+        <property name="defaultContentType" value="application/json" />
+        <property name="favorPathExtension" value="true"/>
+        <property name="favorParameter" value="true"/>
+        <property name="parameterName" value="myparameter"/>
+        <property name="ignoreAcceptHeader" value="false"/>
+    </bean>
+
 
     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss" />
+        <property name="deserializers">
+            <array>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer">
+                    <constructor-arg index="0" ref="dateTimeFormatter" />
+                </bean>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer">
+                    <constructor-arg index="0" ref="dateFormatter" />
+                </bean>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer">
+                    <constructor-arg index="0" ref="timeFormatter" />
+                </bean>
+            </array>
+        </property>
+        <property name="serializers">
+            <array>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer">
+                    <constructor-arg index="0" ref="dateTimeFormatter" />
+                </bean>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer">
+                    <constructor-arg index="0" ref="dateFormatter" />
+                </bean>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer">
+                    <constructor-arg index="0" ref="timeFormatter" />
+                </bean>
+            </array>
+        </property>
+        <property name="failOnUnknownProperties" value="true"/>
+        <property name="serializationInclusion" value="ALWAYS" />
+        <property name="modules" >
+            <list>
+                <bean class="com.fasterxml.jackson.datatype.jdk8.Jdk8Module"/>
+                <bean class="com.fasterxml.jackson.datatype.jsr310.JavaTimeModule">
+                </bean>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean id="xmlMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+        <property name="createXmlMapper" value="true"/>
         <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss" />
         <property name="deserializers">
             <array>
@@ -115,7 +209,8 @@
     <bean id="defaultServletHttpRequestHandler" class="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler"></bean>
     <bean id="myController" class="com.andy.study.springmvc.controller.MyController"></bean>
     <bean id="myController01" class="com.andy.study.springmvc.controller.MyController01"></bean>
-
+    <bean id="contentNegotiationController" class="com.andy.study.springmvc.controller.ContentNegotiationController"></bean>
+    <bean id="asyncController" class="com.andy.study.springmvc.controller.AsyncController"/>
     <bean id="/myBeanName01" class="com.andy.study.springmvc.controller.MyBeanName01Controller"></bean>
     <bean id="mySimpleUrl01Controller" class="com.andy.study.springmvc.controller.MySimpleUrl01Controller"></bean>
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

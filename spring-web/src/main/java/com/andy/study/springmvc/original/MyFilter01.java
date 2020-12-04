@@ -15,11 +15,11 @@ import java.io.IOException;
  * @time: 2020/12/1 十二月 14:04
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-@WebFilter(urlPatterns = {"/*"},description = "自定义注解过滤器",
-        initParams = {
-        @WebInitParam(name = "a",value = "a1",description = "a11"),
-        @WebInitParam(name = "b",value = "b1",description = "b11"),
-        })
+//@WebFilter(urlPatterns = {"/*"},description = "自定义注解过滤器",
+//        initParams = {
+//        @WebInitParam(name = "a",value = "a1",description = "a11"),
+//        @WebInitParam(name = "b",value = "b1",description = "b11"),
+//        },asyncSupported = true)
 @Slf4j
 public class MyFilter01 extends HttpFilter {
 
