@@ -27,14 +27,7 @@ import io.netty.example.worldclock.WorldClockProtocol.Locations;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import static java.util.Calendar.DAY_OF_MONTH;
-import static java.util.Calendar.DAY_OF_WEEK;
-import static java.util.Calendar.HOUR_OF_DAY;
-import static java.util.Calendar.MINUTE;
-import static java.util.Calendar.MONTH;
-import static java.util.Calendar.SECOND;
-import static java.util.Calendar.YEAR;
-import static java.util.Calendar.getInstance;
+import static java.util.Calendar.*;
 
 public class WorldClockServerHandler extends SimpleChannelInboundHandler<Locations> {
 

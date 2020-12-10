@@ -34,19 +34,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import static io.netty.handler.codec.stomp.StompHeaders.ACCEPT_VERSION;
-import static io.netty.handler.codec.stomp.StompHeaders.CONTENT_LENGTH;
-import static io.netty.handler.codec.stomp.StompHeaders.CONTENT_TYPE;
-import static io.netty.handler.codec.stomp.StompHeaders.DESTINATION;
-import static io.netty.handler.codec.stomp.StompHeaders.HEART_BEAT;
-import static io.netty.handler.codec.stomp.StompHeaders.ID;
-import static io.netty.handler.codec.stomp.StompHeaders.MESSAGE;
-import static io.netty.handler.codec.stomp.StompHeaders.MESSAGE_ID;
-import static io.netty.handler.codec.stomp.StompHeaders.RECEIPT;
-import static io.netty.handler.codec.stomp.StompHeaders.RECEIPT_ID;
-import static io.netty.handler.codec.stomp.StompHeaders.SERVER;
-import static io.netty.handler.codec.stomp.StompHeaders.SUBSCRIPTION;
-import static io.netty.handler.codec.stomp.StompHeaders.VERSION;
+import static io.netty.handler.codec.stomp.StompHeaders.*;
 
 @Sharable
 public class StompChatHandler extends SimpleChannelInboundHandler<StompFrame> {

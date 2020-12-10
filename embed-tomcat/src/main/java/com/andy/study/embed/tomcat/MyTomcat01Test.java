@@ -1,7 +1,5 @@
 package com.andy.study.embed.tomcat;
 
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 
 /**

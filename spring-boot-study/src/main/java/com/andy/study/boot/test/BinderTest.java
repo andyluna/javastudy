@@ -9,8 +9,6 @@ import org.springframework.boot.context.properties.source.ConfigurationPropertyN
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.StandardEnvironment;
 
-import javax.xml.transform.Source;
-
 /**
  * @time: 2020/12/4 十二月 22:44
  * @author: xiangdan/xiangdan@dtxytech.com
