@@ -1,7 +1,6 @@
-server:
-    port: 8081
-
 info: 外面yml
+
+
 #logging:
 #    level:
 #        org: debug

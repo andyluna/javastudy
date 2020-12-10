@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
         useDefaultFilters = true,
         excludeFilters = {
                 @ComponentScan.Filter(type = FilterType.ANNOTATION,value = Controller.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = RestController.class),
                 @ComponentScan.Filter(type = FilterType.ANNOTATION,value = ControllerAdvice.class),
                 @ComponentScan.Filter(type = FilterType.ANNOTATION,value = RestController.class),
         })

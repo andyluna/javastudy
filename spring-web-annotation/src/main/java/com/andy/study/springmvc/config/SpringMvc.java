@@ -23,8 +23,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.ANNOTATION,value = Controller.class),
                 @ComponentScan.Filter(type = FilterType.ANNOTATION,value = RestController.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = ControllerAdvice.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = RestController.class)
+                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = ControllerAdvice.class)
 })
 @EnableWebMvc
 public class SpringMvc  implements WebMvcConfigurer, InitializingBean {

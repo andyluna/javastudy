@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <beans profile="dev">
+        <bean id="car" class="com.andy.study.spring.xml.pojo.Car">
+            <property name="name" value="奔驰"/>
+            <property name="id" value="1"/>
+            <property name="price" value="20.3"/>
+        </bean>
+    </beans>
+    <beans profile="prod">
+        <bean id="car1" class="com.andy.study.spring.xml.pojo.Car">
+            <property name="name" value="dudi"/>
+            <property name="id" value="2"/>
+            <property name="price" value="40.3"/>
+        </bean>
+    </beans>
+    <beans profile="mac" >
+        <bean id="car2" class="com.andy.study.spring.xml.pojo.Car">
+            <property name="name" value="宝马"/>
+            <property name="id" value="1"/>
+            <property name="price" value="40.3"/>
+        </bean>
+    </beans>
+
+</beans>
