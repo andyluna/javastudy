@@ -1,0 +1,66 @@
+《魔兽争霸3》玩不了解决方法
+2012-09-12 11:07:02来源：游戏下载编辑：评论(0)
+有些魔兽争霸3的玩家问在安装游戏的时候，出现对话框，下面教大家如何来解决。
+
+解决方法如下：
+
+如果出现FATAL ERROR!
+
+Program: e:\program files\魔兽争霸3冰封王座1.21简体中文硬盘版\war3.exe
+Exception: 0xC0000005 (ACCESS_VIOLATION) at 001B:6F6AC23E
+
+The instruction at '0x6F6AC23E' referenced memory at '0x00000000'.
+The memory could not be 'read'.
+是要删除注册表....
+注册表问题，把注册表里关于魔兽的信息都删除就可以了。
+方法是单击开始菜单里的运行输入regedit.exe按回车，找到HKEY_CURRENT_USER\Software\Blizzard Entertainment\Warcraft III，单击右键Warcraft III删除就行了，接下来关闭注册表，应该就可以进魔兽了。
+
+如果你运行魔兽争霸时候出现弹出个框,里面有类似如下的提示！
+
+War3
+This application has encountered acritical error:
+FATAL ERROR!
+Program: e:\魔兽争霸3+冰封王座\war3.exe
+Exception: 0xC0000005 (ACCESS_VIOLATION) at 001B:00401472
+The instruction at '0x00401472' referenced memory at '0x00362AEC'.
+The memory could not be 'read'.
+Press OK to terminate the application
+
+请你在桌面新建个文本文档,把以下内容输入在内..完毕后把文本文档的txt格式改成reg格式. 双击它..便OK!!!
+
+REGEDIT4
+[HKEY_CURRENT_USER\Software\Blizzard Entertainment\Warcraft III]
+[HKEY_CURRENT_USER\Software\Blizzard Entertainment\Warcraft III\Video]
+"reswidth"=dword:00000280
+"resheight"=dword:000001e0
+"colordepth"=dword:00000010
+"adapter"=dword:00000000
+"refreshrate"=dword:0000003c
+"gamma"=dword:0000001e
+"modeldetail"=dword:00000000
+"animquality"=dword:00000000
+"texquality"=dword:00000000
+"miplevel"=dword:00000001
+"texcolordepth"=dword:00000010
+"particles"=dword:00000000
+"lights"=dword:00000000
+"lockfb"=dword:00000001
+"unitshadows"=dword:00000000
+"occlusion"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Blizzard Entertainment\Warcraft III\Sound]
+"provider"=dword:00000001
+"positional"=dword:00000000
+"environmental"=dword:00000000
+"music"=dword:00000000
+"musicvolume"=dword:00000041
+"sfx"=dword:00000000
+"sfxvolume"=dword:00000064
+"ambient"=dword:00000000
+"movement"=dword:00000000
+"unit"=dword:00000000
+"subtitles"=dword:00000000
+"nomidi"=dword:00000000
+"softwaremidi"=dword:00000001
+"nosoundwarn"=dword:00000001
+
