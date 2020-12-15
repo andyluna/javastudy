@@ -11,5 +11,5 @@ logging:
                     util:
                         net:
                             NioEndpoint: info
-trace: true
+#trace: true
 #        org: debug
