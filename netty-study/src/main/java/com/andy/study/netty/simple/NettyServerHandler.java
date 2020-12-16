@@ -23,32 +23,33 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.out.println("读取线程"+Thread.currentThread().getName());
+        System.out.println("读取线程" + Thread.currentThread().getName());
 
         //用户自定义普通任务
-        ctx.channel().eventLoop().execute(()->{
-            try{
-                Thread.sleep(10*1000);
+        ctx.channel().eventLoop().execute(() -> {
+            try {
+                Thread.sleep(10 * 1000);
                 ctx.writeAndFlush(Unpooled.copiedBuffer("~~~~~~~先发送", CharsetUtil.UTF_8));
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
         //用户自定义定时任务
-        ctx.channel().eventLoop().schedule(()->{
+        ctx.channel().eventLoop().schedule(() -> {
             ctx.writeAndFlush(Unpooled.copiedBuffer("5秒之后执行 ", CharsetUtil.UTF_8));
 
         }, 15, TimeUnit.SECONDS);
-        System.out.println("server ctx = "+ctx);
+        System.out.println("server ctx = " + ctx);
         Channel channel = ctx.channel();
         ChannelPipeline pipeline = channel.pipeline();
 
 
         ByteBuf byteBuf = (ByteBuf) msg;
 
-        System.out.println("客户端发送过来的消息是 "+byteBuf.toString(CharsetUtil.UTF_8));
-        System.out.println("客户端地址"+ channel.remoteAddress());
+        System.out.println("客户端发送过来的消息是 " + byteBuf.toString(CharsetUtil.UTF_8));
+        System.out.println("客户端地址" + channel.remoteAddress());
     }
+
     //数据读取完毕
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
@@ -57,7 +58,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        System.out.println("出异常了 关闭ctx"+ctx);
+        System.out.println("出异常了 关闭ctx" + ctx);
         cause.printStackTrace();
         ctx.close();
     }

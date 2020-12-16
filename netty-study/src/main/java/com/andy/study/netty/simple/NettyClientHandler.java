@@ -17,7 +17,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     //当通道就绪调用此方法
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("客户端 ctx "+ctx);
+        System.out.println("客户端 ctx " + ctx);
         ctx.writeAndFlush(Unpooled.copiedBuffer("hello,服务端", CharsetUtil.UTF_8));
     }
 
@@ -25,8 +25,8 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         ByteBuf byteBuf = (ByteBuf) msg;
-        System.out.println("服务端回复的消息是"+ LocalDateTime.now() +byteBuf.toString(CharsetUtil.UTF_8));
-        System.out.println("服务端地址"+ctx.channel().remoteAddress());
+        System.out.println("服务端回复的消息是" + LocalDateTime.now() + byteBuf.toString(CharsetUtil.UTF_8));
+        System.out.println("服务端地址" + ctx.channel().remoteAddress());
     }
 
     @Override

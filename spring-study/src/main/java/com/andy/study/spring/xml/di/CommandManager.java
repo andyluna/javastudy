@@ -10,10 +10,11 @@ import org.slf4j.LoggerFactory;
 public abstract class CommandManager {
 
     private static final Logger log = LoggerFactory.getLogger(CommandManager.class);
+
     public Object process(Object commandState) {
         // grab a new instance of the appropriate Command interface
         Command command = createCommand();
-        log.debug("command:{}"+command);
+        log.debug("command:{}" + command);
         // set the state on the (hopefully brand new) Command instance
         command.setState(commandState);
         return command.execute();

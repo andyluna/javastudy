@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class MySpringTest {
 
     @Test
-    public void test01(){
+    public void test01() {
         log.debug("hello");
     }
 }

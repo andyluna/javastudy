@@ -31,62 +31,63 @@ public class ServerSokectTest {
     }
 
 
-    public void init(int port)  {
+    public void init(int port) {
         ServerSocket serverSocket = null;
         ExecutorService executorService = null;
-        try{
+        try {
             //executorService = Executors.newFixedThreadPool(3);
 
             executorService = new ThreadPoolExecutor(2, 5, 60, TimeUnit.SECONDS,
-                    new LinkedBlockingQueue<>(100)) ;
+                    new LinkedBlockingQueue<>(100));
             serverSocket = new ServerSocket();
             serverSocket.setReuseAddress(true); //设置 ServerSocket 的选项
             serverSocket.bind(new InetSocketAddress(port));
-            System.out.println("server 启动 监听:"+port+"端口");
-            while(true){
+            System.out.println("server 启动 监听:" + port + "端口");
+            while (true) {
                 Socket socket = serverSocket.accept();
                 executorService.submit(new HandlerThread(socket));
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if(serverSocket!=null){
+        } finally {
+            if (serverSocket != null) {
                 try {
                     serverSocket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(executorService!=null){
+            if (executorService != null) {
                 executorService.shutdown();
             }
         }
 
     }
 
-    private class HandlerThread implements Runnable{
+    private class HandlerThread implements Runnable {
         private Socket socket;
+
         public HandlerThread(Socket client) {
             socket = client;
             count.incrementAndGet();
-            System.out.println("第"+count.get()+"个客户端连接成功,端口:"+socket.getPort()+" "+socket.getInetAddress());
+            System.out.println("第" + count.get() + "个客户端连接成功,端口:" + socket.getPort() + " " + socket.getInetAddress());
         }
 
         @Override
         public void run() {
-            BufferedReader in  = null;
+            BufferedReader in = null;
             BufferedWriter out = null;
             try {
                 // 读取客户端数据
-                in  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 String str = null;
-                while((str=in.readLine()) != null){
-                    System.out.println("客户端["+count.get()+"端口:"+socket.getPort()+"]发送过来的消息:"+str);
-                    out.write("服务端:"+str+"! ");
+                while ((str = in.readLine()) != null) {
+                    System.out.println("客户端[" + count.get() + "端口:" + socket.getPort() + "]发送过来的消息:" + str);
+                    out.write("服务端:" + str + "! ");
                     out.newLine();
                     out.flush();
-                    if(QUIT.equals(str)){
+                    if (QUIT.equals(str)) {
                         break;
                     }
                 }
@@ -96,14 +97,14 @@ public class ServerSokectTest {
                 e.printStackTrace();
                 System.out.println("服务器 run 异常: " + e.getMessage());
             } finally {
-                if(in!=null){
+                if (in != null) {
                     try {
                         in.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-                if(out!=null){
+                if (out != null) {
                     try {
                         out.close();
                     } catch (IOException e) {
@@ -111,7 +112,7 @@ public class ServerSokectTest {
                     }
                 }
                 if (socket != null) {
-                    System.out.println("第"+count.get()+"开始关闭,端口:"+socket.getPort()+" "+socket.getInetAddress());
+                    System.out.println("第" + count.get() + "开始关闭,端口:" + socket.getPort() + " " + socket.getInetAddress());
                     try {
                         socket.close();
                     } catch (Exception e) {
@@ -122,7 +123,7 @@ public class ServerSokectTest {
             }
         }
 
-        public void start(){
+        public void start() {
             new Thread(this).start();
         }
     }

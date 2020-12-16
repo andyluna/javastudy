@@ -1,7 +1,6 @@
 package com.andy.study.jvm.cloader;
 
 
-
 /**
  * @time: 2020/10/22 十月 14:49
  * @author: xiangdan/xiangdan@dtxytech.com
@@ -25,8 +24,8 @@ public class MyTest12 {
 
 }
 
-class CL{
-    static{
+class CL {
+    static {
         System.out.println("CL init");
     }
 }

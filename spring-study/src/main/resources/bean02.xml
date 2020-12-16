@@ -5,8 +5,8 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean name="c1" class="com.andy.study.spring.xml.pojo.Car"
-            init-method="xmlinit" destroy-method="xmldestory"
-            lazy-init="true">
+          init-method="xmlinit" destroy-method="xmldestory"
+          lazy-init="true">
         <property name="id" value="1"/>
         <property name="name" value="bmw"/>
         <property name="price" value="18.89"/>
@@ -24,10 +24,10 @@
     <bean class="com.andy.study.spring.xml.factoryPostProcessor.NormalFactroryPostProcessor02"></bean>
     <bean class="com.andy.study.spring.xml.factoryPostProcessor.NormalFactroryPostProcessor03"></bean>
 
-   <!--
-    <bean class="com.andy.study.spring.xml.lifecycle.MyLiefeCycle"></bean>
-    <bean id="instantiationTracingBeanPostProcessor" class="com.andy.study.spring.xml.beanpostprocessor.InstantiationTracingBeanPostProcessor"></bean>
-    -->
+    <!--
+     <bean class="com.andy.study.spring.xml.lifecycle.MyLiefeCycle"></bean>
+     <bean id="instantiationTracingBeanPostProcessor" class="com.andy.study.spring.xml.beanpostprocessor.InstantiationTracingBeanPostProcessor"></bean>
+     -->
 
 
 </beans>

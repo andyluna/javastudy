@@ -17,13 +17,15 @@ public class MyAspect01 {
     public MyAspect01() {
         log.debug("MyAspect01初始化");
     }
+
     @Pointcut("execution(* com.andy.study.spring.aop.proxy.service.impl.T1Impl.*(..))")
-    public void pc(){
+    public void pc() {
 
     }
+
     @Before("pc()")
-    public void beforeLog(JoinPoint jp){
-        log.debug("hello1 - {} - {}",jp.getClass(),jp);
+    public void beforeLog(JoinPoint jp) {
+        log.debug("hello1 - {} - {}", jp.getClass(), jp);
         MethodInvocationProceedingJoinPoint mejp = (MethodInvocationProceedingJoinPoint) jp;
     }
 }

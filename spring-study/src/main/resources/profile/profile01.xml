@@ -17,7 +17,7 @@
             <property name="price" value="40.3"/>
         </bean>
     </beans>
-    <beans profile="mac" >
+    <beans profile="mac">
         <bean id="car2" class="com.andy.study.spring.xml.pojo.Car">
             <property name="name" value="宝马"/>
             <property name="id" value="1"/>

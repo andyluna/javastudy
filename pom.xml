@@ -109,7 +109,6 @@
     <dependencies>
 
 
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -121,7 +120,6 @@
         </dependency>
 
     </dependencies>
-
 
 
     <build>
@@ -146,7 +144,6 @@
             </plugin>
         </plugins>
     </build>
-
 
 
 </project>

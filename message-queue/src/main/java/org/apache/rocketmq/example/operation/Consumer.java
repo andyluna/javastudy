@@ -52,7 +52,7 @@ public class Consumer {
 
                 @Override
                 public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
-                    ConsumeConcurrentlyContext context) {
+                                                                ConsumeConcurrentlyContext context) {
                     long currentTimes = this.consumeTimes.incrementAndGet();
                     System.out.printf("%-8d %s%n", currentTimes, msgs);
                     if (Boolean.parseBoolean(returnFailedHalf)) {

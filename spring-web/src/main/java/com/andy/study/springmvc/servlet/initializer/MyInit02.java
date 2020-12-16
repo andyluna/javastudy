@@ -13,6 +13,6 @@ import javax.servlet.ServletContext;
 public class MyInit02 implements MyServerletInitializer {
     @Override
     public void onStartup(ServletContext servletContext) {
-        log.debug("MyInit02 启动了:{}",servletContext);
+        log.debug("MyInit02 启动了:{}", servletContext);
     }
 }

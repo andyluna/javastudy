@@ -81,7 +81,7 @@ public class Http2Server {
                 ApplicationProtocolNames.HTTP_1_1);
 
         return SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey(), null)
-                                .ciphers(CIPHERS, SupportedCipherSuiteFilter.INSTANCE)
-                                .applicationProtocolConfig(apn).build();
+                .ciphers(CIPHERS, SupportedCipherSuiteFilter.INSTANCE)
+                .applicationProtocolConfig(apn).build();
     }
 }

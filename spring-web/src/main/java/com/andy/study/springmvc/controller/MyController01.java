@@ -19,29 +19,29 @@ public class MyController01 {
 
     @GetMapping("/sayHello")
     @ResponseBody
-    public String sayHello(String name){
-        log.debug("sayHello:{}",name);
-        return "你好hello"+name;
+    public String sayHello(String name) {
+        log.debug("sayHello:{}", name);
+        return "你好hello" + name;
     }
+
     @GetMapping("/sayHello1")
     @ResponseBody
-    public String sayHello1(String name){
-        log.debug("sayHello1:{}",name);
-        return "你好hello1"+name;
+    public String sayHello1(String name) {
+        log.debug("sayHello1:{}", name);
+        return "你好hello1" + name;
 
     }
 
 
     @GetMapping("/getStundet")
     @ResponseBody
-    public Student getStudent(){
+    public Student getStudent() {
         Student student = new Student();
         student.setId(2);
         student.setName("张3");
 
         return student;
     }
-
 
 
 }

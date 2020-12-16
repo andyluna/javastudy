@@ -12,6 +12,6 @@ import org.springframework.context.event.ContextStoppedEvent;
 public class MyListener03 implements ApplicationListener<ContextStoppedEvent> {
     @Override
     public void onApplicationEvent(ContextStoppedEvent event) {
-        log.debug("stop 监听到了时间:{}",event);
+        log.debug("stop 监听到了时间:{}", event);
     }
 }

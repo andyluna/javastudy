@@ -10,12 +10,12 @@ public class BCTest5 {
 
     }
 
-    public int sub(){
+    public int sub() {
         int a = 1;
         int b = 2;
         int c = 3;
         int d = 4;
-        int n = (a+b+c)-d;
+        int n = (a + b + c) - d;
 
         return n;
     }

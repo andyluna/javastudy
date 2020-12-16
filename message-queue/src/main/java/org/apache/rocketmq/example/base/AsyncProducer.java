@@ -20,7 +20,7 @@ public class AsyncProducer {
         //3.启动消费生产者
         producer.start();
 
-        for (int i=0 ;i<10 ;i++){
+        for (int i = 0; i < 10; i++) {
             Message message = new Message();
             /**
              * topic 消息主题
@@ -28,21 +28,20 @@ public class AsyncProducer {
              */
             message.setTopic("mytopic");
             message.setTags("tag2");
-            message.setBody(("你好向丹helloworld"+i).getBytes());
+            message.setBody(("你好向丹helloworld" + i).getBytes());
 
             //异步消息
             producer.send(message, new SendCallback() {
                 @Override
                 public void onSuccess(SendResult sendResult) {
-                    System.out.println("发送成功"+sendResult);
+                    System.out.println("发送成功" + sendResult);
                 }
 
                 @Override
                 public void onException(Throwable e) {
-                    System.out.println("发送失败"+e);
+                    System.out.println("发送失败" + e);
                 }
             });
-
 
 
             TimeUnit.SECONDS.sleep(1);

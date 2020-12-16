@@ -16,23 +16,25 @@ public class MyTest11 {
 }
 
 
-class Myparent11{
+class Myparent11 {
     public static int a = 3;
-    static{
+
+    static {
         System.out.println("Myparent11 static");
     }
 
-    public static void doSomething(){
+    public static void doSomething() {
         System.out.println("Myparent11 do some thing ");
     }
 }
-class MyChild11 extends Myparent11{
+
+class MyChild11 extends Myparent11 {
     //public static int a = 4;
-    static{
+    static {
         System.out.println("MyChild11 static");
     }
 
-    public static void doSomething(){
+    public static void doSomething() {
         System.out.println("MyChild11 do some thing ");
     }
 }

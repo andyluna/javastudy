@@ -11,23 +11,23 @@ import java.util.List;
  */
 public class DirectByteBufferTest2 {
 
-    private static final int  BUFFER=  1024*1024*20;
+    private static final int BUFFER = 1024 * 1024 * 20;
 
     public static void main(String[] args) {
         List<ByteBuffer> list = new ArrayList<>();
-        int count = 0 ;
-        try{
-            while (true){
+        int count = 0;
+        try {
+            while (true) {
                 ByteBuffer byteBuffer = ByteBuffer.allocateDirect(BUFFER);
                 list.add(byteBuffer);
                 count++;
-                try{
+                try {
                     Thread.sleep(100);
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        }finally {
+        } finally {
             System.out.println(count);
         }
 

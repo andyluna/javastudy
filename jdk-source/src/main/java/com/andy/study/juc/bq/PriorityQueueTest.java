@@ -23,10 +23,9 @@ public class PriorityQueueTest {
         Random rand = new Random();
         PriorityQueue<Integer> pq = new PriorityQueue<>(10);
 
-        for(int i=0;i<10;i++){
+        for (int i = 0; i < 10; i++) {
             pq.add(rand.nextInt(100));
         }
-
 
 
         System.out.println(pq);
@@ -34,15 +33,14 @@ public class PriorityQueueTest {
         pq.add(39);
         System.out.println(pq);
 
-        for(int i=0;i<11;i++){
+        for (int i = 0; i < 11; i++) {
 
             //Integer in2 = pq.peek();
             Integer in = pq.poll();
 
-            System.out.println("Processing Integer:"+in);
+            System.out.println("Processing Integer:" + in);
 
         }
-
 
 
     }

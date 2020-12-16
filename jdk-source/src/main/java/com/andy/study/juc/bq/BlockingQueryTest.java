@@ -33,7 +33,6 @@ public class BlockingQueryTest {
         System.out.println(blockingQueue);
 
 
-
         //返回默认值
         boolean offer = blockingQueue.offer(3);
         Integer poll = blockingQueue.poll();
@@ -45,14 +44,14 @@ public class BlockingQueryTest {
 
 
         //等待一段时间
-        boolean offer1 = blockingQueue.offer(3,200, TimeUnit.MILLISECONDS);
+        boolean offer1 = blockingQueue.offer(3, 200, TimeUnit.MILLISECONDS);
         Integer poll1 = blockingQueue.poll(200, TimeUnit.MILLISECONDS);
 
 
         AtomicInteger ai = new AtomicInteger(1);
 
-        System.out.println("ai.get() ="+ai.get());
-        System.out.println("ai.getAndIncrement() ="+ai.getAndIncrement());
+        System.out.println("ai.get() =" + ai.get());
+        System.out.println("ai.getAndIncrement() =" + ai.getAndIncrement());
         //System.out.println(ai.incrementAndGet());
     }
 }

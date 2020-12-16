@@ -10,7 +10,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 @Slf4j
 public class MyDispatcherServlet extends DispatcherServlet {
 
-    public MyDispatcherServlet(){
+    public MyDispatcherServlet() {
         super();
         log.debug("MyDispatcherServlet启动了");
     }

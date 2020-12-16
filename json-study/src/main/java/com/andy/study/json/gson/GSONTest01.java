@@ -18,45 +18,48 @@ import java.time.LocalDateTime;
 @Slf4j
 public class GSONTest01 {
     private Person person;
-    private Gson gson ;
+    private Gson gson;
+
     @Before
-    public void before(){
+    public void before() {
         GsonBuilder builder = new GsonBuilder();
         gson = builder.create();
         person = Person.createDefaultPerson();
-        log.debug("person初始化成功:\n{}",person);
+        log.debug("person初始化成功:\n{}", person);
         builder = null;
     }
+
     @After
-    public void after(){
+    public void after() {
         gson = null;
         person = null;
     }
+
     @Test
-    public void test01(){
+    public void test01() {
         String s = gson.toJson(person);
-        log.debug("s=\n{}",s);
+        log.debug("s=\n{}", s);
         Person person = gson.fromJson(s, Person.class);
-        log.debug("person= \n{}",person);
+        log.debug("person= \n{}", person);
 
     }
 
     @Test
-    public void test02(){
+    public void test02() {
         gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .setPrettyPrinting()
 
-                .registerTypeAdapter(LocalDateTime.class,new LocalDateTimeJsonSerializer())
-                .registerTypeAdapter(LocalDate.class    ,new LocalDateJsonSerializer())
-                .registerTypeAdapter(LocalDateTime.class,new LocalDateTimeJsonDerializer())
-                .registerTypeAdapter(LocalDate.class    ,new LocalDateJsonDerializer())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeJsonSerializer())
+                .registerTypeAdapter(LocalDate.class, new LocalDateJsonSerializer())
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeJsonDerializer())
+                .registerTypeAdapter(LocalDate.class, new LocalDateJsonDerializer())
                 .serializeNulls()
                 .create();
         String s = gson.toJson(person);
-        log.debug("s=\n{}",s);
+        log.debug("s=\n{}", s);
         Person person = gson.fromJson(s, Person.class);
-        log.debug("person= \n{}",person);
+        log.debug("person= \n{}", person);
 
     }
 }

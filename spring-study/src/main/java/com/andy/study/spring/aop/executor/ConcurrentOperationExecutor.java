@@ -33,16 +33,15 @@ public class ConcurrentOperationExecutor implements Ordered {
             numAttempts++;
             try {
                 return pjp.proceed();
-            }
-            catch(PessimisticLockingFailureException ex) {
+            } catch (PessimisticLockingFailureException ex) {
                 lockFailureException = ex;
             }
-        } while(numAttempts <= this.maxRetries);
+        } while (numAttempts <= this.maxRetries);
         throw lockFailureException;
     }
 
 }
 
-class PessimisticLockingFailureException extends RuntimeException{
+class PessimisticLockingFailureException extends RuntimeException {
 
 }

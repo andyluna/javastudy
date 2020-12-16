@@ -17,9 +17,9 @@ public class ProfileXmlTest001 {
         context.getEnvironment().addActiveProfile("dev");
         context.refresh();
         String[] names = context.getBeanDefinitionNames();
-        log.debug("总共初始化了 {} 个bean",names.length);
+        log.debug("总共初始化了 {} 个bean", names.length);
         for (int i = 0; i < names.length; i++) {
-            System.out.printf("%d.%s = %s \n",i+1,names[i],context.getBean(names[i]));
+            System.out.printf("%d.%s = %s \n", i + 1, names[i], context.getBean(names[i]));
         }
     }
 }

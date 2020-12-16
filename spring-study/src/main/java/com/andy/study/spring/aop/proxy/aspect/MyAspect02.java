@@ -18,8 +18,8 @@ public class MyAspect02 {
     }
 
     @Before("com.andy.study.spring.aop.proxy.aspect.MyAspect01.pc()")
-    public void hello2(JoinPoint jp){
-        log.debug("hello2 - {} - {}",jp.getClass(),jp);
+    public void hello2(JoinPoint jp) {
+        log.debug("hello2 - {} - {}", jp.getClass(), jp);
         MethodInvocationProceedingJoinPoint mejp = (MethodInvocationProceedingJoinPoint) jp;
     }
 }

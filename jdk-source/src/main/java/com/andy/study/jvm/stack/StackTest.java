@@ -13,14 +13,14 @@ public class StackTest {
         st.method1();
     }
 
-    private void method1(){
+    private void method1() {
         int a = 1;
         int b = 1;
 
         method2();
     }
 
-    private void method2(){
+    private void method2() {
         int a = 1;
         int b = 1;
     }

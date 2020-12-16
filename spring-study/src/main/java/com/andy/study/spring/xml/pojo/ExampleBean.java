@@ -21,7 +21,6 @@ public class ExampleBean {
     private String name;
 
 
-
     public String getName() {
         return name;
     }
@@ -66,7 +65,7 @@ public class ExampleBean {
     }
 
     @Required
-     public void setCar(Car car) {
+    public void setCar(Car car) {
         this.car = car;
     }
 

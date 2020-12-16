@@ -13,8 +13,8 @@ import javax.jms.Topic;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class ActiveMqProducerTest02 {
-    public static final String URL="tcp://localhost:61616";
-    public static final String QUEQU_TOPIC="test-mytopic";
+    public static final String URL = "tcp://localhost:61616";
+    public static final String QUEQU_TOPIC = "test-mytopic";
 
     public static void main(String[] args) throws Exception {
         //1、创建工厂连接对象，需要制定ip和端口号
@@ -30,9 +30,9 @@ public class ActiveMqProducerTest02 {
         //6、使用会话对象创建生产者对象
         MessageProducer producer = session.createProducer(topic);
 
-        for(int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             //7、使用会话对象创建一个消息对象
-            TextMessage textMessage = session.createTextMessage("hello!test-topic3333"+i);
+            TextMessage textMessage = session.createTextMessage("hello!test-topic3333" + i);
             //8、发送消息
             producer.send(textMessage);
         }

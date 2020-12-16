@@ -12,6 +12,6 @@ import org.springframework.context.event.ContextStartedEvent;
 public class MyListener02 implements ApplicationListener<ContextStartedEvent> {
     @Override
     public void onApplicationEvent(ContextStartedEvent event) {
-        log.debug("start 监听到了事件:{}",event);
+        log.debug("start 监听到了事件:{}", event);
     }
 }

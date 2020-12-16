@@ -36,39 +36,39 @@ public class BinderTest {
         BindResult<A> id = binder.bind("spring.xiangdan", instance, new BindHandler() {
             @Override
             public <T> Bindable<T> onStart(ConfigurationPropertyName name, Bindable<T> target, BindContext context) {
-                System.out.println("绑定开始"+name);
+                System.out.println("绑定开始" + name);
                 return target;
             }
 
             @Override
             public Object onSuccess(ConfigurationPropertyName name, Bindable<?> target, BindContext context, Object result) {
-                System.out.println("绑定成功"+name);
+                System.out.println("绑定成功" + name);
                 return result;
             }
 
             @Override
             public Object onCreate(ConfigurationPropertyName name, Bindable<?> target, BindContext context, Object result) {
-                System.out.println("绑定onCreate"+name);
+                System.out.println("绑定onCreate" + name);
                 return result;
             }
 
             @Override
             public Object onFailure(ConfigurationPropertyName name, Bindable<?> target, BindContext context, Exception error) throws Exception {
-                System.out.println("绑定onFailure"+name+"  异常日志:"+error.getMessage());
+                System.out.println("绑定onFailure" + name + "  异常日志:" + error.getMessage());
                 return null;
             }
 
             @Override
             public void onFinish(ConfigurationPropertyName name, Bindable<?> target, BindContext context, Object result) throws Exception {
-                System.out.println("绑定onFinish"+name);
-                System.out.println("结果:"+result);
+                System.out.println("绑定onFinish" + name);
+                System.out.println("结果:" + result);
             }
         });
 
         System.out.println(a);
     }
 
-    public static class A{
+    public static class A {
         private String id;
         private Integer age;
         private String username;

@@ -6,7 +6,7 @@ package com.andy.study.juc.tl;
  */
 public class TreadLocalTest {
 
-//    private static ThreadLocal<String> threadLocal = new ThreadLocal<String>(){
+    //    private static ThreadLocal<String> threadLocal = new ThreadLocal<String>(){
 //        @Override
 //        protected String initialValue() {
 //            System.out.println("初始化");
@@ -25,9 +25,8 @@ public class TreadLocalTest {
     }
 
 
-
     static class MyThread extends Thread {
-        private static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>(){
+        private static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>() {
             @Override
             protected Integer initialValue() {
                 return 5;

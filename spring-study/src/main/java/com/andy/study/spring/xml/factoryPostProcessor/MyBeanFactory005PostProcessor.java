@@ -11,7 +11,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
  * @time: 2020/11/23 23:05  星期一
  */
 @Slf4j
-public class MyBeanFactory005PostProcessor implements BeanFactoryPostProcessor{
+public class MyBeanFactory005PostProcessor implements BeanFactoryPostProcessor {
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {

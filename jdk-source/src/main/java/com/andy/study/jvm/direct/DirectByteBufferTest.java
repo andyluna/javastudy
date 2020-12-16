@@ -12,7 +12,7 @@ public class DirectByteBufferTest {
 
     public static void main(String[] args) {
 
-        ByteBuffer bb = ByteBuffer.allocateDirect(1024*1024*1024*1);
+        ByteBuffer bb = ByteBuffer.allocateDirect(1024 * 1024 * 1024 * 1);
 
 
         System.out.println("直接内存分配完毕");

@@ -19,11 +19,12 @@ import java.time.LocalDateTime;
  */
 public class AopXmlTest01 {
     private static final Logger log = LoggerFactory.getLogger(AopXmlTest01.class);
+
     public static void main(String[] args) {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("aop/aop01.xml");
-        log.info("启动完成 总共有 {} 个bean",context.getBeanDefinitionCount());
+        log.info("启动完成 总共有 {} 个bean", context.getBeanDefinitionCount());
 
-        HelloService hs = context.getBean("helloService",HelloService.class);
+        HelloService hs = context.getBean("helloService", HelloService.class);
 
         LocalDateTime date = hs.getNowDate("xiangdan");
 
@@ -45,7 +46,7 @@ public class AopXmlTest01 {
     }
 
     @Test
-    public void test01(){
+    public void test01() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
         BeanDefinitionRegistry registry = (BeanDefinitionRegistry) context.getBeanFactory();
@@ -56,18 +57,17 @@ public class AopXmlTest01 {
         builder.getRawBeanDefinition().setBeanClassName("com.andy.study.spring.aop.service.impl.HelloServiceImpl");
         //builder.getRawBeanDefinition().setBeanClass(Car.class);
         builder.addPropertyValue("a", "nihao");
-         //builder.setAbstract(true);
+        //builder.setAbstract(true);
         AbstractBeanDefinition definition = builder.getBeanDefinition();
 
 
-
-        registry.registerBeanDefinition("xiangdan",definition);
+        registry.registerBeanDefinition("xiangdan", definition);
         context.refresh();
-        log.info("启动完成 总共有 {} 个bean",context.getBeanDefinitionCount());
+        log.info("启动完成 总共有 {} 个bean", context.getBeanDefinitionCount());
 
         String[] names = context.getBeanDefinitionNames();
         for (int i = 0; i < names.length; i++) {
-            System.out.printf("%d.%s = %s \n",i+1,names[i],context.getBean(names[i]));
+            System.out.printf("%d.%s = %s \n", i + 1, names[i], context.getBean(names[i]));
         }
         context.registerShutdownHook();
     }

@@ -12,10 +12,10 @@
     </bean>
 
     <bean name="dateTimeFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
-        <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"> </constructor-arg>
+        <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
     </bean>
 
     <bean name="dateFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
-        <constructor-arg index="0" value="yyyy-MM-dd"> </constructor-arg>
+        <constructor-arg index="0" value="yyyy-MM-dd"></constructor-arg>
     </bean>
 </beans>

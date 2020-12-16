@@ -22,15 +22,15 @@ public class MyController implements InitializingBean {
 
     @ResponseBody
     @GetMapping("/sayHello")
-    public String sayHello(String name){
-        return "你好"+name;
+    public String sayHello(String name) {
+        return "你好" + name;
     }
 
     @ResponseBody
     @GetMapping("/getPerson")
-    public Person getPerson(String name){
+    public Person getPerson(String name) {
         Person p = new Person(1, "向丹", new Date(), LocalDate.now(), LocalDateTime.MAX.now());
-        log.debug("person = {}",p);
+        log.debug("person = {}", p);
         return p;
     }
 

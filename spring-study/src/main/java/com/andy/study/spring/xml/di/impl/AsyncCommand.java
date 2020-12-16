@@ -12,9 +12,10 @@ public class AsyncCommand implements Command {
     private static final Logger log = LoggerFactory.getLogger(AsyncCommand.class);
     private Object commandState;
 
-    public AsyncCommand(){
+    public AsyncCommand() {
         log.debug("构造函执行了");
     }
+
     @Override
     public void setState(Object commandState) {
         this.commandState = commandState;
@@ -22,7 +23,7 @@ public class AsyncCommand implements Command {
 
     @Override
     public Object execute() {
-        log.debug("execute:{}",commandState);
-        return "command"+commandState;
+        log.debug("execute:{}", commandState);
+        return "command" + commandState;
     }
 }

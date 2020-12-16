@@ -21,14 +21,14 @@ import org.springframework.aop.interceptor.PerformanceMonitorInterceptor;
 public class ProxyTest {
 
     @Test
-    public void test01(){
+    public void test01() {
         T1 t = new T1Impl();
 
         t.foo();
     }
 
     @Test
-    public void test02(){
+    public void test02() {
         T1 t = new T1Impl();
         t.foo();
         log.debug("普通方法执行结束");
@@ -44,7 +44,7 @@ public class ProxyTest {
     }
 
     @Test
-    public void test03(){
+    public void test03() {
         T1 t = new T1Impl();
         t.foo();
         log.debug("普通方法执行结束");
@@ -59,7 +59,6 @@ public class ProxyTest {
         factory.addAdvice(new PerformanceMonitorInterceptor());
         factory.addAdvice(new DebugInterceptor());
         factory.setExposeProxy(true);
-
 
 
         T1 t1Proxy = (T1) factory.getProxy();

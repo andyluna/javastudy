@@ -25,7 +25,7 @@ public class MyFilter01 extends HttpFilter {
     public void init() throws ServletException {
         String a = super.getInitParameter("a");
         String b = super.getInitParameter("b");
-        log.debug("MyFilter01 初始化成功:{},{}",a,b);
+        log.debug("MyFilter01 初始化成功:{},{}", a, b);
     }
 
     @Override

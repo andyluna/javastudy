@@ -23,7 +23,6 @@ public class MethodAreaDemo01 {
         System.out.println("MethodAreaDemo01 end");
 
 
-
     }
 
 

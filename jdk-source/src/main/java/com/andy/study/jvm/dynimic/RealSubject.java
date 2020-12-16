@@ -9,7 +9,7 @@ public class RealSubject implements Subject {
     @Override
     public String request(String name) {
 
-        System.out.println("RealSubject "+name);
-        return "realSubject"+name;
+        System.out.println("RealSubject " + name);
+        return "realSubject" + name;
     }
 }

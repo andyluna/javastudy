@@ -23,7 +23,7 @@ import java.io.PrintWriter;
  * @time: 2020/12/4 十二月 09:12
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-@WebServlet(urlPatterns = {"/async/myasync"},name = "MyAsyncServlet",loadOnStartup = 1,asyncSupported = true)
+@WebServlet(urlPatterns = {"/async/myasync"}, name = "MyAsyncServlet", loadOnStartup = 1, asyncSupported = true)
 @Slf4j
 public class MyAsyncServlet extends HttpServlet {
 
@@ -36,12 +36,12 @@ public class MyAsyncServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.debug("主程序-进入异步请求");
         AsyncContext context = req.startAsync();
-        context.setTimeout(5*1000L);
+        context.setTimeout(5 * 1000L);
 
         MyRunnable runnable = new MyRunnable(context);
         log.debug("主程序-准备开启一个异步线程");
-        log.debug("主程序-req :{}",req);
-        log.debug("主程序-resp:{}",resp);
+        log.debug("主程序-req :{}", req);
+        log.debug("主程序-resp:{}", resp);
         ServletInputStream inputStream = req.getInputStream();
         inputStream.setReadListener(new ReadListener() {
             @Override
@@ -62,23 +62,23 @@ public class MyAsyncServlet extends HttpServlet {
         context.addListener(new AsyncListener() {
             @Override
             public void onComplete(AsyncEvent event) throws IOException {
-                log.debug("监听器监听到 onComplete:{} ",event);
+                log.debug("监听器监听到 onComplete:{} ", event);
             }
 
             @Override
             public void onTimeout(AsyncEvent event) throws IOException {
-                log.debug("监听器监听到 onTimeout:{} ",event);
+                log.debug("监听器监听到 onTimeout:{} ", event);
             }
 
             @Override
             public void onError(AsyncEvent event) throws IOException {
-                log.debug("监听器监听到 onError:{} ",event);
+                log.debug("监听器监听到 onError:{} ", event);
 
             }
 
             @Override
             public void onStartAsync(AsyncEvent event) throws IOException {
-                log.debug("监听器监听到 onStartAsync:{} ",event);
+                log.debug("监听器监听到 onStartAsync:{} ", event);
 
             }
         });
@@ -93,9 +93,10 @@ public class MyAsyncServlet extends HttpServlet {
     }
 
 
-    public static class MyRunnable implements Runnable{
+    public static class MyRunnable implements Runnable {
         private Logger log1 = LoggerFactory.getLogger(getClass());
         private AsyncContext context;
+
         public MyRunnable(AsyncContext context) {
             this.context = context;
         }
@@ -103,14 +104,14 @@ public class MyAsyncServlet extends HttpServlet {
         @Override
         public void run() {
             log1.debug("开始执行异步耗时的操作");
-            ServletRequest request   = this.context.getRequest();
+            ServletRequest request = this.context.getRequest();
             ServletResponse response = this.context.getResponse();
             Long timeout = this.context.getTimeout();
             boolean b = this.context.hasOriginalRequestAndResponse();
-            log.debug("request:{}",request);
-            log.debug("response:{}",response);
-            log.debug("timeout:{}",timeout);
-            log.debug("b:{}",b);
+            log.debug("request:{}", request);
+            log.debug("response:{}", response);
+            log.debug("timeout:{}", timeout);
+            log.debug("b:{}", b);
             try {
                 Thread.sleep(2000L);
                 PrintWriter writer = response.getWriter();

@@ -38,8 +38,7 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
                     try {
                         initializers.add((MyServerletInitializer)
                                 ReflectionUtils.accessibleConstructor(waiClass).newInstance());
-                    }
-                    catch (Throwable ex) {
+                    } catch (Throwable ex) {
                         throw new ServletException("Failed to instantiate WebApplicationInitializer class", ex);
                     }
                 }

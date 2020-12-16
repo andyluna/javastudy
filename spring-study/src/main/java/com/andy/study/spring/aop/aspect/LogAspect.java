@@ -25,8 +25,8 @@ public class LogAspect {
     }
 
     //org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint
-    public void beforeLog(JoinPoint jp){
-        log.debug("方法执行之前name - {} - {}",name,jp.getClass(),jp);
+    public void beforeLog(JoinPoint jp) {
+        log.debug("方法执行之前name - {} - {}", name, jp.getClass(), jp);
         MethodInvocationProceedingJoinPoint mejp = (MethodInvocationProceedingJoinPoint) jp;
         Object target = mejp.getTarget();
         Signature signature = mejp.getSignature();
@@ -35,12 +35,12 @@ public class LogAspect {
         String kind = mejp.getKind();
         SourceLocation sourceLocation = mejp.getSourceLocation();
         JoinPoint.StaticPart staticPart = mejp.getStaticPart();
-        log.debug("方法执行之前target         = {}",target);
-        log.debug("方法执行之前signature      = {}",signature);
+        log.debug("方法执行之前target         = {}", target);
+        log.debug("方法执行之前signature      = {}", signature);
         log.debug("方法执行之前args           = {}", Arrays.toString(args));
-        log.debug("方法执行之前id             = {}",id);
-        log.debug("方法执行之前kind           = {}",kind);
-        log.debug("方法执行之前sourceLocation = {}",sourceLocation);
-        log.debug("方法执行之前staticPart     = {}",staticPart);
+        log.debug("方法执行之前id             = {}", id);
+        log.debug("方法执行之前kind           = {}", kind);
+        log.debug("方法执行之前sourceLocation = {}", sourceLocation);
+        log.debug("方法执行之前staticPart     = {}", staticPart);
     }
 }

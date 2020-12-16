@@ -12,7 +12,7 @@
             enable-matrix-variables="true"
             ignore-default-model-on-redirect="true">
 
-        <mvc:message-converters register-defaults="true" >
+        <mvc:message-converters register-defaults="true">
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="defaultCharset" value="UTF-8"/>
                 <property name="prettyPrint" value="true"/>
@@ -23,7 +23,8 @@
                 </property>
                 <property name="objectMapper" ref="objectMapper"/>
             </bean>
-            <bean id="mappingJackson2XmlHttpMessageConverter" class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter">
+            <bean id="mappingJackson2XmlHttpMessageConverter"
+                  class="org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter">
                 <property name="prettyPrint" value="false"/>
                 <property name="defaultCharset" value="UTF-8"/>
                 <property name="objectMapper" ref="xmlMapper"/>
@@ -39,23 +40,23 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-<!--
-    <mvc:default-servlet-handler/>
--->
+    <!--
+        <mvc:default-servlet-handler/>
+    -->
 
-    <mvc:interceptors >
-       <!-- <mvc:interceptor>
-            <mvc:mapping path="/content/**"/>
-            <bean class="com.andy.study.springmvc.interceptor.MyInterceptor01"></bean>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/content/**"/>
-            <bean class="com.andy.study.springmvc.interceptor.MyInterceptor02"></bean>
-        </mvc:interceptor>
-        <mvc:interceptor>
-            <mvc:mapping path="/content/**"/>
-            <bean class="com.andy.study.springmvc.interceptor.MyInterceptor03"></bean>
-        </mvc:interceptor>-->
+    <mvc:interceptors>
+        <!-- <mvc:interceptor>
+             <mvc:mapping path="/content/**"/>
+             <bean class="com.andy.study.springmvc.interceptor.MyInterceptor01"></bean>
+         </mvc:interceptor>
+         <mvc:interceptor>
+             <mvc:mapping path="/content/**"/>
+             <bean class="com.andy.study.springmvc.interceptor.MyInterceptor02"></bean>
+         </mvc:interceptor>
+         <mvc:interceptor>
+             <mvc:mapping path="/content/**"/>
+             <bean class="com.andy.study.springmvc.interceptor.MyInterceptor03"></bean>
+         </mvc:interceptor>-->
 
 
         <mvc:interceptor>
@@ -64,10 +65,10 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-<!--    <mvc:cors>
-        <mvc:mapping path="/**" allowed-headers="*"/>
+    <!--    <mvc:cors>
+            <mvc:mapping path="/**" allowed-headers="*"/>
 
-    </mvc:cors>-->
+        </mvc:cors>-->
     <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
         <property name="mediaTypes">
             <props>
@@ -76,7 +77,7 @@
                 <prop key="csv">application/csv</prop>
             </props>
         </property>
-        <property name="defaultContentType" value="application/json" />
+        <property name="defaultContentType" value="application/json"/>
         <property name="favorPathExtension" value="true"/>
         <property name="favorParameter" value="true"/>
         <property name="parameterName" value="myparameter"/>
@@ -85,36 +86,36 @@
 
 
     <bean id="objectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
-        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss" />
+        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss"/>
         <property name="deserializers">
             <array>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer">
-                    <constructor-arg index="0" ref="dateTimeFormatter" />
+                    <constructor-arg index="0" ref="dateTimeFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer">
-                    <constructor-arg index="0" ref="dateFormatter" />
+                    <constructor-arg index="0" ref="dateFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer">
-                    <constructor-arg index="0" ref="timeFormatter" />
+                    <constructor-arg index="0" ref="timeFormatter"/>
                 </bean>
             </array>
         </property>
         <property name="serializers">
             <array>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer">
-                    <constructor-arg index="0" ref="dateTimeFormatter" />
+                    <constructor-arg index="0" ref="dateTimeFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer">
-                    <constructor-arg index="0" ref="dateFormatter" />
+                    <constructor-arg index="0" ref="dateFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer">
-                    <constructor-arg index="0" ref="timeFormatter" />
+                    <constructor-arg index="0" ref="timeFormatter"/>
                 </bean>
             </array>
         </property>
         <property name="failOnUnknownProperties" value="true"/>
-        <property name="serializationInclusion" value="ALWAYS" />
-        <property name="modules" >
+        <property name="serializationInclusion" value="ALWAYS"/>
+        <property name="modules">
             <list>
                 <bean class="com.fasterxml.jackson.datatype.jdk8.Jdk8Module"/>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.JavaTimeModule">
@@ -126,36 +127,36 @@
 
     <bean id="xmlMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="createXmlMapper" value="true"/>
-        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss" />
+        <property name="simpleDateFormat" value="yyyy-MM-dd HH:mm:ss"/>
         <property name="deserializers">
             <array>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer">
-                    <constructor-arg index="0" ref="dateTimeFormatter" />
+                    <constructor-arg index="0" ref="dateTimeFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer">
-                    <constructor-arg index="0" ref="dateFormatter" />
+                    <constructor-arg index="0" ref="dateFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer">
-                    <constructor-arg index="0" ref="timeFormatter" />
+                    <constructor-arg index="0" ref="timeFormatter"/>
                 </bean>
             </array>
         </property>
         <property name="serializers">
             <array>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer">
-                    <constructor-arg index="0" ref="dateTimeFormatter" />
+                    <constructor-arg index="0" ref="dateTimeFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer">
-                    <constructor-arg index="0" ref="dateFormatter" />
+                    <constructor-arg index="0" ref="dateFormatter"/>
                 </bean>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer">
-                    <constructor-arg index="0" ref="timeFormatter" />
+                    <constructor-arg index="0" ref="timeFormatter"/>
                 </bean>
             </array>
         </property>
         <property name="failOnUnknownProperties" value="true"/>
-        <property name="serializationInclusion" value="ALWAYS" />
-        <property name="modules" >
+        <property name="serializationInclusion" value="ALWAYS"/>
+        <property name="modules">
             <list>
                 <bean class="com.fasterxml.jackson.datatype.jdk8.Jdk8Module"/>
                 <bean class="com.fasterxml.jackson.datatype.jsr310.JavaTimeModule">
@@ -166,13 +167,13 @@
     </bean>
 
     <bean name="dateTimeFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
-        <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"> </constructor-arg>
+        <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
     </bean>
     <bean name="dateFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
-        <constructor-arg index="0" value="yyyy-MM-dd"> </constructor-arg>
+        <constructor-arg index="0" value="yyyy-MM-dd"></constructor-arg>
     </bean>
     <bean name="timeFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
-        <constructor-arg index="0" value="HH:mm:ss"> </constructor-arg>
+        <constructor-arg index="0" value="HH:mm:ss"></constructor-arg>
     </bean>
 
     <bean id="conversionService" class="org.springframework.format.support.DefaultFormattingConversionService">
@@ -180,21 +181,21 @@
     </bean>
 
 
-
     <mvc:resources location="/js/" mapping="/js1/**" order="1"/>
 
-   <mvc:view-controller path="/hello2" view-name="hello" status-code="200" />
-   <mvc:redirect-view-controller path="/hello3" redirect-url="/hello2" />
-<!--    <mvc:groovy-configurer  />-->
-<!--    <mvc:view-resolvers>-->
-<!--        <bean ></bean>-->
-<!--    </mvc:view-resolvers>-->
-<!--    <mvc:redirect-view-controller path="controller" redirect-url=""/>-->
-    <bean id="requestMappingHandlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    <mvc:view-controller path="/hello2" view-name="hello" status-code="200"/>
+    <mvc:redirect-view-controller path="/hello3" redirect-url="/hello2"/>
+    <!--    <mvc:groovy-configurer  />-->
+    <!--    <mvc:view-resolvers>-->
+    <!--        <bean ></bean>-->
+    <!--    </mvc:view-resolvers>-->
+    <!--    <mvc:redirect-view-controller path="controller" redirect-url=""/>-->
+    <bean id="requestMappingHandlerMapping"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="order" value="1"/>
     </bean>
 
-    <bean id="beanNameUrlHandlerMapping " class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" >
+    <bean id="beanNameUrlHandlerMapping " class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
         <property name="order" value="2"/>
     </bean>
     <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -206,10 +207,12 @@
             </props>
         </property>
     </bean>
-    <bean id="defaultServletHttpRequestHandler" class="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler"></bean>
+    <bean id="defaultServletHttpRequestHandler"
+          class="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler"></bean>
     <bean id="myController" class="com.andy.study.springmvc.controller.MyController"></bean>
     <bean id="myController01" class="com.andy.study.springmvc.controller.MyController01"></bean>
-    <bean id="contentNegotiationController" class="com.andy.study.springmvc.controller.ContentNegotiationController"></bean>
+    <bean id="contentNegotiationController"
+          class="com.andy.study.springmvc.controller.ContentNegotiationController"></bean>
     <bean id="asyncController" class="com.andy.study.springmvc.controller.AsyncController"/>
     <bean id="/myBeanName01" class="com.andy.study.springmvc.controller.MyBeanName01Controller"></bean>
     <bean id="mySimpleUrl01Controller" class="com.andy.study.springmvc.controller.MySimpleUrl01Controller"></bean>

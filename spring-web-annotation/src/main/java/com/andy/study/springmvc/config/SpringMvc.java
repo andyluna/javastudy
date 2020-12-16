@@ -18,19 +18,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Slf4j
 @Configuration
-@ComponentScan( value = "com.andy.study.springmvc.controller",
+@ComponentScan(value = "com.andy.study.springmvc.controller",
         useDefaultFilters = false,
         includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = Controller.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = RestController.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = ControllerAdvice.class)
-})
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class),
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class),
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class)
+        })
 @EnableWebMvc
-public class SpringMvc  implements WebMvcConfigurer, InitializingBean {
+public class SpringMvc implements WebMvcConfigurer, InitializingBean {
 
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
-        log.debug("configurer = "+configurer);
+        log.debug("configurer = " + configurer);
     }
 
 

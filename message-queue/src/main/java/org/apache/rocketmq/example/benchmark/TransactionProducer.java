@@ -104,7 +104,7 @@ public class TransactionProducer {
                     final long dupCheck = end.duplicatedCheck - begin.duplicatedCheck;
 
                     System.out.printf(
-                        "Send TPS:%5d Max RT:%5d AVG RT:%3.1f Send Failed: %d check: %d unexpectedCheck: %d duplicatedCheck: %d %n",
+                            "Send TPS:%5d Max RT:%5d AVG RT:%3.1f Send Failed: %d check: %d unexpectedCheck: %d duplicatedCheck: %d %n",
                             sendTps, statsBenchmark.getSendMessageMaxRT().get(), averageRT, failCount, checkCount,
                             unexpectedCheck, dupCheck);
                     statsBenchmark.getSendMessageMaxRT().set(0);

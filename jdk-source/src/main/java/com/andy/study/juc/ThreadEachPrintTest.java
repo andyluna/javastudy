@@ -28,21 +28,21 @@ public class ThreadEachPrintTest {
     char[] aD = "大唐先一科技有限公司".toCharArray();
 
     @Test
-    public void testLockSupport(){
-        t1 = new Thread(()->{
-            for(char a:aI){
-                System.out.println(Thread.currentThread().getName()+" - "+a);
+    public void testLockSupport() {
+        t1 = new Thread(() -> {
+            for (char a : aI) {
+                System.out.println(Thread.currentThread().getName() + " - " + a);
                 LockSupport.unpark(t2);
                 LockSupport.park();
             }
-        },"t1");
-        t2 = new Thread(()->{
-            for(char a:aC){
+        }, "t1");
+        t2 = new Thread(() -> {
+            for (char a : aC) {
                 LockSupport.park();
-                System.out.println(Thread.currentThread().getName()+"  --- "+a);
+                System.out.println(Thread.currentThread().getName() + "  --- " + a);
                 LockSupport.unpark(t1);
             }
-        },"t2");
+        }, "t2");
         t1.start();
         t2.start();
 
@@ -50,25 +50,29 @@ public class ThreadEachPrintTest {
 
     }
 
-    enum ReadyOrRun{T1,T2}
+    enum ReadyOrRun {T1, T2}
+
     private volatile ReadyOrRun r;
+
     @Test
     public void testCas() throws IOException {
         r = ReadyOrRun.T1;
-        t1 = new Thread(()->{
-            for(char a:aI){
-                while (r!=ReadyOrRun.T1){}
-                System.out.println(Thread.currentThread().getName()+" - "+a);
-                r=ReadyOrRun.T2;
+        t1 = new Thread(() -> {
+            for (char a : aI) {
+                while (r != ReadyOrRun.T1) {
+                }
+                System.out.println(Thread.currentThread().getName() + " - " + a);
+                r = ReadyOrRun.T2;
             }
-        },"t1");
-        t2 = new Thread(()->{
-            for(char a:aC){
-                while (r!=ReadyOrRun.T2){  }
-                System.out.println(Thread.currentThread().getName()+"  --- "+a);
-                r=ReadyOrRun.T1;
-             }
-        },"t2");
+        }, "t1");
+        t2 = new Thread(() -> {
+            for (char a : aC) {
+                while (r != ReadyOrRun.T2) {
+                }
+                System.out.println(Thread.currentThread().getName() + "  --- " + a);
+                r = ReadyOrRun.T1;
+            }
+        }, "t2");
         t1.start();
         t2.start();
 
@@ -77,27 +81,28 @@ public class ThreadEachPrintTest {
 
     private volatile boolean t2Started = false;
     private CountDownLatch countDownLatch = new CountDownLatch(1);
+
     @Test
     public void testSyncWait() throws InterruptedException {
 
         final Object o = new Object();
-        t1 = new Thread(()->{
+        t1 = new Thread(() -> {
 //            try {
 //                countDownLatch.await();
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
 
-            synchronized (o){
-                while (!t2Started){
+            synchronized (o) {
+                while (!t2Started) {
                     try {
                         o.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-                for(char a:aI){
-                    System.out.println(Thread.currentThread().getName()+" - "+a);
+                for (char a : aI) {
+                    System.out.println(Thread.currentThread().getName() + " - " + a);
                     try {
                         o.notify();
                         o.wait();
@@ -107,8 +112,8 @@ public class ThreadEachPrintTest {
                 }
                 o.notify();
             }
-        },"t1");
-        t2 = new Thread(()-> {
+        }, "t1");
+        t2 = new Thread(() -> {
             synchronized (o) {
                 for (char a : aC) {
                     System.out.println(Thread.currentThread().getName() + " ---- " + a);
@@ -123,44 +128,43 @@ public class ThreadEachPrintTest {
                 }
                 o.notify();
             }
-        },"t2");
+        }, "t2");
         t1.start();
         t2.start();
-
 
 
     }
 
     //可重用锁
     @Test
-    public void testReentrantLock(){
+    public void testReentrantLock() {
         Lock lock = new ReentrantLock();
         Condition condition1 = lock.newCondition();
         Condition condition2 = lock.newCondition();
         Condition condition3 = lock.newCondition();
-        t1 = new Thread(()->{
-            try{
+        t1 = new Thread(() -> {
+            try {
                 lock.lock();
-                for(char a:aI){
-                    System.out.println(Thread.currentThread().getName()+" - "+a);
+                for (char a : aI) {
+                    System.out.println(Thread.currentThread().getName() + " - " + a);
                     condition2.signal();
                     condition1.await();
-                 }
-               // condition1.signal();
+                }
+                // condition1.signal();
 //                condition2.signal();
 //                condition3.signal();
-             }catch  (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
-            }finally {
+            } finally {
                 lock.unlock();
             }
 
-        },"t1");
-        t2 = new Thread(()-> {
-            try{
+        }, "t1");
+        t2 = new Thread(() -> {
+            try {
                 lock.lock();
-                for(char a:aC){
-                    System.out.println(Thread.currentThread().getName()+" ---- "+a);
+                for (char a : aC) {
+                    System.out.println(Thread.currentThread().getName() + " ---- " + a);
                     condition3.signal();
                     condition2.await();
                 }
@@ -172,12 +176,12 @@ public class ThreadEachPrintTest {
             } finally {
                 lock.unlock();
             }
-        },"t2");
-        t3 = new Thread(()-> {
-            try{
+        }, "t2");
+        t3 = new Thread(() -> {
+            try {
                 lock.lock();
-                for(char a:aD){
-                    System.out.println(Thread.currentThread().getName()+" --------- "+a);
+                for (char a : aD) {
+                    System.out.println(Thread.currentThread().getName() + " --------- " + a);
                     condition1.signal();
                     condition3.await();
                 }
@@ -189,7 +193,7 @@ public class ThreadEachPrintTest {
             } finally {
                 lock.unlock();
             }
-        },"t3");
+        }, "t3");
         t1.start();
         t2.start();
         t3.start();
@@ -204,13 +208,13 @@ public class ThreadEachPrintTest {
 
     //容量为空的 阻塞队列  生产者阻塞
     @Test
-    public void testTransferQueue(){
+    public void testTransferQueue() {
         TransferQueue<Character> transferQueue = new LinkedTransferQueue<>();
-        t1 = new Thread(()->{
+        t1 = new Thread(() -> {
             try {
-                for(char a:aI){
+                for (char a : aI) {
                     transferQueue.take();
-                    System.out.println(Thread.currentThread().getName()+" - "+""+" "+a);
+                    System.out.println(Thread.currentThread().getName() + " - " + "" + " " + a);
                     transferQueue.transfer(a);
                 }
             } catch (InterruptedException e) {
@@ -218,20 +222,20 @@ public class ThreadEachPrintTest {
             }
 
 
-        },"t1");
-        t2 = new Thread(()-> {
+        }, "t1");
+        t2 = new Thread(() -> {
             try {
-                for(char a:aC){
+                for (char a : aC) {
                     transferQueue.transfer(a);
                     transferQueue.take();
-                    System.out.println(Thread.currentThread().getName()+" ------ "+""+" "+a);
+                    System.out.println(Thread.currentThread().getName() + " ------ " + "" + " " + a);
 
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-        },"t2");
+        }, "t2");
 
         t1.start();
         t2.start();
@@ -243,10 +247,10 @@ public class ThreadEachPrintTest {
         char[] aI = "0123456789".toCharArray();
         char[] aC = "ABCDEFGHIG".toCharArray();
         final Object o = new Object();
-        t1 = new Thread(()->{
-            synchronized (o){
-                for(char a:aI){
-                    System.out.println(Thread.currentThread().getName()+" - "+a);
+        t1 = new Thread(() -> {
+            synchronized (o) {
+                for (char a : aI) {
+                    System.out.println(Thread.currentThread().getName() + " - " + a);
                     try {
                         o.notify();
                         o.wait();
@@ -257,11 +261,11 @@ public class ThreadEachPrintTest {
                 }
                 o.notify();
             }
-        },"t1");
-        t2 = new Thread(()->{
-            synchronized (o){
-                for(char a:aC){
-                    System.out.println(Thread.currentThread().getName()+" ---- "+a);
+        }, "t1");
+        t2 = new Thread(() -> {
+            synchronized (o) {
+                for (char a : aC) {
+                    System.out.println(Thread.currentThread().getName() + " ---- " + a);
                     try {
                         o.notify();
                         o.wait();
@@ -271,7 +275,7 @@ public class ThreadEachPrintTest {
                 }
                 o.notify();
             }
-        },"t2");
+        }, "t2");
         t1.start();
         t2.start();
     }

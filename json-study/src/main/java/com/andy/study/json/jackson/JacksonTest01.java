@@ -27,26 +27,30 @@ import java.time.format.DateTimeFormatter;
 public class JacksonTest01 {
     private ObjectMapper om;
     private Person person;
+
     @Before
-    public void before(){
-        om  = new ObjectMapper();
+    public void before() {
+        om = new ObjectMapper();
         person = Person.createDefaultPerson();
     }
+
     @After
-    public void after(){
-        om  = null;
+    public void after() {
+        om = null;
         person = null;
     }
+
     @Test
     public void test01() throws Exception {
         String s = om.writeValueAsString(person);
-        log.debug("s = \n{} ",s);
+        log.debug("s = \n{} ", s);
     }
+
     @Test
     public void test02() throws Exception {
         String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(person);
         //String s1 = om.writer(new DefaultPrettyPrinter()).writeValueAsString(person);
-        log.debug("s = \n{} ",s);
+        log.debug("s = \n{} ", s);
     }
 
     @Test
@@ -55,7 +59,7 @@ public class JacksonTest01 {
         om.writerWithDefaultPrettyPrinter();
         String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(person);
         //String s1 = om.writer(new DefaultPrettyPrinter()).writeValueAsString(person);
-        log.debug("s = \n{} ",s);
+        log.debug("s = \n{} ", s);
     }
 
     @Test
@@ -71,10 +75,10 @@ public class JacksonTest01 {
         om.registerModule(javaTimeModule);
         String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(person);
         //String s1 = om.writer(new DefaultPrettyPrinter()).writeValueAsString(person);
-        log.debug("s = \n{} ",s);
+        log.debug("s = \n{} ", s);
 
         Person person = om.readValue(s, Person.class);
-        log.debug("person = \n{} ",person);
+        log.debug("person = \n{} ", person);
     }
 
     @Test
@@ -97,9 +101,9 @@ public class JacksonTest01 {
         String s = om.writerWithDefaultPrettyPrinter().writeValueAsString(person);
         //String s1 = om.writer(new DefaultPrettyPrinter()).writeValueAsString(person);
 
-        log.debug("s = \n{} ",s);
+        log.debug("s = \n{} ", s);
 
         Person person = om.readValue(s, Person.class);
-        log.debug("person = \n{} ",person);
+        log.debug("person = \n{} ", person);
     }
 }

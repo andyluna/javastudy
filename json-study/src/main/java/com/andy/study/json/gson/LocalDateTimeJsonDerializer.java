@@ -16,11 +16,11 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateTimeJsonDerializer implements JsonDeserializer<LocalDateTime> {
     @Override
     public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        if(json==null || json.getAsString()==null || json.getAsString().length()==0){
+        if (json == null || json.getAsString() == null || json.getAsString().length() == 0) {
             return null;
         }
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime localDateTime = LocalDateTime.parse(json.getAsString(),formatter);
+        LocalDateTime localDateTime = LocalDateTime.parse(json.getAsString(), formatter);
         return localDateTime;
     }
 }

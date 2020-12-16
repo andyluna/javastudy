@@ -18,19 +18,19 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int saveStudent(String name, LocalDateTime birthDay) {
-        log.debug("保存一个学生name:{},birthDay:{}",name,birthDay);
+        log.debug("保存一个学生name:{},birthDay:{}", name, birthDay);
         return studentDao.saveStudent(name, birthDay);
     }
 
     @Override
     public int saveStudent(Student s) {
-        log.debug("保存一个学生{}",s);
+        log.debug("保存一个学生{}", s);
         return studentDao.saveStudent(s);
     }
 
     @Override
     public Student getById(Integer id) {
-        log.debug("根据id{}查询",id);
+        log.debug("根据id{}查询", id);
         return studentDao.getById(id);
     }
 
@@ -43,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public int deleteById(Integer id) {
-        log.debug("根据id{}删除",id);
+        log.debug("根据id{}删除", id);
         return studentDao.deleteById(id);
     }
 

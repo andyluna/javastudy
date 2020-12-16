@@ -1,40 +1,24 @@
 package com.andy.study.spring.xml;
 
 import com.andy.study.spring.xml.ext.MyClasspathXmlApplicationContext;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.xml.DefaultDocumentLoader;
-import org.springframework.beans.factory.xml.DocumentLoader;
-import org.springframework.beans.factory.xml.ResourceEntityResolver;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-import org.springframework.util.xml.SimpleSaxErrorHandler;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.InputSource;
 
 /**
  * @time: 2020/11/20 十一月 13:50
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class Bean07Test {
-    private static  Logger logger = LoggerFactory.getLogger(Bean07Test.class);
+    private static Logger logger = LoggerFactory.getLogger(Bean07Test.class);
+
     public static void main(String[] args) {
 
         MyClasspathXmlApplicationContext context = new MyClasspathXmlApplicationContext("bean07.xml");
-        logger.info("启动完成 总共有 {} 个bean",context.getBeanDefinitionCount());
+        logger.info("启动完成 总共有 {} 个bean", context.getBeanDefinitionCount());
         String[] names = context.getBeanDefinitionNames();
         for (int i = 0; i < names.length; i++) {
             Object bean = context.getBean(names[i]);
-            logger.info("{}.{} {} = {}",i+1,names[i],bean.getClass(), bean);
+            logger.info("{}.{} {} = {}", i + 1, names[i], bean.getClass(), bean);
         }
 
 

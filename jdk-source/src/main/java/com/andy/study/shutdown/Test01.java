@@ -11,7 +11,7 @@ public class Test01 {
         runtime.addShutdownHook(new MyShutdownHook("myshutdown-hook"));
     }
 
-    public static class MyShutdownHook extends Thread{
+    public static class MyShutdownHook extends Thread {
 
         public MyShutdownHook(String name) {
             super(name);

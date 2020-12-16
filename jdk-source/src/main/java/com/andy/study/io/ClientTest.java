@@ -20,25 +20,25 @@ public class ClientTest {
     public static void main(String[] args) throws IOException {
         System.out.println("客户端准备开始连接 Start...");
         Socket socket = null;
-        BufferedReader in  = null;
+        BufferedReader in = null;
         BufferedWriter out = null;
         Scanner sc = null;
 
         try {
-            socket =new Socket(host, port);
-            System.out.println("客户端连接成功"+socket.getLocalSocketAddress()+" "+socket.getRemoteSocketAddress());
-            in  = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            socket = new Socket(host, port);
+            System.out.println("客户端连接成功" + socket.getLocalSocketAddress() + " " + socket.getRemoteSocketAddress());
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            sc  = new Scanner(System.in);
+            sc = new Scanner(System.in);
             System.out.println("请开始向服务器发送消息:");
             String s = null;
-            while((s=sc.nextLine()) != null){
+            while ((s = sc.nextLine()) != null) {
                 out.write(s);
                 out.newLine();
                 out.flush();
                 String s1 = in.readLine();
-                System.out.println("服务端返回:"+s1);
-                if(quit.equals(s)){
+                System.out.println("服务端返回:" + s1);
+                if (quit.equals(s)) {
                     break;
                 }
             }
@@ -46,26 +46,26 @@ public class ClientTest {
         } catch (Exception e) {
             System.out.println("客户端异常:" + e.getMessage());
         } finally {
-            if(in!=null){
+            if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(out!=null){
+            if (out != null) {
                 try {
                     out.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(sc!=null){
+            if (sc != null) {
                 sc.close();
             }
             if (socket != null) {
                 try {
-                    System.out.println("客户端"+socket.getLocalPort()+"关闭");
+                    System.out.println("客户端" + socket.getLocalPort() + "关闭");
                     socket.close();
                 } catch (IOException e) {
                     socket = null;

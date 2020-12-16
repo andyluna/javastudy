@@ -20,18 +20,18 @@ public class ChatClientInputHandler implements Runnable {
         try {
             br = new BufferedReader(new InputStreamReader(System.in));
             String line = null;
-            while(true){
+            while (true) {
                 line = br.readLine();
 
                 chatClient.sendMessage(line);
-                if(chatClient.readToQuit(line)){
+                if (chatClient.readToQuit(line)) {
                     break;
                 }
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
 
         }
     }

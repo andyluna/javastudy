@@ -30,7 +30,7 @@ import java.util.concurrent.CountDownLatch;
 public class SimpleProducer {
     public static void main(String[] args) {
         final MessagingAccessPoint messagingAccessPoint =
-            OMS.getMessagingAccessPoint("oms:rocketmq://localhost:9876/default:default");
+                OMS.getMessagingAccessPoint("oms:rocketmq://localhost:9876/default:default");
 
         final Producer producer = messagingAccessPoint.createProducer();
 

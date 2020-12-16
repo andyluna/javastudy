@@ -16,8 +16,8 @@ import javax.jms.Topic;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class ActiveMqConsumerTest02 {
-    public static final String URL="tcp://localhost:61616";
-    public static final String QUEQE_TOPIC="test-mytopic";
+    public static final String URL = "tcp://localhost:61616";
+    public static final String QUEQE_TOPIC = "test-mytopic";
 
     public static void main(String[] args) throws Exception {
         //1、创建工厂连接对象，需要制定ip和端口号
@@ -36,10 +36,10 @@ public class ActiveMqConsumerTest02 {
             @Override
             public void onMessage(Message message) {
                 // TODO Auto-generated method stub
-                if(message instanceof TextMessage){
-                    TextMessage textMessage = (TextMessage)message;
+                if (message instanceof TextMessage) {
+                    TextMessage textMessage = (TextMessage) message;
                     try {
-                        System.out.println("收到消息了 "+textMessage.getText());
+                        System.out.println("收到消息了 " + textMessage.getText());
                     } catch (JMSException e) {
                         e.printStackTrace();
                     }

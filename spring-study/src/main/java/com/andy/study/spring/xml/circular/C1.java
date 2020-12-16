@@ -12,7 +12,7 @@ import java.util.Set;
 public class C1 {
     private List<String> list;
     private Set<String> set;
-    private Map<String,Float> map;
+    private Map<String, Float> map;
     private Properties properties;
 
     private String name1;
@@ -80,13 +80,13 @@ public class C1 {
     public String toString() {
         return "C1{" +
                 "list=" + list +
-                ", listClass=" + (list!=null?list.getClass():null) +
+                ", listClass=" + (list != null ? list.getClass() : null) +
                 ", set=" + set +
-                ", listClass=" + (set!=null?set.getClass():null) +
+                ", listClass=" + (set != null ? set.getClass() : null) +
                 ", map=" + map +
-                ", mapClass=" + (map!=null?map.getClass():null) +
+                ", mapClass=" + (map != null ? map.getClass() : null) +
                 ", properties=" + properties +
-                ", propertiesClass=" + (properties!=null?properties.getClass():null) +
+                ", propertiesClass=" + (properties != null ? properties.getClass() : null) +
                 ", name1=" + name1 +
                 ", name2=" + name2 +
                 ", d1=" + d1 +

@@ -14,14 +14,14 @@ public class ServiceLoaderTest {
         Class<Driver> driverClass = Driver.class;
         ClassLoader classLoader = driverClass.getClassLoader();
 
-        System.out.println("driverClass = "+driverClass+" classloader :"+classLoader);
+        System.out.println("driverClass = " + driverClass + " classloader :" + classLoader);
         ServiceLoader<Driver> serviceLoader = ServiceLoader.load(driverClass);
 
-        System.out.println("serviceLoader :"+serviceLoader.getClass().getClassLoader());
+        System.out.println("serviceLoader :" + serviceLoader.getClass().getClassLoader());
         Iterator<Driver> iterator = serviceLoader.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Driver next = iterator.next();
-            System.out.println(next+"  classloader:"+next.getClass().getClassLoader());
+            System.out.println(next + "  classloader:" + next.getClass().getClassLoader());
         }
     }
 

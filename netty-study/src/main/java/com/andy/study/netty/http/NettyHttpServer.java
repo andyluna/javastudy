@@ -27,16 +27,16 @@ public class NettyHttpServer {
             ChannelFuture cf = serverBootstrap.bind(6669).sync();
 
             cf.addListener(future -> {
-                if(future.isSuccess()){
+                if (future.isSuccess()) {
                     System.out.println("绑定 6669 成功");
-                }else{
+                } else {
                     System.out.println("绑定 6669 失败");
                 }
             });
 
             //对关闭通道进行监听
             ChannelFuture sync = cf.channel().closeFuture().sync();
-        }finally {
+        } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
         }

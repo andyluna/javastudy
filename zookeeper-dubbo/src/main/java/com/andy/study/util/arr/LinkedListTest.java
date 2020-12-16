@@ -21,7 +21,7 @@ public class LinkedListTest {
 
 
     @Test
-    public void test1(){
+    public void test1() {
         Random r = new Random();
         List<Integer> list1 = new ArrayList<>();
         List<Integer> list2 = new Vector<>();
@@ -29,7 +29,7 @@ public class LinkedListTest {
 
         Integer[] integers = new Integer[100000];
         for (int i = 0; i < SIZE; i++) {
-            integers[0]=i;
+            integers[0] = i;
         }
 
 
@@ -42,7 +42,7 @@ public class LinkedListTest {
             list1.indexOf(r.nextInt(SIZE));
         }
         long end = System.currentTimeMillis();
-        System.out.println("ArrayList 查询耗时 = "+(end-start));
+        System.out.println("ArrayList 查询耗时 = " + (end - start));
         list2 = new Vector<>(list4);
 
         start = System.currentTimeMillis();
@@ -50,7 +50,7 @@ public class LinkedListTest {
             list2.indexOf(r.nextInt(SIZE));
         }
         end = System.currentTimeMillis();
-        System.out.println("Vector 查询耗时 = "+(end-start));
+        System.out.println("Vector 查询耗时 = " + (end - start));
 
 
         list3 = new LinkedList<>(list4);
@@ -59,10 +59,11 @@ public class LinkedListTest {
             list3.indexOf(r.nextInt(SIZE));
         }
         end = System.currentTimeMillis();
-        System.out.println("LinkedList 查询耗时 = "+(end-start));
-     }
+        System.out.println("LinkedList 查询耗时 = " + (end - start));
+    }
+
     @Test
-    public void test2(){
+    public void test2() {
         Queue<Integer> ll = new LinkedList<>();
 
         boolean add = ll.add(1);//增加一个元索
@@ -73,8 +74,6 @@ public class LinkedListTest {
         ll.offer(1);//添加一个元素并返回true
         ll.poll();//移除并返问队列头部的元素
         ll.peek();//返回队列头部的元素
-
-
 
 
         System.out.println(ll);

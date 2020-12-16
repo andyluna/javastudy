@@ -19,12 +19,13 @@ import java.util.concurrent.TimeUnit;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class ChatServer {
-    private final int DEFAULT_PORT= 8888;
+    private final int DEFAULT_PORT = 8888;
     private final String QUIT = "quit";
     private ServerSocket serverSocket = null;
     private Map<Integer, Writer> connectClients = null;
     private ExecutorService executorService = null;
     private String lineSeparator = null;
+
     public static void main(String[] args) {
         ChatServer server = new ChatServer();
         server.start();
@@ -40,38 +41,38 @@ public class ChatServer {
     }
 
     public void addClient(Socket socket) throws IOException {
-        if(socket != null){
+        if (socket != null) {
             int port = socket.getPort();
             OutputStream out;
             BufferedWriter br = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             connectClients.put(port, br);
-            System.out.println("客户端["+port+"]连接服务器成功");
+            System.out.println("客户端[" + port + "]连接服务器成功");
         }
     }
 
     public void removeSocket(Socket socket) throws IOException {
-        if(socket != null){
+        if (socket != null) {
             int port = socket.getPort();
-            if(connectClients.containsKey(port)){
+            if (connectClients.containsKey(port)) {
                 Writer writer = connectClients.get(port);
                 writer.close();
                 connectClients.remove(port);
                 socket.close();
-                System.out.println("客户端["+port+"]断开服务器");
+                System.out.println("客户端[" + port + "]断开服务器");
             }
         }
     }
 
-    public boolean readyToQuit(String msg){
+    public boolean readyToQuit(String msg) {
         return QUIT.equals(msg);
     }
 
     public void forwardMessage(Socket socket, String fwdMessage) throws IOException {
-        for(Integer port:connectClients.keySet()){
-            if(!port.equals(socket.getPort())){
+        for (Integer port : connectClients.keySet()) {
+            if (!port.equals(socket.getPort())) {
                 Writer writer = connectClients.get(port);
                 writer.write(fwdMessage);
-                if(!fwdMessage.endsWith(lineSeparator)){
+                if (!fwdMessage.endsWith(lineSeparator)) {
                     writer.write(lineSeparator);
                 }
                 writer.flush();
@@ -79,11 +80,11 @@ public class ChatServer {
         }
     }
 
-    public void start(){
+    public void start() {
         try {
             serverSocket = new ServerSocket(DEFAULT_PORT);
-            System.out.println("服务端启动成功,监听端口:"+DEFAULT_PORT);
-            while (true){
+            System.out.println("服务端启动成功,监听端口:" + DEFAULT_PORT);
+            while (true) {
                 Socket socket = serverSocket.accept();
                 ChatHandler handler = new ChatHandler(this, socket);
                 executorService.submit(handler);
@@ -95,8 +96,8 @@ public class ChatServer {
         }
     }
 
-    public void close(){
-        if(serverSocket!=null){
+    public void close() {
+        if (serverSocket != null) {
             try {
                 System.out.println("服务端关闭");
                 serverSocket.close();
@@ -104,11 +105,10 @@ public class ChatServer {
                 e.printStackTrace();
             }
         }
-        if(executorService!=null){
+        if (executorService != null) {
             executorService.shutdown();
         }
     }
-
 
 
 }

@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Slf4j
 @Configuration
-@ComponentScan( value = "com.andy.study.springmvc",
+@ComponentScan(value = "com.andy.study.springmvc",
         useDefaultFilters = true,
         excludeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = Controller.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = ControllerAdvice.class),
-                @ComponentScan.Filter(type = FilterType.ANNOTATION,value = RestController.class),
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class),
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class),
+                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = RestController.class),
         })
 public class SpringRoot {
-    public SpringRoot(){
+    public SpringRoot() {
         log.debug("Root容器初始化了");
     }
 }

@@ -24,7 +24,7 @@ public class MyAdvisor implements Advisor {
         return false;
     }
 
-    public static class MyAdvice1 implements MethodBeforeAdvice{
+    public static class MyAdvice1 implements MethodBeforeAdvice {
 
         @Override
         public void before(Method method, Object[] args, Object target) throws Throwable {

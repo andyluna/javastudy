@@ -34,18 +34,18 @@ public class Person {
     private String address;
     private List<String> list;
     private int[] array;
-    private Map<String,Object> map;
+    private Map<String, Object> map;
 
     //private Stream intStream;
 
 
-    public static Person createDefaultPerson(){
-        return new Person(1,"向丹",LocalDate.now(),
-                LocalDateTime.now(),null,
-                new Date(),new Timestamp(System.currentTimeMillis()),"",null,
-                Arrays.asList("1","2","3"),new int[]{3,4,5},
-                Collections.singletonMap("key","张三")
-                );
+    public static Person createDefaultPerson() {
+        return new Person(1, "向丹", LocalDate.now(),
+                LocalDateTime.now(), null,
+                new Date(), new Timestamp(System.currentTimeMillis()), "", null,
+                Arrays.asList("1", "2", "3"), new int[]{3, 4, 5},
+                Collections.singletonMap("key", "张三")
+        );
     }
 
 

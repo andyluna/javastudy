@@ -15,7 +15,6 @@
                 https://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
     <util:map id="mymap" key-type="java.lang.String" value-type="java.lang.Integer">
         <description>通过工具类自定义Map</description>
         <entry key="a" value="1"></entry>
@@ -23,9 +22,9 @@
         <entry key="c" value="3"></entry>
     </util:map>
 
-    <util:constant  id="myPI" static-field="java.lang.Math.PI" />
+    <util:constant id="myPI" static-field="java.lang.Math.PI"/>
 
-    <util:list id="mylist" >
+    <util:list id="mylist">
         <value>a</value>
         <value>b</value>
         <value>c</value>
@@ -35,7 +34,7 @@
         <prop key="a">nihao</prop>
         <prop key="b">hello</prop>
     </util:properties>
-    <util:properties id="myprop2" location="properties/bean06.properties" />
+    <util:properties id="myprop2" location="properties/bean06.properties"/>
 
     <util:set id="myset">
         <value>a</value>
@@ -51,12 +50,14 @@
             </list>
         </property>
     </bean>
-    <context:property-placeholder order="1" location="classpath:properties/bean06.properties"></context:property-placeholder>
-    <context:property-placeholder order="2" location="classpath:properties/bean07.properties"></context:property-placeholder>
+    <context:property-placeholder order="1"
+                                  location="classpath:properties/bean06.properties"></context:property-placeholder>
+    <context:property-placeholder order="2"
+                                  location="classpath:properties/bean07.properties"></context:property-placeholder>
 
-    <context:property-override ></context:property-override>
+    <context:property-override></context:property-override>
 
-    <context:load-time-weaver aspectj-weaving="autodetect" ></context:load-time-weaver>
+    <context:load-time-weaver aspectj-weaving="autodetect"></context:load-time-weaver>
     <context:mbean-export></context:mbean-export>
 
 

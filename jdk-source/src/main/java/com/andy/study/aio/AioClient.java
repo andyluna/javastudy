@@ -21,9 +21,11 @@ public class AioClient {
     private int port;
 
     private AsynchronousSocketChannel socketChannel = null;
-    public AioClient(){
-        this(DEFAULT_HOST,DEFAULT_PORT);
+
+    public AioClient() {
+        this(DEFAULT_HOST, DEFAULT_PORT);
     }
+
     public AioClient(String host, int port) {
         this.host = host;
         this.port = port;
@@ -34,19 +36,19 @@ public class AioClient {
         aioClient.start();
     }
 
-    public void start(){
+    public void start() {
         try {
             //创建channel
             socketChannel = AsynchronousSocketChannel.open();
 
             Future<Void> future = socketChannel.connect(new InetSocketAddress(host, port));
             future.get();//阻塞试调用
-            System.out.println("客户端["+socketChannel.getLocalAddress()+"]连接服务端"+socketChannel.getRemoteAddress()+"成功");
+            System.out.println("客户端[" + socketChannel.getLocalAddress() + "]连接服务端" + socketChannel.getRemoteAddress() + "成功");
 
             //等待用户输入
             BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
             String line = null;
-            while (true){
+            while (true) {
                 line = br.readLine();
                 byte[] bytes = line.getBytes();
                 ByteBuffer buffer = ByteBuffer.wrap(bytes);
@@ -61,7 +63,7 @@ public class AioClient {
 
                 read.get();
                 String echo = new String(buffer.array());
-                System.out.println("服务器返回:"+echo);
+                System.out.println("服务器返回:" + echo);
             }
 
 
@@ -71,13 +73,13 @@ public class AioClient {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             close(socketChannel);
         }
     }
 
     private void close(Closeable closeable) {
-        if(closeable!=null){
+        if (closeable != null) {
             try {
                 closeable.close();
             } catch (IOException e) {

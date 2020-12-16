@@ -16,16 +16,18 @@ public class MyTest6 {
 }
 
 
-class Singleton{
+class Singleton {
     public static int count1;
     private static Singleton instance = new Singleton();
-    private Singleton(){
+
+    private Singleton() {
         count1++;
         count2++;
     }
+
     public static int count2 = 0;
 
-    public static Singleton getInstance(){
+    public static Singleton getInstance() {
         return instance;
     }
 }

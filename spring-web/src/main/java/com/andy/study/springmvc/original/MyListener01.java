@@ -16,7 +16,7 @@ public class MyListener01 implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        log.debug("MyListener01 监听器初始化成功{}",sce.getServletContext());
+        log.debug("MyListener01 监听器初始化成功{}", sce.getServletContext());
     }
 
     @Override

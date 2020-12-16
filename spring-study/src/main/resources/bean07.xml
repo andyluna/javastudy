@@ -16,7 +16,8 @@
 
     </bean>
 
-    <bean id="myInstantiationAwareBeanPostProcessor" class="com.andy.study.spring.xml.beanpostprocessor.MyInstantiationAwareBeanPostProcessor"></bean>
+    <bean id="myInstantiationAwareBeanPostProcessor"
+          class="com.andy.study.spring.xml.beanpostprocessor.MyInstantiationAwareBeanPostProcessor"></bean>
 
 
 </beans>

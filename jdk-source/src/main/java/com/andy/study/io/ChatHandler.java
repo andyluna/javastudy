@@ -10,7 +10,7 @@ import java.net.Socket;
  * @time: 2020/10/28 十月 21:22
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-public class ChatHandler implements Runnable{
+public class ChatHandler implements Runnable {
 
     private ChatServer server;
     private Socket socket;
@@ -30,13 +30,13 @@ public class ChatHandler implements Runnable{
             InputStream in;
             bi = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String msg = null;
-            while((msg = bi.readLine())!=null){
-                String resmsg = "客户端["+socket.getPort()+"]说:"+msg+"\n";
+            while ((msg = bi.readLine()) != null) {
+                String resmsg = "客户端[" + socket.getPort() + "]说:" + msg + "\n";
                 System.out.print(resmsg);
 
                 server.forwardMessage(socket, resmsg);
 
-                if(server.readyToQuit(msg)){
+                if (server.readyToQuit(msg)) {
                     break;
                 }
             }

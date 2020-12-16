@@ -24,13 +24,14 @@ import org.springframework.instrument.classloading.LoadTimeWeaver;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 @Slf4j
-public class NormalFactroryPostProcessor03 implements BeanFactoryPostProcessor ,
+public class NormalFactroryPostProcessor03 implements BeanFactoryPostProcessor,
         BeanFactoryAware, ApplicationContextAware, EnvironmentAware, InitializingBean,
         BeanNameAware, LoadTimeWeaverAware, MessageSourceAware, ApplicationEventPublisherAware {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.debug("NormalFactroryPostProcessor01 执行了:{}",beanFactory);
+        log.debug("NormalFactroryPostProcessor01 执行了:{}", beanFactory);
     }
+
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         log.debug("设置NormalFactroryPostProcessor03 --- beanFactory");
@@ -55,23 +56,23 @@ public class NormalFactroryPostProcessor03 implements BeanFactoryPostProcessor ,
 
     @Override
     public void setBeanName(String name) {
-        log.debug("name = {}",name);
+        log.debug("name = {}", name);
     }
 
     @Override
     public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-        log.debug("applicationEventPublisher = {}",applicationEventPublisher);
+        log.debug("applicationEventPublisher = {}", applicationEventPublisher);
     }
 
     @Override
     public void setMessageSource(MessageSource messageSource) {
-        log.debug("messageSource = {}",messageSource);
+        log.debug("messageSource = {}", messageSource);
 
     }
 
     @Override
     public void setLoadTimeWeaver(LoadTimeWeaver loadTimeWeaver) {
-        log.debug("loadTimeWeaver = {}",loadTimeWeaver);
+        log.debug("loadTimeWeaver = {}", loadTimeWeaver);
 
     }
 }

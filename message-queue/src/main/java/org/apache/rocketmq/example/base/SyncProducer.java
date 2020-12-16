@@ -21,7 +21,7 @@ public class SyncProducer {
         //3.启动消费生产者
         producer.start();
 
-        for (int i=0 ;i<10000 ;i++){
+        for (int i = 0; i < 10000; i++) {
             Message message = new Message();
             /**
              * topic 消息主题
@@ -29,7 +29,7 @@ public class SyncProducer {
              */
             message.setTopic("mytopic");
             message.setTags("tag1");
-            message.setBody(("你好向丹helloworld"+i).getBytes());
+            message.setBody(("你好向丹helloworld" + i).getBytes());
             //message.setDelayTimeLevel();
 
             SendResult send = producer.send(message);

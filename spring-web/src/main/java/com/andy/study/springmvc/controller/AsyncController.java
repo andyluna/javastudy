@@ -23,7 +23,7 @@ public class AsyncController {
 
 
     @GetMapping("/syncTask")
-    public ModelAndView syncTask(){
+    public ModelAndView syncTask() {
         log.debug("同步");
         ModelAndView mv = new ModelAndView();
         mv.addObject("hello", "你好啊");
@@ -34,12 +34,12 @@ public class AsyncController {
 
 
     @GetMapping("/asyncTasksyncTask01")
-    public Callable<String> asyncTask(){
+    public Callable<String> asyncTask() {
         log.debug("主线程-异步开始");
-        Callable<String> callable =  ()->{
-            log.info("副线程开始..."+Thread.currentThread()+"==>"+System.currentTimeMillis());
+        Callable<String> callable = () -> {
+            log.info("副线程开始..." + Thread.currentThread() + "==>" + System.currentTimeMillis());
             Thread.sleep(2000);
-            log.info("副线程结束..."+Thread.currentThread()+"==>"+System.currentTimeMillis());
+            log.info("副线程结束..." + Thread.currentThread() + "==>" + System.currentTimeMillis());
             return "async";
         };
         log.debug("主线程-异步结束");
@@ -49,7 +49,7 @@ public class AsyncController {
 
     @GetMapping("/createOrder")
     @ResponseBody
-    public DeferredResult<Object> createOrder(){
+    public DeferredResult<Object> createOrder() {
         log.debug("createOrder主线程-异步开始");
         DeferredResult<Object> deferredResult = new DeferredResult<>(5000L, "create fail...");
         DeferredResultQueue.save(deferredResult);
@@ -59,16 +59,15 @@ public class AsyncController {
     }
 
 
-
     @ResponseBody
     @RequestMapping("/create")
-    public String create(){
+    public String create() {
         log.debug("create主线程-异步开始");
         //创建订单
         String order = UUID.randomUUID().toString();
         DeferredResult<Object> deferredResult = DeferredResultQueue.get();
         deferredResult.setResult(order);
-        return "success===>"+order;
+        return "success===>" + order;
     }
 
 

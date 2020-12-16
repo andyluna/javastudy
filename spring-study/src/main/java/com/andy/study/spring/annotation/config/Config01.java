@@ -32,14 +32,14 @@ import org.springframework.context.annotation.Import;
 public class Config01 {
 
     @Bean
-    private Dog dog(){
+    private Dog dog() {
         return new Dog();
     }
 
 
-    @Bean(name ="mycat")
+    @Bean(name = "mycat")
     @Description("my firstCat")
-    public Cat cat(){
+    public Cat cat() {
         return new Cat();
     }
 }

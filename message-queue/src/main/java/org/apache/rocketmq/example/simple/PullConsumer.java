@@ -40,7 +40,7 @@ public class PullConsumer {
             while (true) {
                 try {
                     PullResult pullResult =
-                        consumer.pullBlockIfNotFound(mq, null, getMessageQueueOffset(mq), 32);
+                            consumer.pullBlockIfNotFound(mq, null, getMessageQueueOffset(mq), 32);
                     System.out.printf("%s%n", pullResult);
                     putMessageQueueOffset(mq, pullResult.getNextBeginOffset());
                     switch (pullResult.getPullStatus()) {

@@ -9,14 +9,15 @@ import org.slf4j.LoggerFactory;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class Bean05Test {
-    private static  Logger logger = LoggerFactory.getLogger(Bean05Test.class);
+    private static Logger logger = LoggerFactory.getLogger(Bean05Test.class);
+
     public static void main(String[] args) {
 
         MyClasspathXmlApplicationContext context = new MyClasspathXmlApplicationContext("bean05.xml");
-        logger.info("启动完成 总共有 {} 个bean",context.getBeanDefinitionCount());
+        logger.info("启动完成 总共有 {} 个bean", context.getBeanDefinitionCount());
         String[] names = context.getBeanDefinitionNames();
         for (int i = 0; i < names.length; i++) {
-            System.out.printf("%d.%s = %s \n",i+1,names[i],context.getBean(names[i]));
+            System.out.printf("%d.%s = %s \n", i + 1, names[i], context.getBean(names[i]));
         }
 
 

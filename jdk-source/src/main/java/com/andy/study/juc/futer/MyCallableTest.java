@@ -13,7 +13,7 @@ public class MyCallableTest implements Callable<String> {
 
     @Override
     public String call() throws Exception {
-        System.out.println(Thread.currentThread().getName()+"MyCallableTest run");
+        System.out.println(Thread.currentThread().getName() + "MyCallableTest run");
         Thread.sleep(2000);
         return "andy";
     }
@@ -23,23 +23,17 @@ public class MyCallableTest implements Callable<String> {
         MyCallableTest callableTest = new MyCallableTest();
         FutureTask<String> futureTask = new FutureTask<>(callableTest);
 
-        new Thread(futureTask,"t1").start();
+        new Thread(futureTask, "t1").start();
 
         boolean done = futureTask.isDone();
-        System.out.println("主线程"+done);
+        System.out.println("主线程" + done);
 
-        while(!futureTask.isDone()){
+        while (!futureTask.isDone()) {
 
 
             String s = futureTask.get();
             System.out.println(s);
         }
-
-
-
-
-
-
 
 
         Thread.sleep(10000);

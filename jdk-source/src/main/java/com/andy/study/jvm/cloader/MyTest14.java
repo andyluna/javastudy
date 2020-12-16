@@ -14,7 +14,7 @@ public class MyTest14 {
 
         Enumeration<URL> resources = classLoader.getResources("com/andy/study/jvm/cloader/MyTest13.class");
 
-        while(resources.hasMoreElements()){
+        while (resources.hasMoreElements()) {
             URL url = resources.nextElement();
 
             System.out.println(url);

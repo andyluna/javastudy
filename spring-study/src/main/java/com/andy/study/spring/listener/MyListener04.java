@@ -12,6 +12,6 @@ import org.springframework.context.event.ContextClosedEvent;
 public class MyListener04 implements ApplicationListener<ContextClosedEvent> {
     @Override
     public void onApplicationEvent(ContextClosedEvent event) {
-        log.debug("CLosed监听到了 事件:{}",event);
+        log.debug("CLosed监听到了 事件:{}", event);
     }
 }

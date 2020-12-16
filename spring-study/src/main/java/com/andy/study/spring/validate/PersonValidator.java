@@ -18,7 +18,7 @@ public class PersonValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        log.debug("开始验证:{}",target,errors);
+        log.debug("开始验证:{}", target, errors);
         ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
         Person p = (Person) target;
         if (p.getAge() < 0) {

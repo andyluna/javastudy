@@ -10,9 +10,9 @@ import org.junit.Test;
 public class MapTest {
 
     @Test
-    public void testHashMap(){
+    public void testHashMap() {
         int MAXIMUM_CAPACITY = 1 << 30;
-        System.out.println(MAXIMUM_CAPACITY*2-1);
+        System.out.println(MAXIMUM_CAPACITY * 2 - 1);
         int MAXIMUM_CAPACITY1 = 1 << 31;
         System.out.println(MAXIMUM_CAPACITY1);
 
@@ -24,7 +24,7 @@ public class MapTest {
         int b = 2;
         System.out.println(a);
         System.out.println(b);
-        a=b=3;
+        a = b = 3;
 
         System.out.println(a);
         System.out.println(b);

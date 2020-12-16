@@ -21,23 +21,23 @@ public class FileTest {
         File file = new File("file/a.txt");
         FileInputStream input = null;
         FileOutputStream fos = null;
-        try{
+        try {
             input = new FileInputStream(file);
             fos = new FileOutputStream(file);
 
             int a = 12;
 
 
-            for(int i=Byte.MIN_VALUE;i<Byte.MAX_VALUE;i++){
-                fos.write((i+" = ").getBytes());
+            for (int i = Byte.MIN_VALUE; i < Byte.MAX_VALUE; i++) {
+                fos.write((i + " = ").getBytes());
                 fos.write(i);
                 fos.write("\n".getBytes());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-            if(input!=null)input.close();
-            if(fos!=null)fos.close();
+        } finally {
+            if (input != null) input.close();
+            if (fos != null) fos.close();
         }
 
 

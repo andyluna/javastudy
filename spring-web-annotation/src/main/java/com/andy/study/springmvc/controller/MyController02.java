@@ -18,7 +18,7 @@ public class MyController02 implements InitializingBean {
 
     @ResponseBody
     @GetMapping("/hello")
-    public String hello(){
+    public String hello() {
         log.debug("hello");
         return LocalDateTime.now().toString();
     }

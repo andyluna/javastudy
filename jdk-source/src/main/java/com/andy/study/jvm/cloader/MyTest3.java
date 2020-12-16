@@ -12,9 +12,10 @@ public class MyTest3 {
     }
 }
 
-class Myparent3{
+class Myparent3 {
     public static final String str = UUID.randomUUID().toString();
-    static{
+
+    static {
         System.out.println("Myparent3");
     }
 }

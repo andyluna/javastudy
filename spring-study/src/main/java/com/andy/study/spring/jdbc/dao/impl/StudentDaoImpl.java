@@ -33,7 +33,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public int saveStudent(String name , LocalDateTime day) {
+    public int saveStudent(String name, LocalDateTime day) {
         String sql = "insert into T_STUDENT(name,birth_day) values(?,?)";
         long l = day.toInstant(ZoneOffset.of("+8")).toEpochMilli();
         Timestamp timestamp = new Timestamp(l);
@@ -48,8 +48,8 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public Student getById(Integer id) {
-        String sql ="select id,name,birth_day birthDay from T_STUDENT where id = ?";
-        Student s = jdbcTemplate.queryForObject(sql, new RowMapper<Student>(){
+        String sql = "select id,name,birth_day birthDay from T_STUDENT where id = ?";
+        Student s = jdbcTemplate.queryForObject(sql, new RowMapper<Student>() {
             @Override
             public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Student s = new Student();
@@ -57,16 +57,16 @@ public class StudentDaoImpl implements StudentDao {
                 s.setName(rs.getString("name"));
                 Timestamp day = rs.getTimestamp("birthDay");
 
-                log.debug("day:{}",day);
+                log.debug("day:{}", day);
                 LocalDateTime time1 = LocalDateTime.ofInstant(Instant.ofEpochMilli(day.getTime()), ZoneId.systemDefault());
 
-                s.setBirthDay( time1);
-                log.debug("s :{}",s);
+                s.setBirthDay(time1);
+                log.debug("s :{}", s);
                 return s;
             }
 
 
-        },id);
+        }, id);
 
         return s;
     }
@@ -82,21 +82,21 @@ public class StudentDaoImpl implements StudentDao {
                 s.setName(rs.getString("name"));
                 Timestamp day = rs.getTimestamp("birthDay");
 
-                log.debug("day:{}",day);
+                log.debug("day:{}", day);
                 LocalDateTime time1 = LocalDateTime.ofInstant(Instant.ofEpochMilli(day.getTime()), ZoneId.systemDefault());
 
-                s.setBirthDay( time1);
+                s.setBirthDay(time1);
                 return s;
             }
         });
-        log.debug("查询列表结果 s = {}",students);
+        log.debug("查询列表结果 s = {}", students);
         return students;
     }
 
     @Override
     public int deleteById(Integer id) {
         String sql = "delete T_STUDENT where id = ?";
-        return jdbcTemplate.update(sql,id);
+        return jdbcTemplate.update(sql, id);
     }
 }
 

@@ -14,9 +14,10 @@ public class MyTest8 {
 }
 
 
-class FinalTest{
+class FinalTest {
     public static final int a = 3;//new Random().nextInt(13);
     public static final int b = new Random().nextInt(13);
+
     static {
         System.out.println("FinalTest block");
     }

@@ -16,7 +16,7 @@
         https://www.springframework.org/schema/aop/spring-aop.xsd">
     <context:annotation-config></context:annotation-config>
 
-    <context:property-placeholder location="jdbc/jdbc01.properties" />
+    <context:property-placeholder location="jdbc/jdbc01.properties"/>
 
 
     <bean id="abstractDataSource" class="org.springframework.jdbc.datasource.AbstractDataSource" abstract="true">
@@ -34,7 +34,7 @@
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="url" value="${jdbc.url}"/>
-        <property name="driverClass" value="${jdbc.driverClassName}" />
+        <property name="driverClass" value="${jdbc.driverClassName}"/>
     </bean>
     <bean id="ds3" parent="abstractDataSource"
           class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
@@ -58,7 +58,6 @@
     </bean>
 
 
-
     <tx:advice id="txAdvice1" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="get*" read-only="true"></tx:method>
@@ -66,7 +65,8 @@
         </tx:attributes>
     </tx:advice>
     <aop:config>
-        <aop:pointcut id="txpointcut" expression="execution(public * com.andy.study.spring.jdbc.service.impl.StudentServiceImpl.*(..))"/>
+        <aop:pointcut id="txpointcut"
+                      expression="execution(public * com.andy.study.spring.jdbc.service.impl.StudentServiceImpl.*(..))"/>
         <aop:advisor advice-ref="txAdvice1" pointcut-ref="txpointcut"/>
     </aop:config>
 

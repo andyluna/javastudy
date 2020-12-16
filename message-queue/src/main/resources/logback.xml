@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <property name="applicationName" value="netty" />
+    <property name="applicationName" value="netty"/>
     <contextName>${applicationName}</contextName>
 
     <!-- 控制台输出 -->
@@ -12,68 +12,69 @@
                 <pattern>[${applicationName}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%-40.40logger{39}] %-3.3L %-5p: %msg%n</pattern>
                  -->
                 megent
-                <pattern>%yellow([${applicationName}]) %blue(%d{yyyy-MM-dd HH:mm:ss.SSS}) %red([%-10.10t]) %cyan(%-40.40logger{39}) %green(%-3.3L) %highlight(%-5p): %msg%n</pattern>
+                <pattern>%yellow([${applicationName}]) %blue(%d{yyyy-MM-dd HH:mm:ss.SSS}) %red([%-10.10t])
+                    %cyan(%-40.40logger{39}) %green(%-3.3L) %highlight(%-5p): %msg%n
+                </pattern>
             </layout>
         </encoder>
     </appender>
-<!--
+    <!--
 
 
-    &lt;!&ndash; 按照每天生成日志文件 &ndash;&gt;
-    <appender name="rollingAppender"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            &lt;!&ndash;日志文件输出的文件名&ndash;&gt;
-            <fileNamePattern>${log.filepath}/${applicationName}-%d{yyyy-MM-dd-hh}.log</fileNamePattern>
-            &lt;!&ndash;日志文件保留天数&ndash;&gt;
-            <maxHistory>10</maxHistory>
-        </rollingPolicy>
-        <encoder>&lt;!&ndash; 必须指定，否则不会往文件输出内容 &ndash;&gt;
-            &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;
-            <pattern>%d{HH:mm:ss.SSS} [%15.15t] %-40.40logger{39} %3.3L -%5p : %msg%n</pattern>
-        </encoder>
-        <append>false</append>
-        <prudent>false</prudent>
-    </appender>
+        &lt;!&ndash; 按照每天生成日志文件 &ndash;&gt;
+        <appender name="rollingAppender"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                &lt;!&ndash;日志文件输出的文件名&ndash;&gt;
+                <fileNamePattern>${log.filepath}/${applicationName}-%d{yyyy-MM-dd-hh}.log</fileNamePattern>
+                &lt;!&ndash;日志文件保留天数&ndash;&gt;
+                <maxHistory>10</maxHistory>
+            </rollingPolicy>
+            <encoder>&lt;!&ndash; 必须指定，否则不会往文件输出内容 &ndash;&gt;
+                &lt;!&ndash;格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符&ndash;&gt;
+                <pattern>%d{HH:mm:ss.SSS} [%15.15t] %-40.40logger{39} %3.3L -%5p : %msg%n</pattern>
+            </encoder>
+            <append>false</append>
+            <prudent>false</prudent>
+        </appender>
 
 
-    &lt;!&ndash; -返回DENY，日志将立即被抛弃不再经过其他过滤器； &ndash;&gt;
-    &lt;!&ndash; - 返回NEUTRAL，有序列表里的下个过滤器过接着处理日志； &ndash;&gt;
-    &lt;!&ndash; -返回ACCEPT，日志会被立即处理，不再经过剩余过滤器 &ndash;&gt;
-    &lt;!&ndash; dao输出到文件 &ndash;&gt;
+        &lt;!&ndash; -返回DENY，日志将立即被抛弃不再经过其他过滤器； &ndash;&gt;
+        &lt;!&ndash; - 返回NEUTRAL，有序列表里的下个过滤器过接着处理日志； &ndash;&gt;
+        &lt;!&ndash; -返回ACCEPT，日志会被立即处理，不再经过剩余过滤器 &ndash;&gt;
+        &lt;!&ndash; dao输出到文件 &ndash;&gt;
 
 
 
 
-    &lt;!&ndash; controller输出到文件 &ndash;&gt;
-    <appender name="logfile-controller"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator name="myEval_controller">
-                <expression>message.contains("controller")</expression>
-            </evaluator>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
+        &lt;!&ndash; controller输出到文件 &ndash;&gt;
+        <appender name="logfile-controller"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+                <evaluator name="myEval_controller">
+                    <expression>message.contains("controller")</expression>
+                </evaluator>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
 
-        <file>${log.filepath}/${applicationName}_controller.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.base}.%d{yyyy-MM-dd}_controller.log.zip</fileNamePattern>
-        </rollingPolicy>
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
-        </layout>
-    </appender>
+            <file>${log.filepath}/${applicationName}_controller.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${log.base}.%d{yyyy-MM-dd}_controller.log.zip</fileNamePattern>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+            </layout>
+        </appender>
 
--->
-
+    -->
 
 
     <root>
-        <level value="info" />
-        <appender-ref ref="STDOUT" />
+        <level value="info"/>
+        <appender-ref ref="STDOUT"/>
     </root>
-    <logger  level="DEBUG"    name="com.andy.study" />
+    <logger level="DEBUG" name="com.andy.study"/>
     <!--<logger  level="WARN"    name="ch.qos" />
     <logger  level="INFO"    name="org.apache" />
     <logger  level="WARN"    name="org.apache.com.andy.study.zookeeper" />

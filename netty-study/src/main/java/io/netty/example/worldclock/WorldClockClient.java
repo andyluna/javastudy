@@ -44,7 +44,7 @@ public final class WorldClockClient {
         final SslContext sslCtx;
         if (SSL) {
             sslCtx = SslContextBuilder.forClient()
-                .trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+                    .trustManager(InsecureTrustManagerFactory.INSTANCE).build();
         } else {
             sslCtx = null;
         }
@@ -53,8 +53,8 @@ public final class WorldClockClient {
         try {
             Bootstrap b = new Bootstrap();
             b.group(group)
-             .channel(NioSocketChannel.class)
-             .handler(new WorldClockClientInitializer(sslCtx));
+                    .channel(NioSocketChannel.class)
+                    .handler(new WorldClockClientInitializer(sslCtx));
 
             // Make a new connection.
             Channel ch = b.connect(HOST, PORT).sync().channel();
@@ -69,7 +69,7 @@ public final class WorldClockClient {
             ch.close();
 
             // Print the response at last but not least.
-            for (int i = 0; i < CITIES.size(); i ++) {
+            for (int i = 0; i < CITIES.size(); i++) {
                 System.out.format("%28s: %s%n", CITIES.get(i), response.get(i));
             }
         } finally {

@@ -6,8 +6,8 @@ package com.andy.study.spring.aop.proxy.service;
  */
 public interface T1 {
 
-   void foo();
+    void foo();
 
-   void bar();
+    void bar();
 
 }

@@ -12,9 +12,8 @@ public class StringNewTest {
     }
 
 
-    public static void test1(){
-        String s1 = new String("a")+new String("b");
-
+    public static void test1() {
+        String s1 = new String("a") + new String("b");
 
 
     }

@@ -14,6 +14,6 @@ public class MyInit01 implements MyServerletInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) {
-        log.debug("MyInit01 启动了:{}",servletContext);
+        log.debug("MyInit01 启动了:{}", servletContext);
     }
 }

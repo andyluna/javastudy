@@ -17,18 +17,18 @@ import org.springframework.core.env.Environment;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class InstantiationTracingBeanPostProcessor implements BeanPostProcessor,
-        BeanFactoryAware, ApplicationContextAware, EnvironmentAware , InitializingBean {
+        BeanFactoryAware, ApplicationContextAware, EnvironmentAware, InitializingBean {
     private static final Logger log = LoggerFactory.getLogger(InstantiationTracingBeanPostProcessor.class);
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        log.debug("之前:{},{}",beanName,bean);
+        log.debug("之前:{},{}", beanName, bean);
         return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        log.debug("之后:{},{}",beanName,bean);
+        log.debug("之后:{},{}", beanName, bean);
         return bean;
     }
 

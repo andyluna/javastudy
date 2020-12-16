@@ -26,15 +26,16 @@ import org.xml.sax.InputSource;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class Bean06Test {
-    private static  Logger logger = LoggerFactory.getLogger(Bean06Test.class);
+    private static Logger logger = LoggerFactory.getLogger(Bean06Test.class);
+
     public static void main(String[] args) {
 
         MyClasspathXmlApplicationContext context = new MyClasspathXmlApplicationContext("bean06.xml");
-        logger.info("启动完成 总共有 {} 个bean",context.getBeanDefinitionCount());
+        logger.info("启动完成 总共有 {} 个bean", context.getBeanDefinitionCount());
         String[] names = context.getBeanDefinitionNames();
         for (int i = 0; i < names.length; i++) {
             Object bean = context.getBean(names[i]);
-            logger.info("{}.{} {} = {}",i+1,names[i],bean.getClass(), bean);
+            logger.info("{}.{} {} = {}", i + 1, names[i], bean.getClass(), bean);
         }
 
 
@@ -49,34 +50,34 @@ public class Bean06Test {
         Resource resource = dl.getResource("bean06.xml");
         System.out.println(resource.exists());
         InputSource inputSource = new InputSource(resource.getInputStream());
-        EntityResolver entityResolver=new ResourceEntityResolver(dl);
+        EntityResolver entityResolver = new ResourceEntityResolver(dl);
         ErrorHandler errorHandler = new SimpleSaxErrorHandler(logger2);
         int validationMode = 3;
         boolean namespaceAware = false;
 
         DocumentLoader documentLoader = new DefaultDocumentLoader();
         Document document = documentLoader.loadDocument(inputSource, entityResolver,
-                 errorHandler, validationMode ,  namespaceAware);
+                errorHandler, validationMode, namespaceAware);
 
         Element element = document.getDocumentElement();
 
         NodeList nodes = element.getChildNodes();
 
-        System.out.println(document.getClass()+" = "+ nodes.getLength());
-        for (int i = 0; i <nodes.getLength() ; i++) {
+        System.out.println(document.getClass() + " = " + nodes.getLength());
+        for (int i = 0; i < nodes.getLength(); i++) {
             Node item = nodes.item(i);
-            if(item instanceof Element){
-                System.out.print ("属于element");
-                System.out.println(item.getNodeName() +"  "+item.getClass() );
+            if (item instanceof Element) {
+                System.out.print("属于element");
+                System.out.println(item.getNodeName() + "  " + item.getClass());
                 NamedNodeMap attributes = item.getAttributes();
-                System.out.println("attributes = "+attributes);
-                System.out.println("attributes = "+item.getNodeType());
-                for(int j=0;j<attributes.getLength();j++){
+                System.out.println("attributes = " + attributes);
+                System.out.println("attributes = " + item.getNodeType());
+                for (int j = 0; j < attributes.getLength(); j++) {
                     Node namedItem = attributes.item(j);
 
-                    System.out.println(namedItem.getNodeName() +"="+namedItem.getNodeValue());
+                    System.out.println(namedItem.getNodeName() + "=" + namedItem.getNodeValue());
                 }
-            }else{
+            } else {
                 //System.out.print ("不属于element");
             }
 

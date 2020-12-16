@@ -12,13 +12,13 @@ import org.springframework.validation.BeanPropertyBindingResult;
 public class ValidateTest {
 
     @Test
-    public void test1(){
+    public void test1() {
         Person p = new Person();
 
         PersonValidator pv = new PersonValidator();
         BeanPropertyBindingResult res = new BeanPropertyBindingResult(p, "person");
-        pv.validate(p,res);
+        pv.validate(p, res);
 
-        log.debug("是否有错误:{}",res.hasErrors());
+        log.debug("是否有错误:{}", res.hasErrors());
     }
 }

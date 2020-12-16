@@ -22,7 +22,7 @@ public class ChatClient {
     private BufferedReader reader = null;
     private BufferedWriter writer = null;
 
-    public ChatClient(){
+    public ChatClient() {
         lineSeparator = System.getProperty("line.separator");
     }
 
@@ -33,9 +33,9 @@ public class ChatClient {
 
     //发送消息
     public void sendMessage(String message) throws IOException {
-        if(!socket.isOutputShutdown()){
+        if (!socket.isOutputShutdown()) {
             writer.write(message);
-            if(!message.endsWith(lineSeparator)){
+            if (!message.endsWith(lineSeparator)) {
                 writer.write(lineSeparator);
             }
             writer.flush();
@@ -45,21 +45,21 @@ public class ChatClient {
     //接收消息
     public String receive() throws IOException {
         String message = null;
-        if(!socket.isInputShutdown()){
+        if (!socket.isInputShutdown()) {
             message = reader.readLine();
         }
         return message;
     }
     //检查用户是否退出
 
-    public boolean readToQuit(String message){
+    public boolean readToQuit(String message) {
         return QUIT.equals(message);
     }
 
-    public void start(){
+    public void start() {
         try {
             // 创建socket
-            socket = new Socket(host,port);
+            socket = new Socket(host, port);
             // 创建IO流
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -67,18 +67,18 @@ public class ChatClient {
             new Thread(new ChatClientInputHandler(this)).start();
             //读取服务器返回的消息
             String msg = null;
-            while((msg=receive())!=null){
+            while ((msg = receive()) != null) {
                 System.out.println(msg);
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             close();
         }
     }
 
-    public void close(){
-        if(writer!=null){
+    public void close() {
+        if (writer != null) {
             try {
                 writer.close();
             } catch (IOException e) {
@@ -91,11 +91,6 @@ public class ChatClient {
             e.printStackTrace();
         }
     }
-
-
-
-
-
 
 
 }

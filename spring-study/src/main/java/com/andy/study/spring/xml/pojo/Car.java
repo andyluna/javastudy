@@ -13,7 +13,7 @@ import java.beans.ConstructorProperties;
  * @time: 2020/11/20 十一月 14:37
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-public class Car implements InitializingBean , DisposableBean {
+public class Car implements InitializingBean, DisposableBean {
     private static final Logger log = LoggerFactory.getLogger(Car.class);
     private Integer id;
 
@@ -21,10 +21,11 @@ public class Car implements InitializingBean , DisposableBean {
 
     private Double price;
 
-    public Car(){
+    public Car() {
         log.debug("car 构造函数");
     }
-    @ConstructorProperties({"id","name","price"})
+
+    @ConstructorProperties({"id", "name", "price"})
     public Car(Integer id, String name, Double price) {
         this.id = id;
         this.name = name;
@@ -63,24 +64,27 @@ public class Car implements InitializingBean , DisposableBean {
                 ", price=" + price +
                 '}';
     }
-    public void xmlinit()  {
+
+    public void xmlinit() {
         log.debug("xmlinit");
     }
+
     @PostConstruct
-    public void postConstruct()  {
+    public void postConstruct() {
         log.debug("PostConstruct");
     }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         log.debug("afterPropertiesSet");
     }
 
-    public void xmldestory(){
+    public void xmldestory() {
         log.debug("xmldestory");
     }
 
     @PreDestroy
-    public void preDestroy()  {
+    public void preDestroy() {
         log.debug("PreDestroy");
     }
 

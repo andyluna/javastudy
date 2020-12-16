@@ -39,7 +39,7 @@ public class Student {
     private LocalDate localDate = LocalDate.now();
     private LocalDate localDate1;
     private LocalTime localTime = LocalTime.now();
-    private LocalTime localTime1 ;
+    private LocalTime localTime1;
     private Date date = new Date();
     private Date date1;
     private java.sql.Date sqlDate = new java.sql.Date(System.currentTimeMillis());

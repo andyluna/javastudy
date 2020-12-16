@@ -13,6 +13,6 @@ import java.lang.reflect.Method;
 public class RetryAdvice implements MethodBeforeAdvice {
     @Override
     public void before(Method method, Object[] args, Object target) throws Throwable {
-        log.debug("切面进来了:{}",method);
+        log.debug("切面进来了:{}", method);
     }
 }

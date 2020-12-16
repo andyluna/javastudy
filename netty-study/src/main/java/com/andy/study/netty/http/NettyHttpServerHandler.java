@@ -18,6 +18,7 @@ import java.net.URI;
 /**
  * SimpleChannelInboundHandler 是 ChannelInboundHandlerAdapter 子类
  * HttpObject 客户端与服务端相互通讯的数据封装成httpObject
+ *
  * @time: 2020/11/2 十一月 21:35
  * @author: xiangdan/xiangdan@dtxytech.com
  */

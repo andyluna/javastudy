@@ -24,11 +24,10 @@ public class MyBoot1Application {
         //System.setProperty("spring.application.json", "{\"myname\":\"xiangdan向丹\"}");
         ConfigurableApplicationContext context = SpringApplication.run(MyBoot1Application.class, args);
         String[] name = context.getBeanDefinitionNames();
-        log.debug("总共有{}",name.length);
+        log.debug("总共有{}", name.length);
 
         Arrays.sort(name);
         Stream.of(name).sorted().forEach(System.out::println);
-
 
 
         DefaultListableBeanFactory factory = (DefaultListableBeanFactory) context.getBeanFactory();
@@ -36,7 +35,7 @@ public class MyBoot1Application {
         System.out.println("---------------------------------");
         Arrays.sort(names);
         Stream.of(names).sorted().forEach(System.out::println);
-        log.debug("总共有{}",names.length);
+        log.debug("总共有{}", names.length);
         for (int i = 0; i < names.length; i++) {
             Object bean = context.getBean(names[i]);
             System.out.println(names[i]);
@@ -51,19 +50,16 @@ public class MyBoot1Application {
         ).collect(Collectors.toList());
         for (int i = 0; i < collect.size(); i++) {
             Object bean = context.getBean(collect.get(i));
-            log.debug("{}.{}={}  , {} ",(i+1),collect.get(i),bean.getClass(),bean);
+            log.debug("{}.{}={}  , {} ", (i + 1), collect.get(i), bean.getClass(), bean);
         }
         System.out.println("***************************");
         for (int i = 0; i < names.length; i++) {
             String s = names[i];
             boolean b = Stream.of(name).anyMatch(t -> t.equals(s));
-            if(!b){
+            if (!b) {
                 System.out.println(s);
             }
         }
-
-
-
 
 
     }

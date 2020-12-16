@@ -19,17 +19,17 @@ public class MyBeanFactory001PostProcessor implements BeanDefinitionRegistryPost
 
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        log.debug("我的第1个 beanfactory后置处理器  注册bean:{}",registry);
+        log.debug("我的第1个 beanfactory后置处理器  注册bean:{}", registry);
         BeanDefinition beanDefinition = new RootBeanDefinition();
         beanDefinition.setBeanClassName(MyBeanFactory002PostProcessor.class.getName());
-        registry.registerBeanDefinition("myBeanFactory002PostProcessor",beanDefinition);
+        registry.registerBeanDefinition("myBeanFactory002PostProcessor", beanDefinition);
         log.debug("第1个 里面注册第2个注册成功");
 
     }
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        log.debug("MyBeanFactory001PostProcessor:{}",beanFactory);
+        log.debug("MyBeanFactory001PostProcessor:{}", beanFactory);
 
     }
 }

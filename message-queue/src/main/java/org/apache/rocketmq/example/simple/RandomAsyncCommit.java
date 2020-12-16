@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class RandomAsyncCommit {
     private final ConcurrentHashMap<MessageQueue, CachedQueue> mqCachedTable =
-        new ConcurrentHashMap<MessageQueue, CachedQueue>();
+            new ConcurrentHashMap<MessageQueue, CachedQueue>();
 
     public void putMessages(final MessageQueue mq, final List<MessageExt> msgs) {
         CachedQueue cachedQueue = this.mqCachedTable.get(mq);

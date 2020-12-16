@@ -6,7 +6,7 @@ package com.andy.study.jvm.stack;
  */
 public class MyTest11 {
     public static void main(String[] args) {
-        while (true){
+        while (true) {
             System.out.println("Hello World");
         }
     }

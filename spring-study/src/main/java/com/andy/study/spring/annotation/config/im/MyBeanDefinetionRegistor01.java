@@ -16,6 +16,6 @@ public class MyBeanDefinetionRegistor01 implements ImportBeanDefinitionRegistrar
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator) {
 
         RootBeanDefinition definition = new RootBeanDefinition(Jerry02.class);
-        registry.registerBeanDefinition("Jerry02",definition);
+        registry.registerBeanDefinition("Jerry02", definition);
     }
 }

@@ -15,36 +15,34 @@ import java.util.List;
 public class ArrayTest {
 
     @Test
-    public void test1(){
+    public void test1() {
         User[] u1 = new User[2];
         Class<?> type = u1.getClass().getComponentType();
         System.out.println(type);
         User[] o = (User[]) Array.newInstance(User.class, 2);
         System.out.println(o);
-        User[][] o1 = (User[][]) Array.newInstance(User.class, 1,2);
+        User[][] o1 = (User[][]) Array.newInstance(User.class, 1, 2);
         System.out.println(o1);
     }
 
     @Test
-    public void test3(){
-        Integer[] in3 = {1,2,3};
-        System.out.println(in3+" "+Arrays.toString(in3));
+    public void test3() {
+        Integer[] in3 = {1, 2, 3};
+        System.out.println(in3 + " " + Arrays.toString(in3));
 
         Integer[] in4 = Arrays.copyOf(in3, 4);
 
 
-        System.out.println(in3+" "+Arrays.toString(in3));
+        System.out.println(in3 + " " + Arrays.toString(in3));
 
-        System.out.println(in4+" "+Arrays.toString(in4));
-
+        System.out.println(in4 + " " + Arrays.toString(in4));
 
 
     }
 
 
-
     @Test
-    public void test2(){
+    public void test2() {
         List<Integer> li = new ArrayList<>(10);
         li.add(1);
         li.add(2);
@@ -59,7 +57,6 @@ public class ArrayTest {
         li.add(11);
 
     }
-
 
 
 }

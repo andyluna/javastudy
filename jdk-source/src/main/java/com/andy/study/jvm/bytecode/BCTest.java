@@ -12,7 +12,7 @@ import java.net.ServerSocket;
  */
 public class BCTest {
 
-    public void test1(){
+    public void test1() {
 
         try {
             InputStream in = new FileInputStream("abc.txt");
@@ -20,12 +20,12 @@ public class BCTest {
             ServerSocket serverSocket = new ServerSocket(9999);
             serverSocket.accept();
         } catch (FileNotFoundException e) {
-           // e.printStackTrace();
+            // e.printStackTrace();
         } catch (IOException e) {
-           // e.printStackTrace();
-        }catch (Exception e){
+            // e.printStackTrace();
+        } catch (Exception e) {
             //e.printStackTrace();
-        }finally {
+        } finally {
             System.out.println("你好啊");
         }
 

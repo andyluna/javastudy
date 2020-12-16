@@ -19,7 +19,7 @@ public class ContentNegotiationController {
 
     @GetMapping("/getStudent*")
     @ResponseBody
-    public Student getStudent(){
+    public Student getStudent() {
         Student student = new Student();
         student.setId(2);
         student.setName("李四");
@@ -27,9 +27,9 @@ public class ContentNegotiationController {
     }
 
 
-    @GetMapping(value = "/getStudentJson",produces ={"application/json"} )
+    @GetMapping(value = "/getStudentJson", produces = {"application/json"})
     @ResponseBody
-    public Student getStudentJson(){
+    public Student getStudentJson() {
         Student student = new Student();
         student.setId(2);
         student.setName("李四");
@@ -37,9 +37,9 @@ public class ContentNegotiationController {
     }
 
 
-    @GetMapping(value = "/getStudentXml",produces ={"application/xml"})
+    @GetMapping(value = "/getStudentXml", produces = {"application/xml"})
     @ResponseBody
-    public Student getStudentXml(){
+    public Student getStudentXml() {
         Student student = new Student();
         student.setId(2);
         student.setName("李四");

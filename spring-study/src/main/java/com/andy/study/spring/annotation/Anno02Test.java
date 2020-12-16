@@ -27,7 +27,7 @@ public class Anno02Test {
     }
 
     @Test
-    public  void test01(){
+    public void test01() {
         GenericApplicationContext gac = new GenericApplicationContext();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(gac);
         reader.loadBeanDefinitions("bean01.xml");
@@ -37,7 +37,7 @@ public class Anno02Test {
 
 
     @Test
-    public  void test02(){
+    public void test02() {
         GenericApplicationContext gac = new GenericApplicationContext();
 //        GroovyBeanDefinitionReader groovyBeanDefinitionReader = new GroovyBeanDefinitionReader(gac);
 //        groovyBeanDefinitionReader.loadBeanDefinitions("services.groovy", "daos.groovy");
@@ -47,10 +47,10 @@ public class Anno02Test {
 
 
     @Test
-    public  void test03(){
+    public void test03() {
         GenericApplicationContext gac = new GenericApplicationContext();
 
-        AnnotatedBeanDefinitionReader  reader = new AnnotatedBeanDefinitionReader(gac);
+        AnnotatedBeanDefinitionReader reader = new AnnotatedBeanDefinitionReader(gac);
         reader.register(Config01.class);
 
         gac.refresh();
@@ -61,10 +61,10 @@ public class Anno02Test {
 
 
     @Test
-    public  void test04(){
+    public void test04() {
         GenericApplicationContext gac = new GenericApplicationContext();
 
-        ClassPathBeanDefinitionScanner  reader = new ClassPathBeanDefinitionScanner(gac);
+        ClassPathBeanDefinitionScanner reader = new ClassPathBeanDefinitionScanner(gac);
         reader.scan("com.andy.study.spring.annotation.config");
 
         gac.refresh();

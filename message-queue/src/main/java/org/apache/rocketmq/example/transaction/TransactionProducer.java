@@ -37,10 +37,11 @@ public class TransactionProducer {
         TransactionMQProducer producer = new TransactionMQProducer("please_rename_unique_group_name");
         ExecutorService executorService = new ThreadPoolExecutor(2, 5, 100, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(2000), new ThreadFactory() {
             AtomicInteger atomicInteger = new AtomicInteger(1);
+
             @Override
             public Thread newThread(Runnable r) {
                 Thread thread = new Thread(r);
-                thread.setName("client-transaction-msg-check-thread-"+atomicInteger.getAndIncrement());
+                thread.setName("client-transaction-msg-check-thread-" + atomicInteger.getAndIncrement());
                 return thread;
             }
         });
@@ -49,12 +50,12 @@ public class TransactionProducer {
         producer.setTransactionListener(transactionListener);
         producer.start();
 
-        String[] tags = new String[] {"TagA", "TagB", "TagC", "TagD", "TagE"};
+        String[] tags = new String[]{"TagA", "TagB", "TagC", "TagD", "TagE"};
         for (int i = 0; i < 10; i++) {
             try {
                 Message msg =
-                    new Message("mytransactiontopic", tags[i % tags.length], "KEY" + i,
-                        ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                        new Message("mytransactiontopic", tags[i % tags.length], "KEY" + i,
+                                ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
                 SendResult sendResult = producer.sendMessageInTransaction(msg, null);
                 System.out.printf("%s%n", sendResult);
 

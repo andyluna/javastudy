@@ -18,12 +18,14 @@ import java.util.concurrent.CountDownLatch;
 public class ZookeeperTest01 {
     private static final String connection = "localhost:2181";
     private static final CountDownLatch cdl = new CountDownLatch(1);
+
     public static void main(String[] args) throws Exception {
         //createNode();
         updateNode();
         getNode();
         deleteNode();
     }
+
     public static void createNode() throws KeeperException, InterruptedException {
         ZooKeeper zk = getZooKeeper();
         byte[] data = "xiangdan333".getBytes();
@@ -32,11 +34,12 @@ public class ZookeeperTest01 {
         System.out.println(s);
         closeZooKeeper(zk);
     }
+
     public static void getNode() throws KeeperException, InterruptedException {
         ZooKeeper zk = getZooKeeper();
         byte[] data = zk.getData("/xiangdan2", false, null);
         String s1 = new String(data);
-        System.out.println("获取数据"+s1);
+        System.out.println("获取数据" + s1);
         closeZooKeeper(zk);
     }
 
@@ -44,7 +47,7 @@ public class ZookeeperTest01 {
         ZooKeeper zk = getZooKeeper();
         Stat stat = zk.setData("/xiangdan/abc", "修改之后".getBytes(), -1);
 
-        System.out.println("获取数据"+stat);
+        System.out.println("获取数据" + stat);
         closeZooKeeper(zk);
     }
 
@@ -55,8 +58,8 @@ public class ZookeeperTest01 {
         closeZooKeeper(zk);
     }
 
-    public static void closeZooKeeper(ZooKeeper zookeeper){
-        if(zookeeper!=null){
+    public static void closeZooKeeper(ZooKeeper zookeeper) {
+        if (zookeeper != null) {
             try {
                 zookeeper.close();
             } catch (InterruptedException e) {
@@ -66,14 +69,13 @@ public class ZookeeperTest01 {
     }
 
 
-
-    public static ZooKeeper getZooKeeper(){
+    public static ZooKeeper getZooKeeper() {
         ZooKeeper zooKeeper = null;
         try {
             zooKeeper = new ZooKeeper(connection, 5000, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
-                    if(event.getState()== Event.KeeperState.SyncConnected){
+                    if (event.getState() == Event.KeeperState.SyncConnected) {
                         cdl.countDown();
                     }
                 }

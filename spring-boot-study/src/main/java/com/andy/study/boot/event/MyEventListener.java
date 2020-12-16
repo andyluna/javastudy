@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class MyEventListener implements ApplicationListener<MyFirstEvent>  {
+public class MyEventListener implements ApplicationListener<MyFirstEvent> {
 
 
     @Override
     public void onApplicationEvent(MyFirstEvent event) {
-        log.debug("接收到事件:{}",event);
+        log.debug("接收到事件:{}", event);
     }
 }

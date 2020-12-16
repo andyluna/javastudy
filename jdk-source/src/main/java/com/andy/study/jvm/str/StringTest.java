@@ -14,7 +14,7 @@ public class StringTest {
 
     }
 
-    public static void test(){
+    public static void test() {
         System.out.println();
         System.out.println("1");
         System.out.println("2");
@@ -37,13 +37,14 @@ public class StringTest {
         System.out.println("9");
         System.out.println("10");
     }
-    public static void test1(){
+
+    public static void test1() {
         String s = new String("1");
         s = s.intern();
         String s2 = "1";
-        System.out.println(s==s2);
+        System.out.println(s == s2);
 
-        String s3 = new String("2")+new String("3");
+        String s3 = new String("2") + new String("3");
 
 
         System.out.println(s3.hashCode());
@@ -53,7 +54,7 @@ public class StringTest {
         String s4 = "23";
         System.out.println(s4.hashCode());
 
-        System.out.println(s3==s4);
+        System.out.println(s3 == s4);
 
 
     }

@@ -23,7 +23,7 @@ public class StackTest2 {
         StackTest2 st = new StackTest2();
         try {
             st.test1();
-        }catch (Throwable e){
+        } catch (Throwable e) {
             e.printStackTrace();
             System.out.println(st.length);
         }

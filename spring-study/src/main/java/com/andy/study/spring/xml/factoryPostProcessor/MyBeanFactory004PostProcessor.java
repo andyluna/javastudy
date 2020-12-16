@@ -17,10 +17,10 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 public class MyBeanFactory004PostProcessor implements BeanDefinitionRegistryPostProcessor {
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        log.debug("我的第4个 beanfactory后置处理器  开始注册:{}",registry);
+        log.debug("我的第4个 beanfactory后置处理器  开始注册:{}", registry);
         BeanDefinition beanDefinition = new RootBeanDefinition();
         beanDefinition.setBeanClassName(MyBeanFactory005PostProcessor.class.getName());
-        registry.registerBeanDefinition("myBeanFactory005PostProcessor",beanDefinition);
+        registry.registerBeanDefinition("myBeanFactory005PostProcessor", beanDefinition);
         log.debug("第4个注册成功");
     }
 

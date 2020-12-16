@@ -17,7 +17,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 public class ThreadPoolTest {
-    private static  AtomicInteger ai = new AtomicInteger();
+    private static AtomicInteger ai = new AtomicInteger();
+
     public static void main(String[] args) throws IOException {
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
         RejectedExecutionHandler reh1 = new ThreadPoolExecutor.AbortPolicy();//直接拒绝 抛异常
@@ -28,16 +29,16 @@ public class ThreadPoolTest {
 
         ThreadPoolExecutor tpe = new ThreadPoolExecutor(1, 5, 5,
                 TimeUnit.SECONDS, new ArrayBlockingQueue<>(10),
-                threadFactory,reh4);
+                threadFactory, reh4);
 
-        for(int i =0 ; i<100;i++){
-            tpe.execute(()->{
+        for (int i = 0; i < 100; i++) {
+            tpe.execute(() -> {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                System.out.println(Thread.currentThread().getName()+" "+ai.incrementAndGet());
+                System.out.println(Thread.currentThread().getName() + " " + ai.incrementAndGet());
             });
         }
 

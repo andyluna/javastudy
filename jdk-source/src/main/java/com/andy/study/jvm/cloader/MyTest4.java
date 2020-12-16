@@ -5,6 +5,7 @@ import java.lang.reflect.Array;
 /**
  * anewarray 创建引用类型的数组
  * newarray 创建基本类型的数组
+ *
  * @time: 2020/10/22 十月 10:32
  * @author: xiangdan/xiangdan@dtxytech.com
  */
@@ -29,7 +30,7 @@ public class MyTest4 {
     }
 }
 
-class Myparent4{
+class Myparent4 {
     static {
         System.out.println("my test4 block");
     }

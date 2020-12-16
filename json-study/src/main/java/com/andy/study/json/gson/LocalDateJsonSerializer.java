@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 public class LocalDateJsonSerializer implements JsonSerializer<LocalDate> {
     @Override
     public JsonElement serialize(LocalDate localDate, Type typeOfSrc, JsonSerializationContext context) {
-        if(localDate==null){
+        if (localDate == null) {
             return new JsonObject();
         }
         return new JsonPrimitive(localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));

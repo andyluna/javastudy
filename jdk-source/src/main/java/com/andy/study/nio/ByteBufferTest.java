@@ -14,7 +14,6 @@ public class ByteBufferTest {
         System.out.println(Arrays.toString(a));
 
 
-
         ByteBuffer buff = ByteBuffer.allocate(10);
         buff.put(a);
 

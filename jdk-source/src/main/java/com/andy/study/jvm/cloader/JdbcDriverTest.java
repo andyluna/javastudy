@@ -11,17 +11,17 @@ public class JdbcDriverTest {
     public static void main(String[] args) throws ClassNotFoundException {
         System.out.println(System.getProperty("jdbc.drivers"));
         Class<?> aClass = Class.forName("com.mysql.cj.jdbc.Driver");
-        System.out.println("aClass = "+aClass);
+        System.out.println("aClass = " + aClass);
 
         CC cc = new CC();
         cc.test1();
     }
 
 
-    public static void test1(){
+    public static void test1() {
 
 
-       // Class<?> callerClass = Reflection.getCallerClass();
+        // Class<?> callerClass = Reflection.getCallerClass();
 
 //        System.out.println(callerClass);
     }
@@ -29,14 +29,14 @@ public class JdbcDriverTest {
 }
 
 
-class CC{
+class CC {
 
-    public void test1(){
+    public void test1() {
         test2();
     }
 
 
-    public  void test2(){
+    public void test2() {
 //        System.out.println(Reflection.getCallerClass(-1));
 //        System.out.println(Reflection.getCallerClass(0));
 //        System.out.println(Reflection.getCallerClass(1));

@@ -21,9 +21,9 @@ public class DynimicTest {
 
         String zz = o.request("zz");
 
-        System.out.println("zzz:"+zz);
-        System.out.println("动态代理类:"+o.getClass());
-        System.out.println("动态代理类:"+o.getClass().getSuperclass());
+        System.out.println("zzz:" + zz);
+        System.out.println("动态代理类:" + o.getClass());
+        System.out.println("动态代理类:" + o.getClass().getSuperclass());
 
     }
 

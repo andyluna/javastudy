@@ -19,51 +19,53 @@ import java.util.Date;
 @Slf4j
 public class FastJsonTest01 {
     private Person person;
+
     @Before
-    public void before(){
+    public void before() {
         person = Person.createDefaultPerson();
-        log.debug("person初始化成功:\n{}",person);
-     }
+        log.debug("person初始化成功:\n{}", person);
+    }
+
     @After
-    public void after(){
+    public void after() {
         person = null;
     }
+
     @Test
-    public void test01(){
+    public void test01() {
         String s = JSON.toJSONString(person, true);
-        log.debug("s = \n{}",s);
+        log.debug("s = \n{}", s);
 
         Person person = JSON.parseObject(s, Person.class);
-        log.debug("p ={} \n{}",person.getClass(),person);
+        log.debug("p ={} \n{}", person.getClass(), person);
     }
 
 
     @Test
-    public void test02(){
+    public void test02() {
         String s = JSON.toJSONString(person,
                 SerializerFeature.PrettyFormat,
                 SerializerFeature.WriteDateUseDateFormat);
-        log.debug("s = \n{}",s);
+        log.debug("s = \n{}", s);
 
         Person person = JSON.parseObject(s, Person.class);
-        log.debug("p ={} \n{}",person.getClass(),person);
+        log.debug("p ={} \n{}", person.getClass(), person);
     }
 
     @Test
-    public void test04(){
+    public void test04() {
         SerializeConfig config = new SerializeConfig();
         SimpleDateFormatSerializer serializer = new SimpleDateFormatSerializer("yyyy-MM-dd HH:mm:ss");
         config.put(Date.class, serializer);
 
-        String s = JSON.toJSONString(person,config,
+        String s = JSON.toJSONString(person, config,
                 SerializerFeature.PrettyFormat,
                 SerializerFeature.WriteDateUseDateFormat);
-        log.debug("s = \n{}",s);
+        log.debug("s = \n{}", s);
 
         Person person = JSON.parseObject(s, Person.class);
-        log.debug("p ={} \n{}",person.getClass(),person);
+        log.debug("p ={} \n{}", person.getClass(), person);
     }
-
 
 
 }

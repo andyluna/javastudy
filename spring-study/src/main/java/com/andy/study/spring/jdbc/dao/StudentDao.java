@@ -11,7 +11,8 @@ import java.util.List;
  */
 public interface StudentDao {
 
-    int saveStudent(String name , LocalDateTime day);
+    int saveStudent(String name, LocalDateTime day);
+
     int saveStudent(Student s);
 
     Student getById(Integer id);

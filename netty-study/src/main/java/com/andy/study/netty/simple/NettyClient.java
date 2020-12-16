@@ -30,7 +30,7 @@ public class NettyClient {
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 6668).sync();
             //注册关闭监听
             channelFuture.channel().closeFuture().sync();
-        }finally {
+        } finally {
             workerGroup.shutdownGracefully();
         }
     }

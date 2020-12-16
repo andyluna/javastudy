@@ -19,7 +19,7 @@ public class LinkedBlockingQueueTest {
 //        bq.add(2);
 //        bq.add(3);
 
-       // boolean offer = bq.offer(4);
+        // boolean offer = bq.offer(4);
         System.out.println(bq);
         System.out.println(bq.peek());
         System.out.println(bq.poll());

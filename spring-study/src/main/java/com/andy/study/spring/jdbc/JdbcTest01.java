@@ -17,7 +17,7 @@ public class JdbcTest01 {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("jdbc/jdbc01.xml");
 
-        log.info("启动完成 总共有 {} 个bean",context.getBeanDefinitionCount());
+        log.info("启动完成 总共有 {} 个bean", context.getBeanDefinitionCount());
        /* String[] names = context.getBeanDefinitionNames();
 
         for (int i = 0; i < names.length; i++) {
@@ -35,7 +35,7 @@ public class JdbcTest01 {
 //        for(int i=0;i<1000;i++){
 //            studentService.saveStudent("xiangdan"+i, LocalDateTime.now());
 //        }
-        studentService.saveStudent("xiangdan" , LocalDateTime.now());
+        studentService.saveStudent("xiangdan", LocalDateTime.now());
         studentService.getById(1);
     }
 }

@@ -23,14 +23,14 @@ public class SyncConsumer {
         dmc.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-                System.out.println("消息接收成功 总共"+msgs.size()+"条");
+                System.out.println("消息接收成功 总共" + msgs.size() + "条");
 
-                for(MessageExt msg:msgs){
+                for (MessageExt msg : msgs) {
                     System.out.println(msg);
-                    System.out.println("消息内容 = "+new String(msg.getBody()));
+                    System.out.println("消息内容 = " + new String(msg.getBody()));
 
                 }
-                System.out.println("context = "+context);
+                System.out.println("context = " + context);
 
 
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

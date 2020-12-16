@@ -14,16 +14,16 @@ import java.util.concurrent.TimeoutException;
 public class CyclicBarrierTest {
 
     public static void main(String[] args) {
-        CyclicBarrier cb = new CyclicBarrier(3,()->{
+        CyclicBarrier cb = new CyclicBarrier(3, () -> {
             System.out.println("CyclicBarrier线程开始干活了");
         });
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
-                System.out.println(Thread.currentThread().getName()+"开始等待");
+                System.out.println(Thread.currentThread().getName() + "开始等待");
                 cb.await();
                 cb.await(1, TimeUnit.SECONDS);
-                System.out.println(Thread.currentThread().getName()+"等待完成");
+                System.out.println(Thread.currentThread().getName() + "等待完成");
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -33,12 +33,12 @@ public class CyclicBarrierTest {
                 e.printStackTrace();
             }
         }, "t1").start();
-        new Thread(()->{
+        new Thread(() -> {
             try {
-                System.out.println(Thread.currentThread().getName()+"开始等待");
+                System.out.println(Thread.currentThread().getName() + "开始等待");
                 Thread.sleep(2000);
                 cb.await();
-                System.out.println(Thread.currentThread().getName()+"等待完成");
+                System.out.println(Thread.currentThread().getName() + "等待完成");
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -47,11 +47,11 @@ public class CyclicBarrierTest {
             }
 
         }, "t2").start();
-        new Thread(()->{
+        new Thread(() -> {
             try {
-                System.out.println(Thread.currentThread().getName()+"开始等待");
+                System.out.println(Thread.currentThread().getName() + "开始等待");
                 cb.await();
-                System.out.println(Thread.currentThread().getName()+"等待完成");
+                System.out.println(Thread.currentThread().getName() + "等待完成");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (BrokenBarrierException e) {

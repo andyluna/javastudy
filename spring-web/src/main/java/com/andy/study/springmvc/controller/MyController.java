@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyController implements InitializingBean {
 
     @GetMapping("/hello")
-    public String test01(){
+    public String test01() {
         log.debug("hello");
         return "hello";
     }

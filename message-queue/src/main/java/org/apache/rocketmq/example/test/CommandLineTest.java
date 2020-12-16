@@ -29,18 +29,17 @@ public class CommandLineTest {
                 .withDescription("file names")
                 .create("f");
         options.addOption(filesOption);
-        String[] params = new String[]{ "-d database -t table -files file1 file2" };
+        String[] params = new String[]{"-d database -t table -files file1 file2"};
 
-       // "-database database -t table -files file1 file2"
+        // "-database database -t table -files file1 file2"
 
         CommandLineParser parser = new BasicParser();
         try {
             CommandLine cli = parser.parse(options, params);
-            if(cli.hasOption("h")){
+            if (cli.hasOption("h")) {
                 HelpFormatter hf = new HelpFormatter();
                 hf.printHelp("Options", options);
-            }
-            else {
+            } else {
                 String database = cli.getOptionValue("d");
                 System.out.println("database: " + database);
                 String table = cli.getOptionValue("t");
@@ -49,11 +48,9 @@ public class CommandLineTest {
                 System.out.println("files: " + Arrays.asList(files));
 
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
     }

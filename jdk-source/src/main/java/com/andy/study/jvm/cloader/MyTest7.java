@@ -14,6 +14,6 @@ public class MyTest7 {
 }
 
 
-class C{
+class C {
 
 }

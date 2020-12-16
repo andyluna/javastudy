@@ -10,6 +10,7 @@ import org.springframework.context.Lifecycle;
  */
 public class MyLiefeCycle implements Lifecycle {
     private static final Logger log = LoggerFactory.getLogger(MyLiefeCycle.class);
+
     @Override
     public void start() {
         log.debug("MyLiefeCycle start------------------------");

@@ -18,10 +18,10 @@ import org.springframework.core.PriorityOrdered;
 public class MyBeanFactory002PostProcessor implements BeanDefinitionRegistryPostProcessor, PriorityOrdered {
     @Override
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        log.debug("我的第2个 beanfactory后置处理器  开始注册:{}",registry);
+        log.debug("我的第2个 beanfactory后置处理器  开始注册:{}", registry);
         BeanDefinition beanDefinition = new RootBeanDefinition();
         beanDefinition.setBeanClassName(MyBeanFactory003PostProcessor.class.getName());
-        registry.registerBeanDefinition("MyBeanFactory003PostProcessor",beanDefinition);
+        registry.registerBeanDefinition("MyBeanFactory003PostProcessor", beanDefinition);
         log.debug("第2个 里面注册第3个注册成功");
     }
 

@@ -26,18 +26,18 @@ public class HelloServiceImpl implements HelloService {
 
     @Override
     public String sayHello(String name) {
-        log.debug("你好:{}",name);
+        log.debug("你好:{}", name);
         //LocalDateTime nowDate = getNowDate(name);
         LocalDateTime nowDate1 = ((HelloService) AopContext.currentProxy()).getNowDate(name);
 
-        return "hello:"+name+nowDate1;
+        return "hello:" + name + nowDate1;
     }
 
     @Override
     public LocalDateTime getNowDate(String name) {
-        log.debug("获取当前时间参数{}"+name);
-        LocalDateTime now= LocalDateTime.now();
-        log.debug("当前时间:{}",now);
+        log.debug("获取当前时间参数{}" + name);
+        LocalDateTime now = LocalDateTime.now();
+        log.debug("当前时间:{}", now);
         return now;
     }
 

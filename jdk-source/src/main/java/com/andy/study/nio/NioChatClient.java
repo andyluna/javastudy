@@ -42,7 +42,7 @@ public class NioChatClient {
     }
 
     public static void main(String[] args) {
-        NioChatClient client = new NioChatClient("127.0.0.1",7777);
+        NioChatClient client = new NioChatClient("127.0.0.1", 7777);
         client.start();
     }
 
@@ -82,7 +82,7 @@ public class NioChatClient {
 
             boolean connect = client.connect(new InetSocketAddress(host, port));
 
-            System.out.println("客户端["+client.socket().getPort()+"]连接成功");
+            System.out.println("客户端[" + client.socket().getPort() + "]连接成功");
 
             while (selector.isOpen()) {
                 selector.select();

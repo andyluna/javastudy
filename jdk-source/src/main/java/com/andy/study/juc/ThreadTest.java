@@ -28,27 +28,27 @@ public class ThreadTest {
         System.out.println(t1.getThreadGroup());
 
 
-
         T1 t2 = new T1("t2");
         int priority2 = t2.getPriority();
         System.out.println(priority2);
         System.out.println(t2.getThreadGroup());
 
-        new Thread(()->{
+        new Thread(() -> {
 
         }, "t3");
 
     }
 }
 
-class T1 extends Thread{
-    public T1(String name){
+class T1 extends Thread {
+    public T1(String name) {
         super(name);
     }
+
     @Override
     public void run() {
-        for (int i = 0;i<100;i++){
-            System.out.println(Thread.currentThread().getId()+" - "+Thread.currentThread().getName()+" - "+i);
+        for (int i = 0; i < 100; i++) {
+            System.out.println(Thread.currentThread().getId() + " - " + Thread.currentThread().getName() + " - " + i);
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {

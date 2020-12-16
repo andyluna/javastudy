@@ -1,15 +1,15 @@
 server:
-    port: 8081
+  port: 8081
 
 info: 外面yml
 
 logging:
-    level:
-        org:
-            apache:
-                tomcat:
-                    util:
-                        net:
-                            NioEndpoint: info
+  level:
+    org:
+      apache:
+        tomcat:
+          util:
+            net:
+              NioEndpoint: info
 #trace: true
 #        org: debug

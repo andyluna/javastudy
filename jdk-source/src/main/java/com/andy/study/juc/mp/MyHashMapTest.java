@@ -10,7 +10,7 @@ import java.util.Map;
 public class MyHashMapTest {
 
     public static void main(String[] args) {
-        Map<String,String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
 
         map.put("1", "2");
         map.put("2", "2");
@@ -18,7 +18,7 @@ public class MyHashMapTest {
         map.put("4", "2");
         map.put("5", "2");
 
-        Map<String,String> map2 = new HashMap<>(map);
+        Map<String, String> map2 = new HashMap<>(map);
 
     }
 

@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 public class MyNormalListener implements ApplicationEventPublisherAware {
 
     @EventListener
-    public void refreshed(ContextRefreshedEvent cre){
-        log.debug("刷新了"+cre);
+    public void refreshed(ContextRefreshedEvent cre) {
+        log.debug("刷新了" + cre);
     }
 
     @Override

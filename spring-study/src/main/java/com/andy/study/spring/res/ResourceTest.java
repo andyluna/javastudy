@@ -32,28 +32,28 @@ public class ResourceTest {
         int n = 0;
 
         OutputStream os = new ByteArrayOutputStream();
-        while((n=inputStream.read(bytes))!=-1){
-            os.write(bytes,0,n);
+        while ((n = inputStream.read(bytes)) != -1) {
+            os.write(bytes, 0, n);
         }
-        log.debug("url 是否存在:{}",exists);
-        log.debug("os 是否存在:{}",os.toString());
+        log.debug("url 是否存在:{}", exists);
+        log.debug("os 是否存在:{}", os.toString());
     }
 
     @Test
     public void test02() throws Exception {
         Resource urlResource = new ClassPathResource("bean03.xml");
-       
+
         InputStream inputStream = urlResource.getInputStream();
         InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
         BufferedReader br = new BufferedReader(reader);
         StringBuilder sb = new StringBuilder();
         String s = null;
-        while((s=br.readLine())!=null){
+        while ((s = br.readLine()) != null) {
             sb.append(s).append("\n");
         }
 
-        log.debug("输出:{}",sb);
-         
+        log.debug("输出:{}", sb);
+
     }
 
     @Test
@@ -65,30 +65,30 @@ public class ResourceTest {
         BufferedReader br = new BufferedReader(reader);
         StringBuilder sb = new StringBuilder();
         String s = null;
-        while((s=br.readLine())!=null){
+        while ((s = br.readLine()) != null) {
             sb.append(s).append("\n");
         }
 
-        log.debug("输出:{}",sb);
+        log.debug("输出:{}", sb);
     }
 
-    private String resourceToString(Resource resource){
+    private String resourceToString(Resource resource) {
         InputStreamReader reader = null;
         try {
             reader = new InputStreamReader(resource.getInputStream(), "UTF-8");
             BufferedReader br = new BufferedReader(reader);
             StringBuilder sb = new StringBuilder();
             String s = null;
-            while((s=br.readLine())!=null){
+            while ((s = br.readLine()) != null) {
                 sb.append(s).append("\n");
             }
-            log.debug("输出 resource:{}",resource);
-            log.debug("输出 内容:{}",sb);
+            log.debug("输出 resource:{}", resource);
+            log.debug("输出 内容:{}", sb);
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally {
+        } finally {
             try {
                 reader.close();
             } catch (IOException e) {
@@ -103,10 +103,10 @@ public class ResourceTest {
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
         Resource[] resources = resolver.getResources("classpath*:/META-INF/spring.*");
-        log.debug("总共找到:{}",resources.length);
+        log.debug("总共找到:{}", resources.length);
 
-        for(Resource resource:resources){
-            resourceToString( resource);
+        for (Resource resource : resources) {
+            resourceToString(resource);
         }
 
     }
