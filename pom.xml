@@ -28,6 +28,7 @@
         <module>spring-boot-data-rest</module>
         <module>json-study</module>
         <module>embed-tomcat</module>
+        <module>liyi-study</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
