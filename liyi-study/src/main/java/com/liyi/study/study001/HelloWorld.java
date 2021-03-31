@@ -8,13 +8,13 @@ package com.liyi.study.study001;
 public class HelloWorld {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 65535; i++) {
-
-            System.out.print(i+" = "+(char)i+" \n");
-
-        }
+        Integer a = 97;
+        System.out.println(a);
 
 
+
+
+        System.out.println(Integer.toBinaryString(97));
     }
 
 
