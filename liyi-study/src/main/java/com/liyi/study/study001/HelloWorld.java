@@ -8,7 +8,27 @@ package com.liyi.study.study001;
 public class HelloWorld {
 
     public static void main(String[] args) {
-        System.out.println("HelloWorld");
+        for (int i = 0; i < 65535; i++) {
+
+            System.out.print(i+" = "+(char)i+" \n");
+
+        }
+
+
     }
 
+
+
+
+    public static void test1(){
+        char c1='a';
+        int i1=10;
+        int i2=c1+i1;
+        System.out.println(i2);
+
+        byte a=12;
+        double b=a+12.3;
+        int c=a+(int)b;
+        System.out.println(c);
+    }
 }
