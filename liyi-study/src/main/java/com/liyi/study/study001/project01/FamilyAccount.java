@@ -7,6 +7,7 @@ package com.liyi.study.study001.project01;
  */
 public class FamilyAccount {
     public static void main(String[] args) {
+
         boolean isFlag=true;
 
         //记录用户收入和支出的详情

@@ -73,11 +73,16 @@ public class Utility {
 
         while (scanner.hasNext()) {
             line = scanner.nextLine();
-            if (line.length() < 1 || line.length() > limit) {
-                System.out.print("输入长度（不大于" + limit + "）错误，请重新输入：");
-                continue;
+
+            if (line.length()==1){
+                break;
             }
-            break;
+
+//            if (line.length() < 1 || line.length() > limit) {
+//                System.out.print("输入长度（不大于" + limit + "）错误，请重新输入：");
+//                continue;
+//            }
+//            break;
         }
 
         return line;
