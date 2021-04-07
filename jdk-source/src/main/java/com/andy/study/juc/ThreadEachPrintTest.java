@@ -1,6 +1,5 @@
 package com.andy.study.juc;
 
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
@@ -27,7 +26,6 @@ public class ThreadEachPrintTest {
     char[] aC = "ABCDEFGHIG".toCharArray();
     char[] aD = "大唐先一科技有限公司".toCharArray();
 
-    @Test
     public void testLockSupport() {
         t1 = new Thread(() -> {
             for (char a : aI) {
@@ -54,7 +52,6 @@ public class ThreadEachPrintTest {
 
     private volatile ReadyOrRun r;
 
-    @Test
     public void testCas() throws IOException {
         r = ReadyOrRun.T1;
         t1 = new Thread(() -> {
@@ -82,7 +79,6 @@ public class ThreadEachPrintTest {
     private volatile boolean t2Started = false;
     private CountDownLatch countDownLatch = new CountDownLatch(1);
 
-    @Test
     public void testSyncWait() throws InterruptedException {
 
         final Object o = new Object();
@@ -136,7 +132,6 @@ public class ThreadEachPrintTest {
     }
 
     //可重用锁
-    @Test
     public void testReentrantLock() {
         Lock lock = new ReentrantLock();
         Condition condition1 = lock.newCondition();
@@ -207,7 +202,6 @@ public class ThreadEachPrintTest {
     }
 
     //容量为空的 阻塞队列  生产者阻塞
-    @Test
     public void testTransferQueue() {
         TransferQueue<Character> transferQueue = new LinkedTransferQueue<>();
         t1 = new Thread(() -> {

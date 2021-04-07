@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.andy.study.boot.mapper.CommonMapper">
+
+    <select id="selectUserById" parameterType="long" resultType="com.andy.study.boot.entity.User">
+        select ID,NAME,EMAIL,AGE from user where id=#{id}
+    </select>
+</mapper>
