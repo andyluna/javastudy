@@ -3,4 +3,29 @@
     我每天都可以更新看到的.
     有问题在这个文件夹下记录下来!
 
+以后的代码 尽量不要注释掉
+测试一个功能写一个方法
+比如
 
+public class C1{
+    //主方法
+    public static void main(String[] args){
+        test1();//在main主方法里面直接调用 下面写的一个一个的方法 这样清晰些啊
+    }
+
+    //测试某一个功能点方法1
+    public static void test1(){
+
+    }
+
+    //测试某一个功能点方法2
+    public static void test2(){
+
+    }
+
+    //测试某一个功能点方法3
+    public static void test3(){
+
+    }
+
+}
