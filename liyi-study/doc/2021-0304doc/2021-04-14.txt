@@ -1,0 +1,46 @@
+学习进度
+
+
+
+疑难点：
+1.toString()
+  像String、Date、File等包装类都重写了Object类中的toString()方法，
+  使得在调用对象的toString()方法时，返回对象的“实体内容”
+
+2.Java中的JUnit单元测试
+2.1.创建java类，进行单元测试:
+    要求：①此类是public  ②此类提供公共的无参的构造器
+2.2.此类中声明的单元测试方法：
+    方法的权限是public,没有返回值，没有形参
+2.3.此单元测试方法上需要声明注解：@Test,并在单元测试类中导入:import org.junit.Test
+
+
+3.包装类的使用：
+3.1.java提供了8中基本数据类型的包装类，使得基本数据类型的变量具有类的特征
+3.2.基本数据类型、包装类、String三者之间的相互转换
+
+3.3.基本数据类型==》包装类：调用包装类的构造器
+
+3.4.Boolen忽略大小写(只要含有true或者false就不会报错)
+
+3.5.基本数据类型、包装类===》String类型
+    ①连接运算
+    ②调用String重载的valueOf(xxx xxx)转化为字符串
+
+3.6.String类型===>基本数据类型、包装类:调用包装类的parsexxx()
+    如 String str="123";
+       int num=Inter.parseInt(str);
+
+
+
+
+
+4.自动装箱和自动拆箱
+ 如 int num1=10;
+    Integer in1=num1;
+
+    int num2=in1;
+
+
+
+(int)  (Integer)  break;
