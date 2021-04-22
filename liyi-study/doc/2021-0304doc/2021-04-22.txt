@@ -1,0 +1,41 @@
+学习进度
+E:\学习-尚硅谷\1.尚硅谷全套JAVA教程--基础阶段（73.36GB）\1.尚硅谷宋红康Java核心基础_好评如潮\
+Java基础全套视频教程\day22_枚举类与注解19
+
+
+疑难点
+
+1.String、StringBuffer、StringBuilder的异同
+String：不可变的字符序列；底层使用char[]存储
+StringBuffer：可变的字符序列；线程安全的，效率低；底层使用char[]存储
+StringBuilder：可变的字符序列；jdk5.0新增的，线程不安全的，效率高；底层使用char[]存储
+
+扩容问题：StringBuffer、StringBuilder要添加的数据底层盛不下了，那就需要扩容底层的数组
+默认情况下，扩容为原来容量的2倍+2，同时将原有数组的元素复制到新的数组中
+
+指导意义：开发中建议使用StringBuffer(int capacity)或StringBuilder(int capacity)
+
+2.String与StringBuffer、StringBuilder之间的转换
+2.1.String---->StringBuffer、StringBuilder：调用StringBuffer、StringBuilder构造器
+2.2.StringBuffer、StringBuilder---->String:①调用String构造器
+                                           ②StringBuffer、StringBuilder的toString()
+
+2.如何将java.util.Date对象转换为java.sql.Date对象
+        Date d1=new Date();
+        java.sql.Date d2=new java.sql.Date(d1.getTime());
+
+3.Comparable接口：
+3.1.像String、包装类等实现了Comparable接口，重写了compareTo(obj)方法，给出了比较两个对象大小的方式(从小到大)
+3.2.重写compareTo(obj)规则：
+        如果当前对象this大于形参对象obj,则返回正整数；
+        如果当前对象this小于形参对象obj,则返回负整数；
+        如果当前对象this等于形参对象obj,则返回0；
+
+4.Comparator接口：定制排序
+
+5.Comparable与Comparator对比：
+  Comparable接口的方式一旦指定，保证Comparable接口实现类的对象可以在任何位置比较对象；
+  Comparator接口属于临时性的比较
+
+6.
+4个元注解 可重复注解 类型注解
