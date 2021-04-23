@@ -10,6 +10,7 @@ public class SeasonTest {
         Season spring=Season.SPRING;
         System.out.println(spring);
     }
+
 }
 
 //自定义枚举类
@@ -50,3 +51,5 @@ class Season{
                 '}';
     }
 }
+
+

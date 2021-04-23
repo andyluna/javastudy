@@ -38,4 +38,9 @@ StringBuilder：可变的字符序列；jdk5.0新增的，线程不安全的，�
   Comparator接口属于临时性的比较
 
 6.
-4个元注解 可重复注解 类型注解
+6.1.jdk提供的4个元注解
+Retention:指定所修饰的Annotation的生命周期：SOURCE/CLASS(默认行为/RUNTIME只声明为RUNTIME生命周期的注解，才能通过反射获取)
+Target:用于指定被修饰的Annotation能用于修饰程序元素
+Documented:表示所修饰的注解在被javadoc解析时，保留下来
+Inherited:被修饰的Annotation将具有继承性
+可重复注解 类型注解

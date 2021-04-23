@@ -1,0 +1,131 @@
+学习进度:
+E:\学习-尚硅谷\1.尚硅谷全套JAVA教程--基础阶段（73.36GB）\
+1.尚硅谷宋红康Java核心基础_好评如潮\Java基础全套视频教程\day24_集合 18
+
+疑难点:
+
+1.contains(Object obj):判断当前集合中是否包含obj,在判断时会调用obj对象所在类的equals(),
+           即向collection接口的实现类的对象中添加数据obj时，要求obj所在类要重写equals()
+
+  containsAll(Collection coll):判断形参coll中的所有元素是否都存在当前集合中
+
+  remove(Object obj)/removeAll(Collection coll):从当前集合移除obj/coll中的所有元素，并修改当前集合
+
+  retainAll(Collection coll):交集:获取当前集合和coll集合的交集，并返回给当前集合
+
+  equals(Object obj):当前集合和形参集合的元素都相同，返回true(Arrays集合是有序的，顺序不同会返回false)
+
+  toArrays():将集合转换为数组
+
+  数组---->集合:调用Arrays类的静态方法asList()
+        List<String> list=Arrays.asList(new String[]{"AA","BB","CC"});
+        System.out.println(list);
+
+2.迭代器Iterator接口：遍历集合元素
+2.1.内部的方法：hasNext()、next()
+                     Iterator iterator= coll.iterator();
+
+                      while (iterator.hasNext()){
+                                 System.out.println(iterator.next());
+                             }
+2.2.集合对象每次调用iterator()方法都会得到一个全新的迭代器对象，默认游标都在集合的第一个元素之前
+
+2.3.remove():是在遍历过程中通过迭代器对象的remove()方法，不是集合对象的remove方法；
+             如果还未调用next()或在上一次调用next方法之后已经调用了remove方法，再调用remove都会报IllegalStateException异常
+
+3.foreach循环(增强for循环)
+   for(数组/集合元素类型 局部变量:数组/集合对象){}
+
+4.List接口的三个实现类：
+  ArrayList:作为List接口的主要实现类；线程不安全的，效率高；底层使用Object[] elementData存储
+  LinkedList:对于频繁的插入、删除操作，使用此类效率比ArrayList高；底层使用双向链表存储
+  Vector:作为List接口的古老实现类；线程安全的，效率低；底层使用Object[] elementData存储
+
+5.remove():删除此列表中指定位置的元素。 将所有后续元素向左移动（从其索引中减去一个）。
+           返回值：从列表中删除的元素
+
+6.Set:存储无序的、不可重复的数据
+6.1.以HashSet为例
+             无序性：不等于随机性，存储的数据在底层数组中并非按照数组索引的顺序添加，而是根据数据的哈希值
+             不可重复性：保证添加的元素按照equals()添加时，不能返回true,即，相同的元素只能添加一个
+添加元素的过程：
+             我们向HashSet中添加元素a，首先调用元素a所在类的hashCode()方法，计算元素a的哈希值，
+             此哈希值接着通过某种算法计算出在HashSet底层数组中的存放位置（即为：索引位置），判断数组此位置上是否已有元素，
+             如果此位置没有其他元素，则添加成功，
+             如果此位置有其他元素b（或以链表形式存在多个元素），则比较元素a与元素b的hash值：
+             ①如果hash值不相同，则添加成功
+             ②如果hash相同，进而需要调用元素a所在类的equals()方法:返回true，添加失败；返回false，添加成功
+         说明：对于添加成功的①②而言：元素a与已经存在指定位置上的数据以链表的形式存储
+              jdk7:元素a放到数组中，指向原来的元素；
+              jdk8:原来的元素在数组中，指向元素a
+
+6.2.LinkedHashSet:作为HashSet的子类，遍历其内部的数据时，可以按照添加的顺序遍历出来；
+                对于频繁的遍历操作，LinkedHashSet效率高于HashSet
+
+6.3.TreeSet:向TreSet中添加的数据，要求是相同类的对象
+
+两种排序方式：自然排序(实现Comparable接口)，定制排序(Comparator)
+    自然排序中，比较两个对象是否相同的标准为：compareTo()返回0，不再是equals();
+    定制排序中，比较两个对象是否相同的标准为：compare()返回0，不再是equals();
+
+7.Map:双列数据，存储key-value对的数据
+  Map结构：
+         ①Map中的key:无序的、不可重复的，使用Set存储所有的key---->key所在的类要重写equals()和hashCode()（以HashMap为例）
+         ②Map中的value:无序的、可重复的，使用Collection存储所有的value---->value所在的类要重写equals()
+         ③一个键值对：key-value构成了一个Entry对象
+         ④Map中的entry:无序的、不可重复的，使用Set存储所有的entry
+
+7.1.HashMap:作为Map的主要实现类；线程不安全的，效率高；能存储null的key和value
+    底层结构:数组+链表（jdk7及之前）
+    数组+链表+红黑树（jdk8）
+
+7.2.HashMap的底层实现原理：----（jdk7）-----
+    HashMap map=new HashMap();
+    在实例化以后，底层创建了长度是16的一维数组Entry[] table
+
+    map.put(key,value):
+    首先，调用key所在类的hashCode()计算key的哈希值，此哈希值经过某种算法计算以后，得到在Entry数组中的存放位置，
+    ①如果此位置上的数据为空，此时的key-value添加成功；
+     如果此位置的数据不为空（意味着此位置上存在一个或者多个数据（以链表的形式存在）），再比较key和已经存在的一个或多个数据的哈希值：
+    ②如果key的哈希值与已经存在的数据的哈希值都不相同，则添加成功；
+     如果key的哈希值和已经存在的某一个数据(key1-value1)的哈希值相同，则继续比较：调用key1所在类的equals(key1)，
+    ③如果equals()返回false:此时key1-value添加成功；
+     如果equals()返回true:使用value1替换value1。
+ 说明：②③两种情况下，此时的key-value和原来的数据以链表的方式存储
+
+ 扩容问题：在不断的添加过程中，可能会涉及到扩容问题，当超出临界值（且要存放的位置非空时），扩容，
+          默认的是：扩容为原来容量的两倍，并复制原有的数据
+
+ -----（jdk8）------
+ 1.new HashMap():底层没有创建一个长度16的数组
+ 2.在jdk8下，底层数组是：Node[]，而不是Entry[]
+ 3.首次调用put()方法时才在底层创建一个长度16的数组
+ 4.jdk7底层结构只有：数组+链表
+   jdk8中底层结构：数组+链表+红黑树
+   当数组的某一个索引位置上的元素以链表形式穿在的数据个数>8且当前数组的长度>64时，
+   此索引位置上的所有数据改为红黑树存储。
+
+7.3.remove(Object value):移除指定的key-value对，并返回value，
+                         若没找到则返回null
+
+7.4.clear():清空当前map数据
+        map.clear();    与map=null操作不同
+        System.out.println(map.size());  0
+        System.out.println(map);  {}
+
+7.5.Object get(Object key):获取指定key对应的value
+
+7.6.keySet()、value()遍历key和value
+
+
+7.7.LinkedHashMap:保证在遍历map元素时，可以按照添加的顺序实现遍历
+            原因:在原有的HashMap底层结构基础上，添加了一对指针，指向前一个和后一个元素
+            对于频繁的遍历操作，此类的执行效率高于HashMap
+
+7.8.TreeMap:保证按照添加的key-value对进行排序，实现排序遍历。此时考虑key的自然排序或定制排序
+           底层使用红黑树
+
+7.9.Hashtable:作为古老的实现类；线程安全的，效率低；不能存储null的key和value
+
+7.10.Properties:常用来处理配置文件。key和value都是String类型
+
