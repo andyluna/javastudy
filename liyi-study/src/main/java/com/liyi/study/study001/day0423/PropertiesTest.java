@@ -1,8 +1,6 @@
 package com.liyi.study.study001.day0423;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Properties;
 
 /**
