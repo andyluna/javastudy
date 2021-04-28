@@ -1,0 +1,29 @@
+学习进度：
+JDBC核心技术  44
+
+疑难点：
+1.JDBC API小结
+ 两种思想：
+    1.面向接口编程的思想
+    2.ORM思想
+     ①一个数据表对应一个java类
+     ②表中的一条记录对应java类的一个对象
+     ③表中的一个字段对应java类的一个属性
+ 注意：sql需要结合列名和表的属性名来写。注意起别名
+
+ 两种技术：
+ 1.JDBC结果集的元数据：ResultSetMetaData
+   ①获取列数：getColumnCount()
+   ②获取列的别名：getColumnLabel()
+ 2.通过反射创建指定类的对象，获取指定的属性并赋值
+
+2.使用io流将本地Blob类型文件写入到数据库中
+       FileInputStream is=new FileInputStream(new File("穿越火线14.png"));
+                ps.setBlob(4,is);
+
+ 使用io流将数据库中的Blob文件读出到本地
+                Blob photo=rs.getBlob("photo");
+              InputStream  is = photo.getBinaryStream();
+         FileOutputStream  fos=new FileOutputStream("穿越火线1.png");
+
+3.数据库的事务处理
