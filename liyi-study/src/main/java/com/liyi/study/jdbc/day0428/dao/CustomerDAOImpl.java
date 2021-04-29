@@ -11,7 +11,7 @@ import java.util.List;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/4/28 23:23  星期三
  */
-public class CustomerDAOImpl extends BaseDAO implements CustomerDAO{
+public class CustomerDAOImpl extends BaseDAO<Customer> implements CustomerDAO{
     @Override
     public void insert(Connection con, Customer cust) {
         String sql="insert into customers(name,email,birth)values(?,?,?)";
@@ -23,29 +23,29 @@ public class CustomerDAOImpl extends BaseDAO implements CustomerDAO{
     @Override
     public void deleteById(Connection con, int id) {
 
-        String sql="delete from customer where id=?";
+        String sql="delete from customers where id=?";
         update(con,sql,id);
     }
 
     @Override
     public void updateById(Connection con, Customer cust) {
-        String sql="update customers set name=?,email=?,birth=? where id=?";
+        String sql="update customers set name = ?,email = ?,birth = ? where id = ?";
         update(con,sql,cust.getName(),cust.getEmail(),cust.getBirth(),cust.getId());
 
     }
 
     @Override
     public Customer getCustomerById(Connection con, int id) {
-        String sql="selete id,name,email,birth from customers where id=?";
-        Customer customer = getInstance(con, Customer.class, sql, id);
+        String sql="select id,name,email,birth from customers where id= ?";
+        Customer customer = getInstance(con, sql, id);
         return customer;
 
     }
 
     @Override
     public List<Customer> getAll(Connection con) {
-        String sql="selete id,name,email,birth from customers";
-        List<Customer> list=getForList(con,Customer.class,sql);
+        String sql="select id,name,email,birth from customers";
+        List<Customer> list=getForList(con,sql);
         return list;
     }
 

@@ -1,4 +1,4 @@
-package com.liyi.study.jdbc.day0428.dao;
+package com.liyi.study.jdbc.day0429.dao;
 
 import com.liyi.study.jdbc.day0428.bean.Customer;
 
@@ -12,6 +12,8 @@ import java.util.List;
  * @time: 2021/4/28 23:13  星期三
  */
 public interface CustomerDAO {
+    void insert(Connection con, com.liyi.study.jdbc.day0429.bean.Customer cust);
+
     /**
      * 将cust对象添加到数据库中
      */

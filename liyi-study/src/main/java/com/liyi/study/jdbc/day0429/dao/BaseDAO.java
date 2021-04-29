@@ -1,6 +1,6 @@
-package com.liyi.study.jdbc.day0428.dao;
+package com.liyi.study.jdbc.day0429.dao;
 
-import com.liyi.study.jdbc.day0427.util.JDBCUtils;
+import com.liyi.study.jdbc.day0429.util.JDBCUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
