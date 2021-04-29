@@ -1,0 +1,17 @@
+学习进度：JDBC核心技术53
+
+
+疑难点：
+  BeanHander：是ResultSetHander接口的实现类，用于封装表中的一条记录
+              QueryRunner runner=new QueryRunner();
+              Connection con = JDBCUtils.getConnection();
+              String sql="select id,name,email,birth from id=?";
+
+              BeanHandler<Customer> handler=new BeanHandler<>(Customer.class);
+
+              Customer cust = runner.query(con, sql, handler, 1);
+              System.out.println(cust);
+
+  BeanListHander:  是ResultSetHander接口的实现类，用于封装表中的多条记录
+
+  MapHander:是ResultSetHander接口的实现类，对应表中的一条记录，将字段及相应的值作为map中的key和value
