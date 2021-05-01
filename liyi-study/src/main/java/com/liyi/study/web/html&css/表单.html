@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>表单的显示</title>
+</head>
+<body>
+
+<!---
+     form标签是表单标签
+      action 属性是设置提交的服务器地址
+      method 属性设置提交方式GET（默认值）或者POST
+
+--->
+
+
+<form action="http://localhost:8080" method="get">
+    <input type="hidden" name="action" value="login"/>
+    <h1 align="center">用户注册</h1>
+    <table align="center">
+        <tr>
+            <td>用户名称:<input type="text" name="=username"/>
+            </tr>
+            </td>
+        <tr>
+            <td>用户密码:<input type="password" value="abc" name="password"></td>
+        </tr>
+        <tr>
+            <td>确认密码:<input type="password" value="abc" name="password"></td>
+        </tr>
+        <tr>
+            <td>性别：<input type="radio" name="sex" value="boy">男<input type="radio" name="sex" value="girl">女</td>
+        </tr>
+        <tr>
+            <td>兴趣爱好：<input name="hobby" type="checkbox" checked="checked" value="java"/>JAVA
+                <input name="hobby" type="checkbox" value="js"/>JavaScript
+                <input name="hobby" type="checkbox" value="c++"/>C++
+            </td>
+        </tr>
+
+
+
+
+<tr>
+   <td>国籍:</td>
+    <td>
+        <select>
+    <option value="none">--请选择国籍--</option>
+    <option value="cn" selected="selected">中国</option>
+            <option value="usa">美国</option>
+            <option value="jp">日本</option>
+        </select>
+    </td>
+</tr>
+
+    </br>
+        <tr>
+    <td>自我评价：<textarea rows="10" cols="20">
+
+    rows 属性设置可以显示几行的高度
+    cols 属性设置可以每行显示几个字符宽度
+</textarea></td>
+        </tr>
+    </br>
+    <tr>
+        <td><input type="reset"/></td>
+        <td><input type="submit"></td>
+    </tr>
+
+
+
+    </table>
+
+</form>
+
+
+
+</body>
+</html>

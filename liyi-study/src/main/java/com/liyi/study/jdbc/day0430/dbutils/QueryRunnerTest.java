@@ -3,11 +3,14 @@ package com.liyi.study.jdbc.day0430.dbutils;
 import com.liyi.study.jdbc.day0427.util.JDBCUtils;
 import com.liyi.study.jdbc.day0429.bean.Customer;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -56,5 +59,42 @@ public class QueryRunnerTest {
         BeanListHandler<Customer> handler=new BeanListHandler<>(Customer.class);
         List<Customer> customerList = runner.query(con, sql, handler, 20);
         customerList.forEach(System.out::println);
+    }
+
+
+    /**
+     * 自定义ResultSetHandler的实现类
+     */
+    @Test
+    public void testQuery3(){
+        Connection con=null;
+        try {
+            QueryRunner runner=new QueryRunner();
+            con = JDBCUtils.getConnection();
+
+            String sql="select id,name,email,birth from customers where id=?";
+            ResultSetHandler<Customer> handler=new ResultSetHandler<Customer>(){
+
+                @Override
+                public Customer handle(ResultSet rs) throws SQLException {
+                    if (rs.next()){
+                        int id=rs.getInt("id");
+                        String name=rs.getString("name");
+                        String email=rs.getString("email");
+                        Date birth=rs.getDate("birth");
+                        Customer cust=new Customer(id,name,email,birth);
+                        return cust;
+                    }
+                    return null;
+                }
+            };
+            Customer customer=runner.query(con,sql,handler,1);
+            System.out.println(customer);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            JDBCUtils.closeResource(con,null);
+        }
     }
 }

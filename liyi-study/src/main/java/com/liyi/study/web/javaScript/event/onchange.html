@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script type="text/javascript">
+    function onchangeFun(){
+      alert("女神已经改变了");
+    }
+
+    window.onload=function (){
+      var obj=document.getElementById("se01");
+      obj.onchange=function (){
+        alert("男神已经改变了")
+      }
+    }
+
+  </script>
+</head>
+<body>
+请选择你的女神：
+<select onchange="onchangeFun()">
+  <option>--女神--</option>
+  <option>芳芳</option>
+  <option>佳佳</option>
+  <option>美美</option>
+</select>
+
+  <select id="se01">
+    <option>--男神--</option>
+    <option>胡歌</option>
+    <option>彭于晏</option>
+    <option>谢霆锋</option>
+
+</select>
+
+</body>
+</html>
