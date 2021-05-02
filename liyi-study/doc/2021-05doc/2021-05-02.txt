@@ -1,0 +1,19 @@
+学习进度：
+
+
+疑难点：
+1.jQuery为按钮添加响应函数步骤
+ 1.使用jQuery查询标签对象
+ 2.使用标签对象.click{function(){}};
+
+2.jQuery对象的本质：
+  jQuery对象是dom对象的数组+jQuery提供的一系列功能函数
+
+3.dom对象和jQuery对象互转
+  1.dom对象转为jQuery对象
+    ①先有dom对象
+    ②${dom对象} 就可以转为jQuery对象
+
+  2.jQuery对象转为dom对象
+    ①先有jQuery对象
+    ②jQuery对象[下标]取出相应的dom对象
