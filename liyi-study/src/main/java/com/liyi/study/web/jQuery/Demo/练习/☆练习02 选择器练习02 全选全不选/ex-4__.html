@@ -7,7 +7,42 @@
 <script type="text/javascript">
 	
 	$(function(){
-		
+		$("#checkedAllBtn").click(function (){
+			$(":checkbox").prop("checked",true);
+		});
+
+		$("#checkedNoBtn").click(function (){
+			$(":checkbox").prop("checked",false);
+		});
+
+		$("#checkedRevBtn").click(function (){
+			$(":checkbox[name='items']").each(function (){
+				this.checked=!this.checked;
+			});
+			var allCount=$(":checkbox[name='items']").length;
+
+			var checkCount=$(":checkbox[name='items']:checked").length;
+
+			// $("#checkedAllBox").prop("checked",allCount==checkCount);
+
+			if(allCount==checkCount){
+				$("#checkedAllBox").prop("checked",true);
+			}else{
+				$("#checkedAllBox").prop("checked",false);
+
+			}
+		});
+
+		$("#sendBtn").click(function (){
+			$("checkbox[name='items']:checked").each(function (){
+				alert(this.value());
+			});
+		});
+
+
+
+
+
 		
 	});
 	

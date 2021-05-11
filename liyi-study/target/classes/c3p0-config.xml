@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+
+
+    <named-config name="helloC3P0">
+        <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/liyi?serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;rewriteBatchedStatements=true</property>
+        <property name="user">liyi</property>
+        <property name="password">liyi</property>
+
+        <property name="acquireIncrement">5</property>
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">10</property>
+        <property name="maxPoolSize">100</property>
+        <property name="maxStatements">50</property>
+        <property name="maxStatementsPerConnection">2</property>
+
+
+    </named-config>
+</c3p0-config>
