@@ -1,0 +1,15 @@
+学习进度：
+
+
+笔记：
+1.Tomcat目录介绍
+ bin          专门用来存放Tomcat服务器的可执行程序
+ conf         专门用来存放Tomcat服务器的配置文件
+ lib          专门用来存放Tomcat服务器的jia包
+ logs         专门用来存放Tomcat服务器运行时输出的日志信息
+ temp         专门用来存放Tomcat服务器运行时产生的临时数据
+ webapps      专门用来存放部署的Web工程
+ work         是Tomcat工作是的目录，用来存放Tomcat运行时jsp翻译为Servlet的源码，和Session钝化（序列化）的目录
+
+2.启动Tomcat
+  Tomcat目录————>bin————>startup.bat  双击
