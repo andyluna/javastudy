@@ -1,0 +1,8 @@
+学习进度
+
+疑难点：
+1. 部署Web工程到Tomcat中
+ 1.只需要把web工程的目录拷贝到Tomcat的webapps目录下即可
+
+ 2.找到Tomcat下的conf目录\Catalina\localhost\下，创建xml配置文件
+  path:fnag

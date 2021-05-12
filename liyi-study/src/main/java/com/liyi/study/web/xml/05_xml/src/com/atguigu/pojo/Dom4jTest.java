@@ -15,6 +15,4 @@ public class Dom4jTest {
         System.out.println(document);
     }
 
-
-
 }
