@@ -30,6 +30,8 @@
         <module>embed-tomcat</module>
         <module>spring-mybatisplus</module>
         <module>liyi-study</module>
+        <module>liyi-web</module>
+        <module>liyi-web1</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
