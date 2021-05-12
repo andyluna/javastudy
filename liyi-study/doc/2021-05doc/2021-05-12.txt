@@ -5,4 +5,14 @@
  1.只需要把web工程的目录拷贝到Tomcat的webapps目录下即可
 
  2.找到Tomcat下的conf目录\Catalina\localhost\下，创建xml配置文件
-  path:fnag
+  path:访问路径  daoBase:工程目录
+
+
+2.在idea中部署工程到Tomcat上运行
+ 1.建议修改web工程对应的Tomcat运行实例名称
+
+ 2.修改模块的工程路径(修改Application context的值)，最好与Tomcat运行实例名一致
+
+ 3.修改运行使用的端口号(HTTP port)
+
+ 4.配置资源热部署(On frame deactivation)修改为Update class and resources
