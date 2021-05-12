@@ -12,11 +12,4 @@
  work         是Tomcat工作是的目录，用来存放Tomcat运行时jsp翻译为Servlet的源码，和Session钝化（序列化）的目录
 
 2.启动Tomcat
-  Tomcat目录--->bin目录--->startup.bat  双击
-
-3.修改Tomcat默认端口号：8080
-  Tomcat目录--->conf目录--->server.xml配置文件--->Connector标签--->修改port属性为你需要的端口号，端口号范围：1-65535
-
-                   <Connector port="8080" protocol="HTTP/1.1"
-                                  connectionTimeout="20000"
-                                  redirectPort="8443" />
+  Tomcat目录————>bin————>startup.bat  双击
