@@ -7,6 +7,10 @@ package com.liyi.study.base.day0408;
  */
 public class OverLoadTest {
 
+    public static void main(String[] args) {
+        System.out.println(1);
+    }
+
     //方法的重载
 //    public void getSum(int i,int j){
 //        System.out.println(i+j);

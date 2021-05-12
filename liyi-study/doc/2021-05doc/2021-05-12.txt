@@ -22,3 +22,5 @@ Servlet05
 3.新建模块没有javaEE选项的解决办法:
 https://blog.csdn.net/qq_43606858/article/details/111594146?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-11.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-11.control
 
+4.将文件夹变成模块:
+https://www.jb51.net/article/193473.htm

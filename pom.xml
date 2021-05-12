@@ -23,15 +23,17 @@
         <module>spring-study</module>
         <module>spring-aspect</module>
         <module>spring-web</module>
-        <module>spring-web-annotation</module>
+       <!-- <module>spring-web-annotation</module>-->
         <module>spring-boot-study</module>
         <module>spring-boot-data-rest</module>
         <module>json-study</module>
         <module>embed-tomcat</module>
-        <module>spring-mybatisplus</module>
+        <!--<module>spring-mybatisplus</module>-->
         <module>liyi-study</module>
         <module>liyi-web</module>
-        <module>liyi-web1</module>
+        <module>abc</module>
+        <module>def</module>
+
     </modules>
     <properties>
         <java.version>1.8</java.version>

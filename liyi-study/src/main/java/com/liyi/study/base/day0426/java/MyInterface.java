@@ -18,7 +18,7 @@ public interface MyInterface {
         methodPrivate();
     }
     //jdk 9中允许接口中定义私有的方法
-    private void methodPrivate(){
+    default void methodPrivate(){
         System.out.println("我是接口中的私有方法");
     }
 }

@@ -22,7 +22,7 @@ public class Java9Test2 {
         //takeWhile 返回从开头开始的按照指定规则尽量多的元素
 //        list.stream().takeWhile(x -> x < 60).forEach(System.out::println);
         //dropWhile():与 takeWhile 相反，返回剩余的元素。
-        list.stream().dropWhile(x -> x < 60).forEach(System.out::println);
+//        list.stream().dropWhile(x -> x < 60).forEach(System.out::println);
     }
 
     @Test
@@ -36,9 +36,9 @@ public class Java9Test2 {
         Integer i = 10;
         i = null;
         //ofNullable()：形参变量是可以为null值的单个元素
-        Stream<Integer> stream3 = Stream.ofNullable(i);
-        long count = stream3.count();
-        System.out.println(count);
+//        Stream<Integer> stream3 = Stream.ofNullable(i);
+//        long count = stream3.count();
+//        System.out.println(count);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class Java9Test2 {
 
 
         //java9中新增的重载的方法
-        Stream.iterate(0,x -> x < 100,x -> x + 1).forEach(System.out::println);
+//        Stream.iterate(0,x -> x < 100,x -> x + 1).forEach(System.out::println);
     }
 
     //java9新特性十一：Optional提供了新的方法stream()
@@ -60,10 +60,10 @@ public class Java9Test2 {
         list.add("Tim");
 
         Optional<List<String>> optional = Optional.ofNullable(list);
-        Stream<List<String>> stream = optional.stream();
+//        Stream<List<String>> stream = optional.stream();
 //        long count = stream.count();
 //        System.out.println(count);
-        stream.flatMap(x -> x.stream()).forEach(System.out::println);
+//        stream.flatMap(x -> x.stream()).forEach(System.out::println);
 
     }
 
