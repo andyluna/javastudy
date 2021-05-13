@@ -33,6 +33,8 @@
         <module>liyi-web</module>
         <module>abc</module>
         <module>def</module>
+        <module>HelloGit</module>
+        <module>HelloGit</module>
 
     </modules>
     <properties>
