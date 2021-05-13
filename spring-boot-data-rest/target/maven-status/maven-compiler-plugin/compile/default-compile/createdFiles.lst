@@ -1,0 +1,8 @@
+com\andy\study\boot\repository\PeopleRepository.class
+com\andy\study\boot\service\HelloService.class
+com\andy\study\boot\controller\HelloController.class
+com\andy\study\boot\service\PeopleService.class
+com\andy\study\boot\MyBootDataRestApplication.class
+com\andy\study\boot\service\impl\HelloServiceImpl.class
+com\andy\study\boot\entity\People.class
+com\andy\study\boot\service\impl\PeopleServiceImpl.class

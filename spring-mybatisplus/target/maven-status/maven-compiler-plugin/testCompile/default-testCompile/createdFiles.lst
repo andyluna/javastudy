@@ -1,0 +1,5 @@
+com\andy\study\boot\dao\impl\CommonDaoImplTest.class
+com\andy\study\boot\dao\impl\JdbcTemplateTest.class
+com\andy\study\boot\MyBatisPlusApplicationTest.class
+com\andy\study\boot\mapper\UserMapperTest.class
+com\andy\study\boot\StringUtilTest.class

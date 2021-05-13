@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mySpel" class="com.andy.study.spring.spel.MySpel">
+        <property name="name" value="#{ T(java.util.UUID).randomUUID().toString()}"/>
+        <property name="username" value="#{systemProperties['user.name']}"/>
+        <property name="age" value="#{T(java.lang.Math).random() *200}"/>
+        <property name="random" value="#{T(java.lang.Math).random() *100}"/>
+    </bean>
+
+    <bean name="dateTimeFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
+        <constructor-arg index="0" value="yyyy-MM-dd HH:mm:ss"></constructor-arg>
+    </bean>
+
+    <bean name="dateFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
+        <constructor-arg index="0" value="yyyy-MM-dd"></constructor-arg>
+    </bean>
+</beans>

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: xiangdan
+Build-Jdk: 11.0.8
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: com.andy.study
+Main-Class: ${start-class}
+

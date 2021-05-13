@@ -1,0 +1,10 @@
+com\andy\study\boot\entity\User.class
+com\andy\study\boot\UserController.class
+com\andy\study\boot\test\Main.class
+com\andy\study\boot\dao\impl\CommonDaoImpl.class
+com\andy\study\boot\test\Main2.class
+com\andy\study\boot\test\Main3.class
+com\andy\study\boot\dao\CommonDao.class
+com\andy\study\boot\MyBatisPlusApplication.class
+com\andy\study\boot\mapper\UserMapper.class
+com\andy\study\boot\mapper\CommonMapper.class
