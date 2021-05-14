@@ -12,6 +12,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>servlet-study001</module>
+        <module>servlet-study</module>
+        <module>servlet-study002</module>
     </modules>
     <artifactId>liyi-web</artifactId>
 
