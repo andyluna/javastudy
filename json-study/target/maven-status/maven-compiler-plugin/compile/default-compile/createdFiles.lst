@@ -1,9 +1,0 @@
-com\andy\study\json\gson\LocalDateJsonSerializer.class
-com\andy\study\json\gson\MyTypeAdapterFactory.class
-com\andy\study\json\gson\LocalDateTimeJsonSerializer.class
-com\andy\study\json\jackson\JacksonTest01.class
-com\andy\study\json\fasfjson\FastJsonTest01.class
-com\andy\study\json\gson\GSONTest01.class
-com\andy\study\json\gson\LocalDateTimeJsonDerializer.class
-com\andy\study\json\entity\Person.class
-com\andy\study\json\gson\LocalDateJsonDerializer.class

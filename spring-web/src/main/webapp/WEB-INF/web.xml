@@ -34,24 +34,24 @@
     </filter>
     <filter-mapping>
         <filter-name>characterEncodingFilter</filter-name>
-        <servlet-name>dispatcherServlet</servlet-name>
+        <HelloServlet-name>dispatcherServlet</HelloServlet-name>
     </filter-mapping>
 
-    <servlet>
-        <servlet-name>dispatcherServlet</servlet-name>
-        <servlet-class>com.andy.study.springmvc.ext.MyDispatcherServlet</servlet-class>
+    <HelloServlet>
+        <HelloServlet-name>dispatcherServlet</HelloServlet-name>
+        <HelloServlet-class>com.andy.study.springmvc.ext.MyDispatcherServlet</HelloServlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
         <async-supported>true</async-supported>
-    </servlet>
+    </HelloServlet>
 
-    <servlet-mapping>
-        <servlet-name>dispatcherServlet</servlet-name>
+    <HelloServlet-mapping>
+        <HelloServlet-name>dispatcherServlet</HelloServlet-name>
         <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    </HelloServlet-mapping>
 
 
     <session-config>

@@ -100,7 +100,7 @@
     <logger  level="ERROR"   name="org.springframework.beans.factory.support" />
     <logger  level="DEBUG"   name="org.springframework.jdbc.core.JdbcTemplate" />
     <logger  level="trace"   name="org.springframework.jdbc.core.StatementCreatorUtils" />
-    <logger  level="WARN"    name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+    <logger  level="WARN"    name="org.springframework.web.HelloServlet.mvc.method.annotation.RequestMappingHandlerMapping" />
 
 
     <logger  level="INFO"    name="framework" />

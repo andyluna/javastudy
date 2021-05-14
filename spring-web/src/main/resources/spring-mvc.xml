@@ -41,7 +41,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     <!--
-        <mvc:default-servlet-handler/>
+        <mvc:default-HelloServlet-handler/>
     -->
 
     <mvc:interceptors>
@@ -191,14 +191,14 @@
     <!--    </mvc:view-resolvers>-->
     <!--    <mvc:redirect-view-controller path="controller" redirect-url=""/>-->
     <bean id="requestMappingHandlerMapping"
-          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+          class="org.springframework.web.HelloServlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="order" value="1"/>
     </bean>
 
-    <bean id="beanNameUrlHandlerMapping " class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+    <bean id="beanNameUrlHandlerMapping " class="org.springframework.web.HelloServlet.handler.BeanNameUrlHandlerMapping">
         <property name="order" value="2"/>
     </bean>
-    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.HelloServlet.handler.SimpleUrlHandlerMapping">
         <property name="order" value="3"/>
         <property name="mappings">
             <props>
@@ -208,7 +208,7 @@
         </property>
     </bean>
     <bean id="defaultServletHttpRequestHandler"
-          class="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler"></bean>
+          class="org.springframework.web.HelloServlet.resource.DefaultServletHttpRequestHandler"></bean>
     <bean id="myController" class="com.andy.study.springmvc.controller.MyController"></bean>
     <bean id="myController01" class="com.andy.study.springmvc.controller.MyController01"></bean>
     <bean id="contentNegotiationController"
@@ -216,7 +216,7 @@
     <bean id="asyncController" class="com.andy.study.springmvc.controller.AsyncController"/>
     <bean id="/myBeanName01" class="com.andy.study.springmvc.controller.MyBeanName01Controller"></bean>
     <bean id="mySimpleUrl01Controller" class="com.andy.study.springmvc.controller.MySimpleUrl01Controller"></bean>
-    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id="internalResourceViewResolver" class="org.springframework.web.HelloServlet.view.InternalResourceViewResolver">
         <property name="order" value="1"/>
         <property name="prefix" value="/jsp/beanname/"/>
         <property name="suffix" value=".jsp"/>
