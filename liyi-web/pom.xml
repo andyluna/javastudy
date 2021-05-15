@@ -14,6 +14,7 @@
         <module>servlet-study001</module>
         <module>servlet-study</module>
         <module>servlet-study002</module>
+        <module>servlet-study003</module>
     </modules>
     <artifactId>liyi-web</artifactId>
 
