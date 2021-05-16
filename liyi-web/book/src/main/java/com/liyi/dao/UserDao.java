@@ -27,7 +27,7 @@ public interface UserDao {
     /**
      * 保存用户信息
      * @param user
-     * @return
+     * @return 返回-1表示操作失败，其他是sql影响的行数
      */
     public int savaUser(User user);
 
