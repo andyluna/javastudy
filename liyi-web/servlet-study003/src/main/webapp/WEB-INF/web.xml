@@ -4,14 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-<servlet>
-    <servlet-name>RequestAPIServlet</servlet-name>
-    <servlet-class>com.liyi.study.RequestAPIServlet</servlet-class>
-</servlet>
-    <servlet>
-        <servlet-name>ParameterServlet</servlet-name>
-        <servlet-class>com.liyi.study.ParameterServlet</servlet-class>
-    </servlet>
+
+
     <servlet>
         <servlet-name>Servlet1</servlet-name>
         <servlet-class>com.liyi.study.Servlet1</servlet-class>
@@ -59,11 +53,19 @@
 
 
 
-
+    <servlet>
+        <servlet-name>ParameterServlet</servlet-name>
+        <servlet-class>com.liyi.study.ParameterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ParameterServlet</servlet-name>
         <url-pattern>/parameterServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RequestAPIServlet</servlet-name>
+        <servlet-class>com.liyi.study.RequestAPIServlet</servlet-class>
+    </servlet>
 <servlet-mapping>
     <servlet-name>RequestAPIServlet</servlet-name>
     <url-pattern>/requestAPIServlet</url-pattern>

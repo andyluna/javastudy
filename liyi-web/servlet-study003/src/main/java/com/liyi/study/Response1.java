@@ -18,8 +18,8 @@ public class Response1 extends HttpServlet {
         System.out.println("到达了Response1");
 
         //设置状态码302 表示重定向
-        resp.setStatus(302);
+//        resp.setStatus(302);
 
-        resp.setHeader("Location","http://localhost:8080/servlet-study003/response2");
+        resp.sendRedirect("http://localhost:8080/servlet-study003/response1");
     }
 }
