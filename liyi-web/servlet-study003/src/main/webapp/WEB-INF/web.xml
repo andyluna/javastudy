@@ -14,6 +14,7 @@
         <servlet-name>Servlet1</servlet-name>
         <url-pattern>/servlet1</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>Servlet2</servlet-name>
         <servlet-class>com.liyi.study.Servlet2</servlet-class>
