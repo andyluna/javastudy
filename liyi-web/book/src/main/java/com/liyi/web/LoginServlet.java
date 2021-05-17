@@ -3,9 +3,7 @@ package com.liyi.web;
 import com.liyi.pojo.User;
 import com.liyi.service.UserService;
 import com.liyi.service.impl.UserServiceImpl;
-import com.liyi.pojo.User;
-import com.liyi.service.UserService;
-import com.liyi.service.impl.UserServiceImpl;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
