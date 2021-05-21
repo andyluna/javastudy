@@ -1,0 +1,11 @@
+1.EL表达式主要是在jsp页面中输出数据
+  主要是域对象中的数据
+
+  当四个域对象都有相同的key的数据的时候，EL表达式会按照四个域的从小到大的顺序去进行搜索，
+  找到就输出，跟代码的先后顺序无关
+
+2.EL获取四个特定域中的属性
+  pageScope         ==  pageContext域
+  requestScope      ==  Request域
+  sessionScope      ==  Session域
+  applicationScope  ==  ServiceContext域

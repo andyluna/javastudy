@@ -16,6 +16,7 @@
         <module>servlet-study003</module>
         <module>jsp-study</module>
         <module>book</module>
+        <module>EL-JSTL-study</module>
 
     </modules>
     <artifactId>liyi-web</artifactId>
