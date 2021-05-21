@@ -22,7 +22,7 @@
     </style>
 </head>
 <body>
-<%--练习二：jsp输出一个表格，里面有10个学生信息。--%>
+
 <%
     List<Student> studentList = (List<Student>) request.getAttribute("stuList");
 %>
