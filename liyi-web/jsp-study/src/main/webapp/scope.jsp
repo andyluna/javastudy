@@ -1,7 +1,7 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2020/2/23
+  User: xiangdan
+  Date: 2021/5/19
   Time: 21:23
   To change this template use File | Settings | File Templates.
 --%>
@@ -46,6 +46,6 @@
         <jsp:forward page=""></jsp:forward> 是请求转发标签，它的功能就是请求转发
             page 属性设置请求转发的路径
     --%>
-<%--    <jsp:forward page="/scope2.jsp"></jsp:forward>--%>
+    <jsp:forward page="scope2.jsp"></jsp:forward>
 </body>
 </html>

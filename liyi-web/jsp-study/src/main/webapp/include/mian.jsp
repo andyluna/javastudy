@@ -13,7 +13,12 @@
 <body>
 头部信息<br>
 主体信息<br>
-<%@include file="/include/footer.jsp"%>
+<%--<%@include file="/include/footer.jsp"%>--%>
 
+<jsp:include page="/include/footer.jsp">
+    <jsp:param name="username" value="bbj"/>
+    <jsp:param name="password" value="123"/>
+
+</jsp:include>
 </body>
 </html>

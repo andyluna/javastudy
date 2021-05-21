@@ -5,12 +5,21 @@
          version="4.0">
     <servlet>
         <servlet-name>PringHtml</servlet-name>
-        <servlet-class>com.liyi.servlet.PringHtml</servlet-class>
+        <servlet-class>com.liyi.PringHtml</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>PringHtml</servlet-name>
         <url-pattern>/pringHtml</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SearchStudentServlet</servlet-name>
+        <servlet-class>com.liyi.servlet.SearchStudentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchStudentServlet</servlet-name>
+        <url-pattern>/searchStudentServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -13,5 +13,6 @@
 <body>
 页脚信息<br>
 修改下
+<%=request.getParameter("password")%>
 </body>
 </html>

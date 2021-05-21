@@ -1,4 +1,4 @@
-package com.liyi.servlet;
+package com.liyi;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
