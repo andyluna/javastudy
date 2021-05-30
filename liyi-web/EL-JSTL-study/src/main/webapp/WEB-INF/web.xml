@@ -12,4 +12,14 @@
         <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/uploadServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Download</servlet-name>
+        <servlet-class>com.liyi.servlet.Download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Download</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+
 </web-app>
