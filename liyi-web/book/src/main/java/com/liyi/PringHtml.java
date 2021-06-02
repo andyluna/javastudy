@@ -33,7 +33,7 @@ public class PringHtml extends HttpServlet {
         writer.write("<title>Title</title>\r\n");
         writer.write("</head>\r\n");
         writer.write("<body>\r\n");
-        writer.write("这是1.html的数据\r\n");
+        writer.write("这是1.jsp的数据\r\n");
         writer.write("</body>\r\n");
         writer.write("</html>\r\n");
 
@@ -46,7 +46,7 @@ public class PringHtml extends HttpServlet {
 //    <title>Title</title>
 //</head>
 //<body>
-//                这是1.html的数据
+//                这是1.jsp的数据
 //                </body>
 //</html>
     }
