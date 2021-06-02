@@ -26,12 +26,15 @@ public class RegistServlet extends HttpServlet {
         if ("abcde".equalsIgnoreCase(code)) {
         //检查用户名是否可用
             if (userService.existsUsername(username)) {
-                System.out.println("用户名[" + username + "]已存在!");
+
+                req.setAttribute("msg","用户名已存在!");
+                req.setAttribute("username",username);
+                req.setAttribute("email",email);
         //跳回注册页面
                 req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             } else {
                 //如果可用
-                //调用Sservice保存到数据库
+                //调用Service保存到数据库
                 userService.registUser(new User(null, username, password, email));
 
                 //跳到注册成功页面 regist_success.jsp
@@ -39,7 +42,13 @@ public class RegistServlet extends HttpServlet {
             }
         }
         else {
-            System.out.println("验证码[" + code + "]错误");
+            //把回显的信息保存到request域中
+            req.setAttribute("msg","验证码错误!");
+            req.setAttribute("username",username);
+            req.setAttribute("email",email);
+
+
+
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
         }
     }
