@@ -10,9 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jsp-study</artifactId>
-    <modules>
-        <module>EL_JSTL-study</module>
-    </modules>
+
     <dependencies>
         <dependency>
             <groupId>com.andy.study</groupId>
