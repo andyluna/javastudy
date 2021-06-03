@@ -29,8 +29,8 @@
 		</div>
 		
 		<div id="main">
-			<form action="manager/bookServlet" method="post">
-			<input type="hidden" name="action" value="add">
+			<form action="manager/bookServlet" method="get">
+				<input type="hidden" name="action" value="add">
 				<table>
 					<tr>
 						<td>名称</td>

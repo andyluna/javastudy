@@ -13,8 +13,15 @@ import java.lang.reflect.Method;
  * @time: 2021/6/2 23:35  星期三
  */
 public abstract class BaseServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req,resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String action=req.getParameter("action");
 
         try {

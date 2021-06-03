@@ -1,0 +1,77 @@
+路径问题总结
+总结性的话语，
+    任何操作系统的要查找一个文件都是从最顶层开始往下查找，
+        1.windows系统的顶层目录 是  C:   D:   E:
+        2.linux，unix，macOs ，android，除windows外的所有操作系统 顶面目录 一定是  /
+    E:\nexus\nexus-3.25.0-03-win64\sonatype-work\blobs\default\content
+    任何一个网站 定位一个资源最顶层 一定是 http https  ftp  sftp
+                        /  浏览器会总动识别 / 会在它前面自动加上当前服务器信息
+        ://
+
+        http://12.123.111.111:8080/book1
+        http://12.123.111.111:8080/book2
+
+        http://localhost:8080/book/userServlet
+
+        http://localhost:8080/book/static/img/code.bmp
+
+
+        http://88.88.88.88:8080/
+        https://www.baidu.com/
+
+        127.0.0.1 localhost
+        88.88.88.88:8080  www.baidu.com
+
+
+        http://localhost:8080/book/userServlet
+
+总结：：
+
+方式1：
+<img class="logo_img" alt="" src="/book/static/img/logo.gif" >
+方式1-智能变化版本：
+<img class="logo_img" alt="" src="<%=request.getContextPath()%>/static/img/logo.gif" >
+方式2：
+<img class="logo_img" alt="" src="http://localhost:8080/book/static/img/logo.gif" >
+方式2-智能变化版本：
+<img class="logo_img" alt="" src="<%=basePath%>static/img/logo.gif" >
+
+方式3-相对路径：
+它是相对于当前访问路径 来生成的路径
+    http://localhost:8080/book/userServlet
+    http://localhost:8080/book/static/img/logo.gif
+
+
+    http://localhost:8080/book/a/b/c/userServlet
+    http://localhost:8080/book/a/b/c/static/img/logo.gif
+<img class="logo_img" alt="" src="static/img/logo.gif" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+http://localhost:8080/book/userServlet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
