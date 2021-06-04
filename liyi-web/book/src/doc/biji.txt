@@ -36,6 +36,8 @@
 方式2-智能变化版本：
 <img class="logo_img" alt="" src="<%=basePath%>static/img/logo.gif" >
 
+request.getContextPath()===/工程名
+
 方式3-相对路径：
 它是相对于当前访问路径 来生成的路径
     http://localhost:8080/book/userServlet
@@ -45,15 +47,6 @@
     http://localhost:8080/book/a/b/c/userServlet
     http://localhost:8080/book/a/b/c/static/img/logo.gif
 <img class="logo_img" alt="" src="static/img/logo.gif" >
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,6 +61,16 @@ http://localhost:8080/book/userServlet
 
 
 
+                               <c:if test="${! empty key}">${key}</c:if>
+                               <c:if test="${empty key}">所有</c:if>
+                               当key不为空时输出key的值。当key为空时，输出“所有”
+                               规则：
+                               1若key为null时，返回true
+                               2若key为空String时，返回true
+                               3若key为空Array时，返回true
+                               4若key为空Map时，返回true
+                               5若key为空Collection时，返回true
+                               6否则，返回false
 
 
 

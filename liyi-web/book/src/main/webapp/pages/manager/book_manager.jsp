@@ -11,12 +11,12 @@
 			//给删除的a标签绑定单击事件,用于删除的确认操作
 			$("a.deleteClass").click(function (){
 				var name  = $(this).parent().parent().children('td')[1].innerText;
-				var name1 = $(this).parent().parent().children('td.myname').text();
+
 
 				var s =  "是否确认删除【"+name+"】?";
-				console.log("liyi =  "+s1);
 
-				return false;
+
+
 				return confirm(s);
 			})
 		})
@@ -43,16 +43,17 @@
 				<td colspan="2">操作</td>
 			</tr>
 
-		 <c:forEach items="${books}" var="book" varStatus="mystatus">
+		 <c:forEach items="${requestScope.page.items}" var="book" varStatus="mystatus">
 				<tr>
 					<td>${mystatus.count}</td>
-					<td class="myname">${book.name}</td>
+					<td>${book.name}</td>
 					<td>${book.price}</td>
 					<td>${book.author}</td>
 					<td>${book.sales}</td>
 					<td>${book.stock}</td>
 					<td colspan="2">
-						<a href="book_edit.jsp">修改</a>&nbsp;&nbsp;&nbsp;
+					                                                         <%--&method=update--%>
+						<a href="manager/bookServlet?action=getBook&id=${book.id}">修改</a>&nbsp;&nbsp;&nbsp;
 						<a class="deleteClass" href="manager/bookServlet?action=delete&id=${book.id}">删除</a>
 					</td>
 				</tr>
@@ -65,8 +66,8 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td></td>
-				<td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
+				<td></td>                                        <%--?method=add--%>
+				<td><a href="<%=basePath%>pages/manager/book_edit.jsp">添加图书</a></td>
 			</tr>
 		</table>
 	</div>

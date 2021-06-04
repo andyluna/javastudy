@@ -1,6 +1,7 @@
 package com.liyi.service;
 
 import com.liyi.pojo.Book;
+import com.liyi.pojo.Page;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface BookService {
     public Book queryBookById(Integer id);
 
     public List<Book> queryBooks();
+
+    Page<Book> page(int pageNo, int pageSize);
 }
