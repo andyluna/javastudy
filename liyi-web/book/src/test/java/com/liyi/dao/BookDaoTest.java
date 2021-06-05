@@ -51,8 +51,9 @@ public class BookDaoTest {
 
     @Test
     public void queryForPageItems(){
-        for (Book book : bookDao.queryForPageItems(2, 2)) {
+        for (Book book : bookDao.queryForPageItems(1, 4)) {
             System.out.println(book);
         }
+
     }
 }

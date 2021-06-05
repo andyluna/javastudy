@@ -25,18 +25,18 @@
     session域是否有值：<%=session.getAttribute("key3")%> <br>
     application域是否有值：<%=application.getAttribute("key4")%> <br>
     <%
-//        request.getRequestDispatcher("/scope2.jsp").forward(request,response);
+        request.getRequestDispatcher("/scope2.jsp").forward(request,response);
     %>
 
     <%
-        out.write("out输出1</br>");
-
-        out.flush();
-
-        out.write("out输出2</br>");
-
-        response.getWriter().write("response输出1</br>");
-        response.getWriter().write("response输出2</br>");
+//        out.write("out输出1</br>");
+//
+//        out.flush();
+//
+//        out.write("out输出2</br>");
+//
+//        response.getWriter().write("response输出1</br>");
+//        response.getWriter().write("response输出2</br>");
 
 
 
@@ -46,6 +46,6 @@
         <jsp:forward page=""></jsp:forward> 是请求转发标签，它的功能就是请求转发
             page 属性设置请求转发的路径
     --%>
-    <jsp:forward page="scope2.jsp"></jsp:forward>
+<%--    <jsp:forward page="scope2.jsp"></jsp:forward>--%>
 </body>
 </html>

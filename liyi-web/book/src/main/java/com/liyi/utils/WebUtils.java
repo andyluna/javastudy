@@ -39,7 +39,8 @@ public class WebUtils {
         try {
             return Integer.parseInt(strInt);
         } catch (Exception e) {
-            e.printStackTrace();
+
+//            System.out.println("将字符串"+strInt+"转成int报错"+e.getMessage()+"，返回默认值"+defaultValue);
         }
         return defaultValue;
     }
