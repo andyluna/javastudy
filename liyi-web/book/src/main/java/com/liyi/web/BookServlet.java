@@ -38,6 +38,8 @@ public class BookServlet extends BaseServlet{
         //调用BookService.page(pageNo,pageSize):page对象
         Page<Book> page=bookService.page(pageNo,pageSize);
 
+        page.setUrl("manager/bookServlet?action=page");
+
         //保存Page对象到request域中
         req.setAttribute("page",page);
         //请求转发到book_manager.jsp页面
@@ -46,12 +48,14 @@ public class BookServlet extends BaseServlet{
 
 
     protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int pageNo=WebUtils.parseInt(req.getParameter("pageNo"),0);
+        pageNo+=1;
         //获取请求的参数封装成book对象
         Book book= WebUtils.copyParamToBean(req.getParameterMap(),new Book());
         //调用BookService.addBook()保存图书
         bookService.addBook(book);
         //跳到图书列表界面                工程名   +端口号
-        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=page&pageNo="+pageNo);
     }
 
 
@@ -61,7 +65,7 @@ public class BookServlet extends BaseServlet{
         //调用bookService.deleteById()删除图书
         bookService.deleteBookById(id);
         //重定向回图书列表界面
-        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=page&pageNo="+req.getParameter("pageNo"));
     }
 
 
@@ -72,7 +76,7 @@ public class BookServlet extends BaseServlet{
         //调用bookService.update()修改图书
         bookService.updateBook(book);
         //重定向回图书列表页面
-        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=list");
+        resp.sendRedirect(req.getContextPath()+"/manager/bookServlet?action=page&pageNo="+req.getParameter("pageNo"));
     }
 
 
