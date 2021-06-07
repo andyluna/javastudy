@@ -17,6 +17,8 @@
         <module>jsp-study</module>
         <module>book</module>
         <module>EL-JSTL-study</module>
+        <module>cookie-session</module>
+
 
     </modules>
     <artifactId>liyi-web</artifactId>

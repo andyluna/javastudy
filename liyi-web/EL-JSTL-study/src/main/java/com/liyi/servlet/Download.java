@@ -1,8 +1,6 @@
 package com.liyi.servlet;
 
 import org.apache.commons.io.IOUtils;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.Base64;
 
 /**
  * @TODO: javastudy
@@ -39,7 +38,7 @@ public class Download extends HttpServlet {
         //5.还要告诉客户端收到的数据是用于下载使用（还是使用响应头）
         if (req.getHeader("User-Agent").contains("Firefox")) {
             // 如果是火狐浏览器使用Base64编码
-            resp.setHeader("Content-Disposition", "attachment; filename==?UTF-8?B?" + new BASE64Encoder().encode("中国.jpg".getBytes("UTF-8")) + "?=");
+            resp.setHeader("Content-Disposition", "attachment; filename==?UTF-8?B?" + Base64.getEncoder().encode("中国.jpg".getBytes("UTF-8")) + "?=");
         } else {
             // 如果不是火狐，是IE或谷歌，使用URL编码操作
             resp.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode("中国.jpg", "UTF-8"));
