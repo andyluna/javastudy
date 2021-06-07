@@ -14,6 +14,26 @@ import java.io.IOException;
  * @time: 2021/6/7 21:58  星期一
  */
 public class CookieServlet extends BaseServlet{
+    protected void life3600(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie cookie=new Cookie("life3600","life3600");
+        //设置cookie一小时后被删除
+        cookie.setMaxAge(60*60);
+        resp.addCookie(cookie);
+        resp.getWriter().write("设置了一个存活一小时的cookie");
+    }
+
+    protected void deleteNow(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //先找到你要删除的Cookie对象
+        Cookie cookie=CookieUtils.findCookie("key1",req.getCookies());
+        if (cookie!=null){
+        //调用setMaxAge(0)
+            cookie.setMaxAge(0);
+        //通知客户端保存修改
+            resp.addCookie(cookie);
+            resp.getWriter().write("key1的cookie已经被删除");
+        }
+    }
+
     protected void defaultLife(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie cookie=new Cookie("dafalutLife", "defalutLife");
         //设置存活时间
