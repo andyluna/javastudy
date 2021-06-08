@@ -1,5 +1,4 @@
 package com.liyi.servlet;
-
 import com.liyi.util.CookieUtils;
 
 import javax.servlet.ServletException;
@@ -14,6 +13,14 @@ import java.io.IOException;
  * @time: 2021/6/7 21:58  星期一
  */
 public class CookieServlet extends BaseServlet{
+    protected void testPath(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie cookie=new Cookie("path1", "path1");
+        cookie.setPath(req.getContextPath()+"/abc");
+        resp.addCookie(cookie);
+        resp.getWriter().write("创建一个带有path路径的cookie");
+
+    }
+
     protected void life3600(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie cookie=new Cookie("life3600","life3600");
         //设置cookie一小时后被删除

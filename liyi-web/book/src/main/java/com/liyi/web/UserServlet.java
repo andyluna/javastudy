@@ -21,6 +21,22 @@ public class UserServlet extends BaseServlet {
 
     private UserService userService = new UserServiceImpl();
 
+
+    /**
+     * 注销
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //销毁Session中用户登录的信息（或者销毁Session）
+        req.getSession().invalidate();
+        //重定向首页（或登录页）
+        resp.sendRedirect(req.getContextPath());
+    }
+
+
     /**
      * 处理登录的功能
      *
@@ -45,6 +61,7 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
             // 登录 成功
+            req.getSession().setAttribute("user",loginUser);
             //跳到成功页面login_success.html
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
