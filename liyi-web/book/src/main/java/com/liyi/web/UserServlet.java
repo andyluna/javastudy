@@ -9,8 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Objects;
+
+import static com.liyi.web.ImgCodeServlet.SESSION_IMG_CODE;
 
 /**
  * @TODO: javastudy
@@ -47,6 +51,26 @@ public class UserServlet extends BaseServlet {
      */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession();
+        String qdcode = req.getParameter("code");
+        String hdcode = (String) session.getAttribute(SESSION_IMG_CODE);
+
+        System.out.println("前端传过来的验证码 = "+qdcode);
+        System.out.println("后端验证码        = "+hdcode);
+
+        if(qdcode.equalsIgnoreCase(hdcode)){
+            //验证码验证通过
+            session.removeAttribute(SESSION_IMG_CODE);
+            req.removeAttribute("error");
+            System.out.println("验证码校验通过");
+        }else{
+            System.out.println("验证码不通过通过");
+            session.removeAttribute(SESSION_IMG_CODE);
+            req.setAttribute("error","验证码校验不通过");
+            req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
+            return;
+
+        }
         //  1、获取请求的参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -57,6 +81,7 @@ public class UserServlet extends BaseServlet {
             // 把错误信息，和回显的表单项信息，保存到Request域中
             req.setAttribute("msg", "用户或密码错误！");
             req.setAttribute("username", username);
+            req.removeAttribute("error");
             //   跳回登录页面
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {

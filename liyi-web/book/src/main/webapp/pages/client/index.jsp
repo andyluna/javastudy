@@ -8,6 +8,16 @@
 
     <%-- 静态包含 base标签、css样式、jQuery文件 --%>
     <%@ include file="/pages/common/head.jsp"%>
+    <script type="text/javascript">
+        $(function (){
+            //给加入购物车按钮绑定单机事件
+            $("button.addToCart").click(function (){
+                var id=$(this).attr("cartId");
+
+                location.href="${pageContext.request.contextPath}/cartServlet?action=addItem&id="+id;
+            })
+        })
+    </script>
 </head>
 <body>
 
@@ -78,7 +88,7 @@
                         <span class="sp2">${book.stock}</span>
                     </div>
                     <div class="book_add">
-                        <button>加入购物车</button>
+                        <button class="addToCart" cartId="${book.id}">加入购物车</button>
                     </div>
                 </div>
             </div>

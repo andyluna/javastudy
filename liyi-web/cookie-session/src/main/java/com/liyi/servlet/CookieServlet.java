@@ -5,7 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @TODO: javastudy
@@ -96,10 +98,21 @@ public class CookieServlet extends BaseServlet{
     protected void createCookie(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie cookie=new Cookie("key1", "value1");
         resp.addCookie(cookie);
-        resp.getWriter().write("Cookie创建成功");
+
+        HttpSession session = req.getSession();
+        String id = session.getId();//1
+        session.setAttribute("a","b");
+        session.setAttribute("c","d");
+
+//        session.setAttribute("user",new User());
+
 
         Cookie cookie1=new Cookie("key2", "value2");
         resp.addCookie(cookie1);
-        resp.getWriter().write("Cookie1创建成功");
+        PrintWriter writer = resp.getWriter();
+        writer.write("Cookie创建成功");
+        writer.write("Cookie1创建成功");
+        writer.flush();
+        writer.close();
     }
 }

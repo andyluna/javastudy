@@ -52,6 +52,32 @@
         <url-pattern>/client/bookServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.liyi.web.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <init-param>
+            <param-name>str</param-name>
+            <param-value>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</param-value>
+        </init-param>
+        <init-param>
+            <param-name>length</param-name>
+            <param-value>4</param-value>
+        </init-param>
+        <servlet-name>imgCodeServlet</servlet-name>
+        <servlet-class>com.liyi.web.ImgCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>imgCodeServlet</servlet-name>
+        <url-pattern>/imgCodeServlet</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>
