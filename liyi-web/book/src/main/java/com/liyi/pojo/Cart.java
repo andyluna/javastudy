@@ -9,7 +9,7 @@ import java.util.Map;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/9 19:06  星期三
  */
-public class cart {
+public class Cart {
 //    private Integer totalCount;
 //    private BigDecimal totalPrice;
     /**
@@ -67,7 +67,7 @@ public class cart {
 
     }
 
-    public cart() {
+    public Cart() {
     }
 
 //    public cart(Integer totalCount, BigDecimal totalPrice, Map<Integer, CartItem> items) {

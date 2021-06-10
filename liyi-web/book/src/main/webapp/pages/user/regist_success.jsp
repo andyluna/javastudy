@@ -8,7 +8,7 @@
 	<%@include file="/pages/common/head.jsp"%>
 <style type="text/css">
 	h1 {
-		text-align: center;
+		text-align: center;153
 		margin-top: 200px;
 	}
 	
