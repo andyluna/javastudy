@@ -79,5 +79,14 @@
         <url-pattern>/imgCodeServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.liyi.web.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

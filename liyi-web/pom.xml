@@ -18,6 +18,7 @@
         <module>book</module>
         <module>EL-JSTL-study</module>
         <module>cookie-session</module>
+        <module>filter</module>
 
 
     </modules>
