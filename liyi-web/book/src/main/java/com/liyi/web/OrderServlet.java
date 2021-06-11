@@ -43,13 +43,13 @@ public class OrderServlet extends BaseServlet{
         //调用orderService.createOrder(Cart,userId) 生成订单
         String orderId = orderService.createOrder(cart, userid);
 
-//        req.setAttribute("orderId",orderId);
-//        //请求转发订单结算页面
-//        req.getRequestDispatcher("/pages/cart/checkout.jsp").forward(req,resp);
+        req.setAttribute("orderId",orderId);
+        //请求转发订单结算页面
+        req.getRequestDispatcher("/pages/cart/checkout.jsp").forward(req,resp);
 
-        req.getSession().setAttribute("orderId",orderId);
-
-        resp.sendRedirect(req.getContextPath()+"/pages/cart/checkout.jsp");
+//        req.getSession().setAttribute("orderId",orderId);
+//
+//        resp.sendRedirect(req.getContextPath()+"/pages/cart/checkout.jsp");
 
     }
 }
