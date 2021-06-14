@@ -29,7 +29,8 @@
         <c:if test="${empty sessionScope.user}">
             <a href="<%=basePath%>pages/user/login.jsp">登录</a> |
             <a href="<%=basePath%>pages/user/regist.jsp">注册</a> &nbsp;&nbsp;
-
+            <a href="<%=basePath%>pages/cart/cart.jsp">购物车</a>
+            <a href="<%=basePath%>pages/manager/manager.jsp">后台管理</a>
         </c:if>
 
         <%--如果已经登录显示登录成功之后的用户信息--%>
@@ -37,8 +38,7 @@
             <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临尚硅谷书城</span>
             <a href="<%=basePath%>pages/order/order.jsp">我的订单</a>
             <a href="userServlet?action=logout">注销</a>
-            <a href="<%=basePath%>pages/cart/cart.jsp">购物车</a>
-            <a href="<%=basePath%>pages/manager/manager.jsp">后台管理</a>
+
         </c:if>
 
     </div>

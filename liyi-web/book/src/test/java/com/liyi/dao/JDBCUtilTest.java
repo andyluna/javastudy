@@ -16,9 +16,9 @@ public class JDBCUtilTest {
 
     @Test
     public void testCon(){
-        Connection con= JDBCUtils.getCon();
-        System.out.println(con);
-        JDBCUtils.closeCon(con);
+//        Connection con= JDBCUtils.getCon();
+//        System.out.println(con);
+//        JDBCUtils.closeCon(con);
     }
 
 }

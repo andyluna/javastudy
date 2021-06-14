@@ -25,12 +25,15 @@ public abstract class BaseServlet extends HttpServlet {
         String action=req.getParameter("action");
 
         try {
+            //获取action业务鉴别字符串，获取相应的业务，方法反射对象
             Method method=this.getClass().getDeclaredMethod(action,HttpServletRequest.class,HttpServletResponse.class);
-
+            //调用目标业务 方法
             method.invoke(this,req,resp);
 
         } catch (Exception e) {
             e.printStackTrace();
+            //把异常抛给Filter过滤器
+            throw new RuntimeException(e);
         }
     }
 }

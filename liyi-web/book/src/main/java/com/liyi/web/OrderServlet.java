@@ -1,10 +1,9 @@
 package com.liyi.web;
-
 import com.liyi.pojo.Cart;
-
 import com.liyi.pojo.User;
 import com.liyi.service.OrderService;
 import com.liyi.service.OrderServiceImpl;
+import com.liyi.utils.JDBCUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -43,13 +42,13 @@ public class OrderServlet extends BaseServlet{
         //调用orderService.createOrder(Cart,userId) 生成订单
         String orderId = orderService.createOrder(cart, userid);
 
-        req.setAttribute("orderId",orderId);
-        //请求转发订单结算页面
-        req.getRequestDispatcher("/pages/cart/checkout.jsp").forward(req,resp);
+//        req.setAttribute("orderId",orderId);
+//        //请求转发订单结算页面
+//        req.getRequestDispatcher("/pages/cart/checkout.jsp").forward(req,resp);
 
-//        req.getSession().setAttribute("orderId",orderId);
-//
-//        resp.sendRedirect(req.getContextPath()+"/pages/cart/checkout.jsp");
+        req.getSession().setAttribute("orderId",orderId);
+
+        resp.sendRedirect(req.getContextPath()+"/pages/cart/checkout.jsp");
 
     }
 }
