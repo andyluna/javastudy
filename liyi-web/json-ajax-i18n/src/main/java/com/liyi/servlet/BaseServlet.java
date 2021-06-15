@@ -1,4 +1,4 @@
-package com.liyi.web;
+package com.liyi.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +21,9 @@ public abstract class BaseServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html;charset=UTF-8");
         req.setCharacterEncoding("UTF-8");
         String action=req.getParameter("action");
-
-        resp.setContentType("text/html;charset=UTF-8");
 
         try {
             //获取action业务鉴别字符串，获取相应的业务，方法反射对象

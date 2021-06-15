@@ -19,6 +19,7 @@
         <module>EL-JSTL-study</module>
         <module>cookie-session</module>
         <module>filter</module>
+        <module>json-ajax-i18n</module>
 
 
     </modules>

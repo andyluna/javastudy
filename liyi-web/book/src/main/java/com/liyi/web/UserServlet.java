@@ -1,5 +1,6 @@
 package com.liyi.web;
 
+import com.google.gson.Gson;
 import com.liyi.pojo.User;
 import com.liyi.service.UserService;
 import com.liyi.service.impl.UserServiceImpl;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static com.liyi.web.ImgCodeServlet.SESSION_IMG_CODE;
@@ -141,6 +144,21 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
         }
 
+    }
+
+    protected void ajaxExistUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取请求的参数
+        String username = req.getParameter("username");
+        //调用userService.existUsername();
+        boolean existsUsername=userService.existsUsername(username);
+        //把返回的结果封装成Map对象
+        Map<String,Object> resultMap=new HashMap<>();
+        resultMap.put("existsUsername",existsUsername);
+
+        Gson gson=new Gson();
+        String json=gson.toJson(resultMap);
+
+        resp.getWriter().write(json);
     }
 
 
