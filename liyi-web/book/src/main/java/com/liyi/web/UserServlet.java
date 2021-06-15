@@ -157,6 +157,8 @@ public class UserServlet extends BaseServlet {
 
         Gson gson=new Gson();
         String json=gson.toJson(resultMap);
+//        String s =
+//                {"existsUsername":"existsUsername"};
 
         resp.getWriter().write(json);
     }

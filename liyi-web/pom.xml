@@ -20,6 +20,7 @@
         <module>cookie-session</module>
         <module>filter</module>
         <module>json-ajax-i18n</module>
+        <module>cms</module>
 
 
     </modules>

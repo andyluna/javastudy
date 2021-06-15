@@ -13,11 +13,10 @@
 		// 页面加载完成之后
 		$(function () {
 
-			//给用户名输入绑定失去焦点事件
+			//给注册用户名输入绑定失去焦点事件
 			$("#username").blur(function (){
 				//获取用户名
 				var username=this.value;
-
 
 				$.getJSON("http://localhost:8080/book/userServlet","action=ajaxExistUsername&username="+username,function (data){
 					if (data.existsUsername){
