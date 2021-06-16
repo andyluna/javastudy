@@ -36,7 +36,7 @@ public class UserDaoTest {
 
     @Test
     public void savaUser(){
-        System.out.println(userDao.savaUser(new User(null,"admin1","111222","3366@qq.com")));
+        System.out.println(userDao.savaUser(new User(null,"zhuyi11","111222","3366@qq.com")));
 
     }
 }

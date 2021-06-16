@@ -62,8 +62,7 @@ public abstract class BaseDao {
      * @param <T> 返回的类型的泛型
      * @return
      */
-    public <T>List<T>
-    queryForList(Class<T> type,String sql,Object...args){
+    public <T>List<T> queryForList(Class<T> type,String sql,Object...args){
         Connection con=JDBCUtils.getCon();
         try {
             return queryRunner.query(con,sql,new BeanListHandler<T>(type),args);

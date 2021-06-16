@@ -44,16 +44,50 @@
     <filter>
         <filter-name>loginFilter</filter-name>
         <filter-class>com.study.cms.comm.filter.LoginFilter</filter-class>
+        <init-param>
+            <param-name>ignorePath</param-name>
+            <param-value>/,/front,/manager/login,/manager/logout,.jsp,.js,.css,.png,.jpeg</param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
-        <url-pattern>/manager/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
 
 
 
     <!--3.配置具体的servlet-->
+    <servlet>
+        <servlet-name>managerIndexServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.ManagerIndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerIndexServlet</servlet-name>
+        <url-pattern>/manager/index</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/manager/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/manager/logout</url-pattern>
+    </servlet-mapping>
+
 
 
 
