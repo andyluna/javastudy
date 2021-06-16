@@ -58,6 +58,7 @@
 
 
     <!--3.配置具体的servlet-->
+    <!--3.1 首页-->
     <servlet>
         <servlet-name>managerIndexServlet</servlet-name>
         <servlet-class>com.study.cms.manager.servlet.ManagerIndexServlet</servlet-class>
@@ -67,7 +68,7 @@
         <url-pattern>/manager/index</url-pattern>
     </servlet-mapping>
 
-
+    <!--3.2 登录-->
     <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>com.study.cms.manager.servlet.LoginServlet</servlet-class>
@@ -77,7 +78,7 @@
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/manager/login</url-pattern>
     </servlet-mapping>
-
+    <!--3.3 退出-->
     <servlet>
         <servlet-name>logoutServlet</servlet-name>
         <servlet-class>com.study.cms.manager.servlet.LogoutServlet</servlet-class>
