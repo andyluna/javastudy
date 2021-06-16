@@ -8,7 +8,7 @@
     
     <!--1.配置一个监听器-->
     <listener>
-        <listener-class>com.study.cms.listener.PlatformInitListener</listener-class>
+        <listener-class>com.study.cms.comm.listener.PlatformInitListener</listener-class>
     </listener>
 
     <context-param>
@@ -20,7 +20,7 @@
     <!--2.1配置字符编码过滤器-->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
-        <filter-class>com.study.cms.filter.CharacterEncodingFilter</filter-class>
+        <filter-class>com.study.cms.comm.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -33,7 +33,7 @@
     <!--2.2为所有的请求设置basepath属性-->
     <filter>
         <filter-name>basePathFilter</filter-name>
-        <filter-class>com.study.cms.filter.BasePathFilter</filter-class>
+        <filter-class>com.study.cms.comm.filter.BasePathFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>basePathFilter</filter-name>
@@ -43,7 +43,7 @@
     <!--2.3配置登录过滤器-->
     <filter>
         <filter-name>loginFilter</filter-name>
-        <filter-class>com.study.cms.filter.LoginFilter</filter-class>
+        <filter-class>com.study.cms.comm.filter.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>loginFilter</filter-name>

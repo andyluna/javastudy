@@ -1,10 +1,9 @@
-package com.study.cms.filter;
+package com.study.cms.comm.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.study.cms.filter;
+package com.study.cms.comm.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

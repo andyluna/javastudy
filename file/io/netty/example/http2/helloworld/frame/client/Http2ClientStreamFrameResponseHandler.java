@@ -36,7 +36,7 @@ public final class Http2ClientStreamFrameResponseHandler extends SimpleChannelIn
     protected void channelRead0(ChannelHandlerContext ctx, Http2StreamFrame msg) throws Exception {
         System.out.println("Received HTTP/2 'stream' frame: " + msg);
 
-        // isEndStream() is not from a common interface, so we currently must check both
+        // isEndStream() is not from a comm interface, so we currently must check both
         if (msg instanceof Http2DataFrame && ((Http2DataFrame) msg).isEndStream()) {
             latch.countDown();
         } else if (msg instanceof Http2HeadersFrame && ((Http2HeadersFrame) msg).isEndStream()) {
