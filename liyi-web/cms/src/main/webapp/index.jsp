@@ -8,6 +8,6 @@
 </head>
 <body>
     <h1>企业综合管理系统外网展示首页-本页面不需要登录</h1>
-    <h2><a href="${path}/admin" target="_blank">企业综合管理后台首页-需要登录才能访问</a></h2>
+    <h2><a href="${path}/manager/index" target="_blank">企业综合管理后台首页-需要登录才能访问</a></h2>
 </body>
 </html>

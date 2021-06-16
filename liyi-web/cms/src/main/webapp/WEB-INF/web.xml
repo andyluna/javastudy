@@ -47,7 +47,7 @@
     </filter>
     <filter-mapping>
         <filter-name>loginFilter</filter-name>
-        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/manager/*</url-pattern>
     </filter-mapping>
 
 
