@@ -6,7 +6,7 @@
 
     <description>公司综合管理系统</description>
     
-    <!--配置一个监听器-->
+    <!--1.配置一个监听器-->
     <listener>
         <listener-class>com.study.cms.listener.PlatformInitListener</listener-class>
     </listener>
@@ -16,8 +16,50 @@
         <param-value>cms</param-value>
     </context-param>
 
-    
+    <!--2.配置过滤器-->
+    <!--2.1配置字符编码过滤器-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>com.study.cms.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--2.2为所有的请求设置basepath属性-->
+    <filter>
+        <filter-name>basePathFilter</filter-name>
+        <filter-class>com.study.cms.filter.BasePathFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>basePathFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--2.3配置登录过滤器-->
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.study.cms.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 
 
 
+
+    <!--3.配置具体的servlet-->
+
+
+
+
+    <!--设置项目的默认首页-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
