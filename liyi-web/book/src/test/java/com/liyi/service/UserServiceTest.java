@@ -1,3 +1,5 @@
+package com.liyi.service;
+
 import com.liyi.pojo.User;
 import com.liyi.service.UserService;
 import com.liyi.service.impl.UserServiceImpl;

@@ -15,6 +15,7 @@
 
 
 
+
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.liyi.web.LoginServlet</servlet-class>
@@ -32,5 +33,96 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/userServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BookServlet</servlet-name>
+        <servlet-class>com.liyi.web.BookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BookServlet</servlet-name>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <servlet-class>com.liyi.web.ClientBookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientBookServlet</servlet-name>
+        <url-pattern>/client/bookServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.liyi.web.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/cartServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <init-param>
+            <param-name>str</param-name>
+            <param-value>abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</param-value>
+        </init-param>
+        <init-param>
+            <param-name>length</param-name>
+            <param-value>4</param-value>
+        </init-param>
+        <servlet-name>imgCodeServlet</servlet-name>
+        <servlet-class>com.liyi.web.ImgCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>imgCodeServlet</servlet-name>
+        <url-pattern>/imgCodeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>com.liyi.web.OrderServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/orderServlet</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.liyi.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/bookServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.liyi.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!--当前工程下所有请求-->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--error-pages标签配置，服务器出错之后，自动跳转的页面-->
+    <error-page>
+        <!--error-code是错误的类型-->
+        <error-code>500</error-code>
+        <!--location标签表示，要跳转去的页面路径-->
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
+
+    <!--error-pages标签配置，服务器出错之后，自动跳转的页面-->
+    <error-page>
+        <!--error-code是错误的类型-->
+        <error-code>404</error-code>
+        <!--location标签表示，要跳转去的页面路径-->
+        <location>/pages/error/error404.jsp</location>
+    </error-page>
+
 
 </web-app>

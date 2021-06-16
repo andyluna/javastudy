@@ -1,3 +1,5 @@
+package com.liyi.dao;
+
 import com.liyi.utils.JDBCUtils;
 import org.junit.Test;
 
@@ -14,9 +16,9 @@ public class JDBCUtilTest {
 
     @Test
     public void testCon(){
-        Connection con= JDBCUtils.getCon();
-        System.out.println(con);
-        JDBCUtils.closeCon(con);
+//        Connection con= JDBCUtils.getCon();
+//        System.out.println(con);
+//        JDBCUtils.closeCon(con);
     }
 
 }

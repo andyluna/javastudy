@@ -17,6 +17,11 @@
         <module>jsp-study</module>
         <module>book</module>
         <module>EL-JSTL-study</module>
+        <module>cookie-session</module>
+        <module>filter</module>
+        <module>json-ajax-i18n</module>
+        <module>cms</module>
+
 
     </modules>
     <artifactId>liyi-web</artifactId>

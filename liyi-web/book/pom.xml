@@ -17,10 +17,22 @@
     </properties>
     <packaging>war</packaging>
 <dependencies>
+
+
+
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.25</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet.jsp.jstl</groupId>
+        <artifactId>jstl-api</artifactId>
+        <version>1.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.taglibs</groupId>
+        <artifactId>taglibs-standard-impl</artifactId>
+        <version>1.2.5</version>
     </dependency>
 
     <dependency>
@@ -28,10 +40,7 @@
         <artifactId>druid</artifactId>
         <version>1.2.6</version>
     </dependency>
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-    </dependency>
+
     <dependency>
         <groupId>commons-dbutils</groupId>
         <artifactId>commons-dbutils</artifactId>
@@ -52,6 +61,11 @@
         <artifactId>commons-logging</artifactId>
         <version>1.2</version>
     </dependency>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+    </dependency>
+
 
 </dependencies>
 </project>

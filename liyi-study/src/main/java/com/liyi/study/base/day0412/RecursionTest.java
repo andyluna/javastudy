@@ -8,10 +8,10 @@ package com.liyi.study.base.day0412;
 public class RecursionTest {
     public static void main(String[] args) {
         //计算1-100所有自然数的和
-//        int sum=0;
-//        for (int i=1;i<=100;i++){
-//            sum+=i;
-//        }
+        int sum=0;
+        for (int i=1;i<=100;i++){
+            sum+=i;
+        }
     }
 
     public int getSum(int n){

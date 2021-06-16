@@ -19,13 +19,23 @@
 </head>
 <body>
 <div id="header">
-	<img class="logo_img" alt="" src="static/img/logo.gif" >
+
+
+<%--	方式1：
+	<img class="logo_img" alt="" src="/book/static/img/logo.gif" >
+	方式1-智能变化版本：
+	<img class="logo_img" alt="" src="<%=request.getContextPath()%>/static/img/logo.gif" >
+	方式2：
+	<img class="logo_img" alt="" src="http://localhost:8080/book/static/img/logo.gif" >
+	方式2-智能变化版本：--%>
+	<img class="logo_img" alt="" src="<%=basePath%>static/img/logo.gif" >
+
 	<%@include file="/pages/common/login_sucess_menu.jsp"%>
 </div>
 
 <div id="main">
 
-	<h1>欢迎回来 <a href="index.html">转到主页</a></h1>
+	<h1>欢迎回来 <a href="<%=basePath%>index.jsp">转到主页</a></h1>
 
 </div>
 
