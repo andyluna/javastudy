@@ -34,6 +34,11 @@
 
 $(function(){
 	$('#errorTr').hide();
+	$('#password').keydown(function (r){
+		if(r.keyCode==13){
+			$('#submit').click();
+		}
+	})
 	$('#submit').click(function(){
 		var mypath = $("#mypath").val();
 		//点击了登录

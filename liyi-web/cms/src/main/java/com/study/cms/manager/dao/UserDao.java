@@ -2,6 +2,8 @@ package com.study.cms.manager.dao;
 
 import com.study.cms.manager.entity.User;
 
+import java.util.List;
+
 /**
  * @time: 2021/6/16 六月 10:56
  * @author: xiangdan/xiangdan@dtxytech.com
@@ -25,9 +27,43 @@ public interface UserDao {
 
 
     /**
+     * 根据id查找一个用户
+     * @param id
+     * @return
+     */
+    public User queryUserById(Integer id);
+
+
+    public List userList();
+
+
+    /**
      * 保存一个用户
      * @param user
      * @return
      */
     public int addUser(User user);
+
+
+    /**
+     * 删除一个用户
+     * @param id
+     * @return
+     */
+    public int deleteUserById(Integer id);
+
+
+    /**
+     * 修改用户信息
+     * @param user
+     * @return
+     */
+    public int updateUser(User user);
+
+
+    List<User> queryUsers(String username, String user, String sex);
+
+    List<User> queryUsers(String username, String user, String sex,Integer curPage,Integer pageSize);
+
+    int queryUsersTotal(String username,String user,String sex);
 }

@@ -7,4 +7,8 @@ package com.study.cms.comm.utils;
  */
 public interface Constants {
     String SESSION_KEY="SESSION_USER_KEY";
+
+    int DEFAULT_CURPAGE  = 1;
+    int DEFAULT_PAGESIZE = 20;
+
 }

@@ -88,6 +88,15 @@
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/manager/logout</url-pattern>
     </servlet-mapping>
+    <!--3.4 显示所有用户-->
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/manager/userServlet</url-pattern>
+    </servlet-mapping>
 
 
 

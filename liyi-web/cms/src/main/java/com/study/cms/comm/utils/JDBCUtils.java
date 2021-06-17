@@ -65,7 +65,7 @@ public class JDBCUtils {
     public static void closeCon(Connection con){
         if (con!=null){
             try {
-                con.isClosed();
+                con.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
