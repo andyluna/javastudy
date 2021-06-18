@@ -1,0 +1,11 @@
+明天任务
+    完成一个部门管理 的增删改查 整个操作 跟用户管理完全类似
+
+
+部门表字段有:
+    id               部门ID 主键         id       Integer
+    name             部门名称            name     String
+    code             部门编码            code      String  (唯一)
+    parent_id        父部门Id            parentId Integer
+    create_date      创建时间 date类型    createDare java.util.Date
+    last_update_date 最后一次修改时间      lastUpdateDate    java.util.Date

@@ -18,11 +18,20 @@ public class UserDaoImpl  implements UserDao{
     private final static Logger log = LoggerFactory.getLogger(UserDaoImpl.class);
     @Override
     public User queryByUsername(String username) {
-        String sql="select id,username,password,phone from c_user where username=?";
+        String sql="select id,username,password,phone,name,address,sex,dept_id from c_user where username=?";
         User user = BaseDao.queryJavaBean(User.class, sql, username);
         log.debug("根据用户名[{}]查询用户返回结果:{}",username,user);
         return user;
     }
+
+    @Override
+    public User queryByUsername(Integer id, String username) {
+        String sql="select id,username,password,phone,name,address,sex,dept_id from c_user where username=? and id != ? ";
+        User user = BaseDao.queryJavaBean(User.class, sql, username,id);
+        log.debug("根据用户名[{}]查询用户返回结果:{}",username,user);
+        return user;
+    }
+
 
     @Override
     public User queryByUsernameAndPassword(String username, String password) {
@@ -57,7 +66,7 @@ public class UserDaoImpl  implements UserDao{
 
     @Override
     public int updateUser(User user) {
-        String sql="update c_user set username=?,password=?,phone=?,name=?,address=?,sex=?,dept_id=? where id=?;";
+        String sql="update c_user set username=?,password=?,phone=?,name=?,address=?,sex=?,dept_id=? where id=?";
         return BaseDao.update(sql,user.getUsername(),user.getPassword(),user.getPhone(),user.getName(),user.getAddress(),user.getSex(),user.getDept_id(),user.getId());
     }
 

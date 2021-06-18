@@ -17,6 +17,9 @@ public interface UserDao {
      */
     public User queryByUsername(String username);
 
+
+    public User queryByUsername(Integer id,String username);
+
     /**
      * 根据用户名和密码查询用户
      * @param username

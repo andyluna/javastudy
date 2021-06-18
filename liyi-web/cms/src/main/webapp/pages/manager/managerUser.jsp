@@ -15,11 +15,12 @@
 <body>
 
 <div>
+  <input type="hidden" id="mypath" value="${path}">
 
-  <table border="1" align="center" width="80%">
+  <table id="tb" border="1" align="center" width="80%">
     <caption style="font-size: 30px;">用户列表展示</caption>
     <tr>
-      <td colspan="10">
+      <td colspan="11">
         <form method="post" action="${path}/manager/userServlet">
           <input name="action" value="list" type="hidden">
           <input name="curPage" id="curPage"  value="${pageRes.curPage}"  type="hidden">
@@ -35,11 +36,13 @@
 
           <input type="submit" value="查询" id="mysubmit">
         </form>
-        <a href="javscript:void(0)">新增用户</a>
+
+        <a href="${path}/manager/userServlet?action=getUser&curPage=${pageRes.curPage}&pageSize=${pageRes.pageSize}">新增用户</a>
       </td>
     </tr>
     <tr>
       <td>序号</td>
+      <td>Id</td>
       <td>用户名</td>
       <td>密码</td>
       <td>手机号</td>
@@ -50,26 +53,30 @@
       <td colspan="2">操作</td>
     </tr>
 
-  <c:forEach items="${requestScope.pageRes.data}" var="user" varStatus="mystatus">
+  <c:forEach items="${requestScope.pageRes.data}" var="users" varStatus="mystatus">
     <tr>
       <td>${mystatus.count}</td>
-      <td>${user.username}</td>
-      <td>${user.password}</td>
-      <td>${user.phone}</td>
-      <td>${user.name}</td>
-      <td>${user.address}</td>
+      <td>${users.id}</td>
+      <td>${users.username}</td>
+      <td>${users.password}</td>
+      <td>${users.phone}</td>
+      <td>${users.name}</td>
+      <td>${users.address}</td>
       <td>
-        <c:if test="${user.sex==1}">男</c:if>
-        <c:if test="${user.sex==0}">女</c:if>
+        <c:if test="${users.sex==1}">男</c:if>
+        <c:if test="${users.sex==0}">女</c:if>
       </td>
-      <td>${user.dept_id}</td>
-      <td><a href="">修改</a></td>
-      <td><a href="">删除</a></td>
+      <td>
+        <c:if test="${users.dept_id==1}">财务部</c:if>
+        <c:if test="${users.dept_id==0}">开发部</c:if>
+      </td>
+      <td><a href="${path}/manager/userServlet?action=getUser&id=${users.id}&curPage=${pageRes.curPage}&pageSize=${pageRes.pageSize}">修改</a></td>
+      <td><a class="deleteClass"  myattrid="${users.id}"   href="javascript:void(0)"  >删除</a></td>
     </tr>
     </c:forEach>
-
+    <!--
     <tr style="display: none">
-      <td colspan="10" align="center" style="color:#333333;background-color: #CCCCCC;">
+      <td colspan="11" align="center" style="color:#333333;background-color: #CCCCCC;">
         <a href="${path}/manager/userServlet?action=list&curPage=1">首页</a>
         &nbsp;&nbsp;
         <a href="${path}/manager/userServlet?action=list&curPage=${pageRes.curPage-1}">上一页</a>
@@ -86,14 +93,15 @@
         总共有<span style="color: blue">${pageRes.total}</span>条数据数据
       </td>
     </tr>
+    -->
 
     <tr>
-      <td colspan="10" align="center">
+      <td colspan="11" align="center">
         <a href="javascript:void(0)" onclick="fanye(1,${pageRes.pageSize})">首页</a>
         &nbsp;&nbsp;
         <a href="javascript:void(0)" onclick="fanye(${pageRes.curPage-1},${pageRes.pageSize})">上一页</a>
         &nbsp;&nbsp;
-        当前第<span style="color: blue">${pageRes.curPage}</span> 页
+        当前第<span style="color: blue" id="mycurPage">${pageRes.curPage}</span> 页
         &nbsp;&nbsp;
         每页显示
         <select id="myselectPage">
@@ -109,6 +117,8 @@
         <a href="javascript:void(0)" onclick="fanye(${pageRes.curPage+1},${pageRes.pageSize})">下一页</a>
         &nbsp;&nbsp;
         <a href="javascript:void(0)" onclick="fanye(${pageRes.totalPage},${pageRes.pageSize})">末页</a>
+
+
 
 
         总共有<span style="color: blue">${pageRes.totalPage}</span>页
@@ -127,9 +137,23 @@
   }
 
   $(function (){
+    var path = $('#mypath').val();
     $('#myselectPage').change(function (){
         fanye($('#curPage').val(),$(this).val())
     })
+
+    $("a.deleteClass").click(function () {
+      var curId  = $(this).attr('myattrid');
+      var curPage  = $('#mycurPage').text();
+      var url = path+'/manager/userServlet';
+      $.post(url,{action:'delete',id:curId,curPage:curPage},function (data){
+        if(data.code==0){
+          $('#mysubmit').click();
+        }
+      },'json')
+
+    });
+
   });
 
 </script>

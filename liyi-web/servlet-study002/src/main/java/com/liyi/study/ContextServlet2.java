@@ -4,8 +4,11 @@ package com.liyi.study; /**
  * @time: 2021/5/15 17:40  星期六
  */
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ContextServlet2 extends HttpServlet {

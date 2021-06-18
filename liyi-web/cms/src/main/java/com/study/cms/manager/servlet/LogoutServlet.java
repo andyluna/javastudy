@@ -2,10 +2,7 @@ package com.study.cms.manager.servlet;
 
 import com.study.cms.comm.utils.AjaxRes;
 import com.study.cms.comm.utils.Constants;
-import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.manager.entity.User;
-import com.study.cms.manager.service.UserService;
-import com.study.cms.manager.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,6 +1,7 @@
 package com.liyi.utils;
+
 import org.apache.commons.beanutils.BeanUtils;
-import javax.servlet.http.HttpServletRequest;
+
 import java.util.Map;
 
 /**

@@ -1,6 +1,5 @@
 package com.study.cms.manager.servlet;
 
-import com.study.cms.comm.listener.PlatformInitListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

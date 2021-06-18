@@ -14,6 +14,10 @@ public interface UserService {
     //根据用户名查找用户
     User findUserByUserName(String username);
 
+    boolean existUserByUserName(String username);
+
+    boolean existUserByUserName(Integer id,String username);
+
     //新增用户
     public void addUser(User user);
 

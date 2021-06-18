@@ -1,5 +1,6 @@
 package com.study.cms.manager.servlet;
 
+import com.study.cms.comm.utils.AjaxRes;
 import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.entity.User;
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.util.List;
 
 import static com.study.cms.comm.utils.Constants.DEFAULT_CURPAGE;
 import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
@@ -91,13 +92,89 @@ public class UserServlet extends HttpServlet {
         int id= Integer.parseInt(req.getParameter("id"));
         //删除用户
         userService.deleteUserById(id);
-        resp.sendRedirect("/pages/manager/managerUser.jsp");
-
+        writeJson(resp,AjaxRes.success());
     }
 
 
-    protected void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.debug("新增或者修改用户");
+
+        String curPage = req.getParameter("curPage");
+        String pageSize = req.getParameter("pageSize");
+
+        String id = req.getParameter("id");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String phone    =  req.getParameter("phone");
+        String name     = req.getParameter("name");
+        String address  = req.getParameter("address");
+        int sex         = Integer.parseInt(req.getParameter("sex"));
+        int dept_id     = Integer.parseInt(req.getParameter("dept_id"));
+
+        User user = null;
+        if( StringUtils.isEmpty(id)){//新增
+            user = new User(null,username,password,phone,name,address,sex,dept_id);
+            userService.addUser(user);
+            log.debug("新增用户{}成功 "+user);
+        }else{//修改
+            user=new User(Integer.parseInt(id),username,password,phone,name,address,sex,dept_id);
+            userService.updateUser(user);
+            log.debug("修改用户{}成功 "+user);
+        }
+        resp.sendRedirect(req.getContextPath()+"/manager/userServlet?action=list&curPage="+curPage+"&pageSize="+pageSize);
     }
+
+    protected void getUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.debug("获取用户信息");
+        String id1 = req.getParameter("id");
+        String curPage = req.getParameter("curPage");
+        String pageSize = req.getParameter("pageSize");
+        if(StringUtils.isEmpty(id1)){//新增
+
+        }else{//修改
+            //1 获取请求的参数
+            int id = Integer.parseInt(id1);
+            //2 查询用户信息
+            User user=userService.queryUserById(id);
+            int sex=user.getSex();
+            int dept_id=user.getDept_id();
+
+            //3 保存到用户到Request域中
+            req.setAttribute("user", user) ;
+        }
+
+        req.setAttribute("curPage",curPage);
+        req.setAttribute("pageSize",pageSize);
+        //4 请求转发到。pages/manager/book_edit.jsp页面
+        req.getRequestDispatcher("/pages/manager/managerUpdateUser.jsp").forward(req,resp);
+    }
+
+    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取请求的参数
+        String myId=req.getParameter("id");
+        String username=req.getParameter("username");
+        Integer id = StringUtils.isEmpty(myId)?null:Integer.parseInt(myId.trim());
+        //查询用户名是否可用
+        boolean existsUserName = userService.existUserByUserName(id,username);
+
+        log.debug("根据 id:{} 和 用户名:{} 判断用户是否存在 {}",id,username,existsUserName);
+        AjaxRes res = null;
+        if(existsUserName){//错误
+            res = AjaxRes.error("用户名"+username+"已经存在");
+        }else{//成功
+            res = AjaxRes.success("用户名"+username+"不存在");
+        }
+        writeJson(resp,res);
+    }
+
+
+    private void writeJson(HttpServletResponse resp,AjaxRes res ) throws IOException {
+        resp.setContentType("appliction/json;charset=UTF-8");
+        PrintWriter writer = resp.getWriter();
+        writer.write(res.toString());
+        writer.close();
+    }
+
 
 }

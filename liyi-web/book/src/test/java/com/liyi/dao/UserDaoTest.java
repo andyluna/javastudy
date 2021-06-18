@@ -1,6 +1,5 @@
 package com.liyi.dao;
 
-import com.liyi.dao.UserDao;
 import com.liyi.dao.impl.UserDaoImpl;
 import com.liyi.pojo.User;
 import org.junit.Test;

@@ -25,6 +25,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean existUserByUserName(String username) {
+        if (userDao.queryByUsername(username)==null){
+            return false;
+        }
+        return true;
+    }
+    @Override
+    public boolean existUserByUserName(Integer id , String username) {
+        boolean flag = false;
+        if(id==null){//新增
+            flag = userDao.queryByUsername(username) != null;
+        }else{//修改
+            flag = userDao.queryByUsername(id,username) != null;
+        }
+        return flag;
+    }
+
+
+
+    @Override
     public void addUser(User user) {
         userDao.addUser(user);
     }

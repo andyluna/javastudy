@@ -4,7 +4,6 @@ import com.google.gson.reflect.TypeToken;
 import com.liyi.pojo.Person;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @TODO: javastudy

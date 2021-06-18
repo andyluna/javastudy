@@ -39,6 +39,7 @@ $(function(){
 			$('#submit').click();
 		}
 	})
+
 	$('#submit').click(function(){
 		var mypath = $("#mypath").val();
 		//点击了登录

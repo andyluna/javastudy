@@ -4,10 +4,6 @@ import com.study.cms.manager.dao.impl.UserDaoImpl;
 import com.study.cms.manager.entity.User;
 import org.junit.Test;
 
-import java.util.UUID;
-
-import static org.junit.Assert.*;
-
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com

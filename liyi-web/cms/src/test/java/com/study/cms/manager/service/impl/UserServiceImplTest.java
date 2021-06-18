@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
@@ -20,5 +18,18 @@ public class UserServiceImplTest {
     public void queryUsers() {
         List<User> users = userService.queryUsers();
         System.out.println(users);
+    }
+
+
+    @Test
+    public void addUser(){
+        userService.addUser(new User(null,"LiYi05","123","12345678911","李逸","湖南常德",1,0));
+        System.out.println("新增成功");
+    }
+
+    @Test
+    public void queryUserByUserNameTest(){
+        boolean admin = userService.existUserByUserName("999");
+        System.out.println(admin);
     }
 }

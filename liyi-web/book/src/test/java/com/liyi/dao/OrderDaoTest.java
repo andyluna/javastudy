@@ -7,8 +7,6 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
