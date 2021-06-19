@@ -1,6 +1,7 @@
 package com.study.cms.manager.servlet;
 
 import com.study.cms.comm.utils.AjaxRes;
+import com.study.cms.comm.utils.ResponseUtils;
 import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.entity.User;
@@ -92,7 +93,7 @@ public class UserServlet extends HttpServlet {
         int id= Integer.parseInt(req.getParameter("id"));
         //删除用户
         userService.deleteUserById(id);
-        writeJson(resp,AjaxRes.success());
+        ResponseUtils.writeJson(resp,AjaxRes.success());
     }
 
 
@@ -146,7 +147,7 @@ public class UserServlet extends HttpServlet {
 
         req.setAttribute("curPage",curPage);
         req.setAttribute("pageSize",pageSize);
-        //4 请求转发到。pages/manager/book_edit.jsp页面
+        //4 请求转发到/pages/manager/managerUpdateUser.jsp页面
         req.getRequestDispatcher("/pages/manager/managerUpdateUser.jsp").forward(req,resp);
     }
 
@@ -165,16 +166,10 @@ public class UserServlet extends HttpServlet {
         }else{//成功
             res = AjaxRes.success("用户名"+username+"不存在");
         }
-        writeJson(resp,res);
+        ResponseUtils.writeJson(resp,res);
     }
 
 
-    private void writeJson(HttpServletResponse resp,AjaxRes res ) throws IOException {
-        resp.setContentType("appliction/json;charset=UTF-8");
-        PrintWriter writer = resp.getWriter();
-        writer.write(res.toString());
-        writer.close();
-    }
 
 
 }

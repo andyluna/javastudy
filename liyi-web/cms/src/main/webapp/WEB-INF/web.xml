@@ -99,6 +99,16 @@
     </servlet-mapping>
 
 
+    <!--部门增删改查Servlet-->
+    <servlet>
+        <servlet-name>deptServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.DeptServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deptServlet</servlet-name>
+        <url-pattern>/manager/deptServlet</url-pattern>
+    </servlet-mapping>
+
 
 
 

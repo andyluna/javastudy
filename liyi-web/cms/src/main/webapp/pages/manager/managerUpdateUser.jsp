@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td>密  码</td>
-			<td><input id="password" name="password" type="text" id="pas1" value="${requestScope.user.password}" style="width: 400px;height: 40px;"></td>
+			<td><input id="password" name="password" type="text"  value="${requestScope.user.password}" style="width: 400px;height: 40px;"></td>
 			<span id="pas1Tip"></span>
 		</tr>
 		<tr>

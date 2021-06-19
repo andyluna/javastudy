@@ -2,6 +2,7 @@ package com.study.cms.manager.dao.impl;
 
 import com.study.cms.comm.dao.BaseDao;
 import com.study.cms.comm.utils.StringUtils;
+import com.study.cms.comm.vo.PageTotal;
 import com.study.cms.manager.dao.UserDao;
 import com.study.cms.manager.entity.User;
 import org.slf4j.Logger;
@@ -136,27 +137,9 @@ public class UserDaoImpl  implements UserDao{
             list.add(sex);
         }
         String[] param = list.toArray(new String[]{});
-        MyTotal total = BaseDao.queryJavaBean(MyTotal.class, sql.toString(),param);
+        PageTotal total = BaseDao.queryJavaBean(PageTotal.class, sql.toString(),param);
         return  total.getTotal();
     }
 
-    public static class MyTotal{
-        private Integer total;
-
-        public MyTotal() {
-        }
-
-        public MyTotal(Integer total) {
-            this.total = total;
-        }
-
-        public Integer getTotal() {
-            return total;
-        }
-
-        public void setTotal(Integer total) {
-            this.total = total;
-        }
-    }
 
 }

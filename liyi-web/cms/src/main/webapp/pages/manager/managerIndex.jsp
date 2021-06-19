@@ -11,8 +11,9 @@
 
     <h1>欢迎您:<span style="color: red"> ${SESSION_USER_KEY.username}</span> 这是后台管理首页</h1>
     <ol>
-        <li><a href="${path}/manager/userServlet?action=list" target="_blank">用户管理</a></li>
-        <li><a href="${path}/manager/roleList" target="_blank">角色管理</a></li>
+        <li><a href="${path}/manager/userServlet" target="_blank">用户管理</a></li>
+        <li><a href="${path}/manager/deptServlet" target="_blank">部门管理</a></li>
+        <li><a href="${path}/manager/roleList"    target="_blank">角色管理</a></li>
 
     </ol>
 
