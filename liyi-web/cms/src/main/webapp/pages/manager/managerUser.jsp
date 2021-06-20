@@ -74,26 +74,6 @@
       <td><a class="deleteClass"  myattrid="${users.id}"   href="javascript:void(0)"  >删除</a></td>
     </tr>
     </c:forEach>
-    <!--
-    <tr style="display: none">
-      <td colspan="11" align="center" style="color:#333333;background-color: #CCCCCC;">
-        <a href="${path}/manager/userServlet?action=list&curPage=1">首页</a>
-        &nbsp;&nbsp;
-        <a href="${path}/manager/userServlet?action=list&curPage=${pageRes.curPage-1}">上一页</a>
-        &nbsp;&nbsp;
-        当前第<span style="color: blue">${pageRes.curPage}</span>页
-        &nbsp;&nbsp;
-        <a href="${path}/manager/userServlet?action=list&curPage=${pageRes.curPage+1}">下一页</a>
-        &nbsp;&nbsp;
-        <a href="${path}/manager/userServlet?action=list&curPage=${pageRes.totalPage}">末页</a>
-
-
-        总共有<span style="color: blue">${pageRes.totalPage}</span>页
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        总共有<span style="color: blue">${pageRes.total}</span>条数据数据
-      </td>
-    </tr>
-    -->
 
     <tr>
       <td colspan="11" align="center">
@@ -129,6 +109,7 @@
 
   </table>
 </div>
+<a href="${path}/manager/index" >回到后台管理首页</a>
 <script>
   function fanye(curPage,pageSize){
     $('#curPage').val(curPage);

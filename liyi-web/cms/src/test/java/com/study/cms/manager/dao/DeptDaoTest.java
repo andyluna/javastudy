@@ -31,4 +31,11 @@ public class DeptDaoTest {
 
     }
 
+
+    @Test
+    public void queryDeptById(){
+        Dept dept = deptDao.queryDeptById(52);
+        System.out.println(dept);
+    }
+
 }

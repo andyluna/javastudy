@@ -16,4 +16,8 @@ public interface DeptService {
     void deleteDeptById(int id);
 
     Dept queryDeptById(int id);
+
+    void addDept(Dept dept);
+
+    void updateDept(Dept dept);
 }

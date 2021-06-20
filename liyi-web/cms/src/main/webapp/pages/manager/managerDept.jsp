@@ -61,7 +61,7 @@
         <!--dateStyle 和 timeStyle 分别可以取5个值 default|short|medium|long|full -->
         <fmt:formatDate value="${data.lastUpdateDate}" type="both" dateStyle="FULL" timeStyle="long"></fmt:formatDate>
       </td>
-      <td><a href="${path}/manager/deptServlet?action=getUser&id=${data.id}&curPage=${pageRes.curPage}&pageSize=${pageRes.pageSize}">修改</a></td>
+      <td><a href="${path}/manager/deptServlet?action=getDept&id=${data.id}&curPage=${pageRes.curPage}&pageSize=${pageRes.pageSize}">修改</a></td>
       <td><a class="deleteClass"  myattrid="${data.id}"   href="javascript:void(0)"  >删除</a>
       </td>
     </tr>
@@ -100,6 +100,7 @@
 
   </table>
 </div>
+<a href="${path}/manager/index" >回到后台管理首页</a>
 <script>
   function fanye(curPage,pageSize){
     $('#curPage').val(curPage);

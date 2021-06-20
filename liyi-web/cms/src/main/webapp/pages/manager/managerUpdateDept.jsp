@@ -14,8 +14,8 @@
 </h1>
 <input type="hidden" id="mypath" value="${path}">
 
-<form method="post" action="${path}/manager/userServlet">
-	<input type="hidden" name="action" value="update" />
+<form method="post" action="${path}/manager/deptServlet">
+	<input type="hidden" name="action" value="updateDept" />
 	<input type="hidden" name="curPage"  value="${curPage}" />
 	<input type="hidden" name="pageSize" value="${pageSize}" />
 	<table style="width: 30%;margin: 0 auto" border="1">
@@ -44,20 +44,24 @@
 				<span id="parentCodeTip"></span>
 			</td>
 		</tr>
-		<tr>
-			<td>创建时间</td>
-			<td>
-				<input id="createDate" name="createDate" type="text"  value="${requestScope.dept.createDate}" style="width: 400px;height: 40px;">
-				<span id="createDateTip"></span>
-			</td>
-		</tr>
-		<tr>
-			<td>最后修改时间</td>
-			<td>
-				<input id="lastUpdateDate" name="lastUpdateDate" type="text"  value="${requestScope.dept.lastUpdateDate}" style="width: 400px;height: 40px;">
-				<span id="lastUpdateDateTip"></span>
-			</td>
-		</tr>
+		<c:choose>
+			<c:when test="${requestScope.dept==null}">
+
+			</c:when>
+
+			<c:otherwise>
+
+				<tr>
+					<td>创建时间</td>
+					<td>
+						<input id="createDate" name="createDate" type="text"  value="${requestScope.dept.createDate}" style="width: 400px;height: 40px;" readonly="readonly">
+						<span id="createDateTip"></span>
+					</td>
+				</tr>
+			</c:otherwise>
+
+		</c:choose>
+
 
 		<tr id="errorTr">
 			<td id="errorTd" colspan="2" align="center" style="color: red">
@@ -73,26 +77,8 @@
 	</table>
 </form>
 <script type="text/javascript">
-$(function (){
-	var path = $('#mypath').val();
-	$('#username').blur(function (){
-		$('#usernameTip').text('');
-		var id = $('#myid').val();
-		var username = $(this).val();
-		if($.trim(username) != ''){
-			var url = path+'/manager/userServlet';
-			$.post(url,{action:'ajaxExistsUsername',id:id,username:username},function (data){
-				console.log(data);
-				if (data.code==0){//成功 用户名不存在
-					$('#usernameTip').css('color','blue');
-				}else{//失败 用户名不存在
-					$('#usernameTip').css('color','red');
-				}
-				$('#usernameTip').text(data.define);
-			},'json');
-		}
-	});
-});
+
+
 
 </script>
 </body>

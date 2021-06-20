@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static com.study.cms.comm.utils.Constants.DEFAULT_CURPAGE;
 import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
@@ -114,10 +116,61 @@ public class DeptServlet extends HttpServlet {
         }
         req.setAttribute("curPage",curPage);
         req.setAttribute("pageSize",pageSize);
+
         //4 请求转发到managerUpdateDept.jsp页面
         req.getRequestDispatcher("/pages/manager/managerUpdateDept.jsp").forward(req,resp);
     }
 
+    protected void updateDept(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException {
+        log.debug("新增或者修改部门");
+
+        String curPage = req.getParameter("curPage");
+        String pageSize = req.getParameter("pageSize");
+
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String code = req.getParameter("code");
+        String parentCode    =  req.getParameter("parentCode");
+        log.debug("父部门编码是{}"+parentCode);
+
+
+
+
+        Date createDate = null;
+        Date lastUpdateDate  = null;
+        Dept dept = null;
+
+        if( StringUtils.isEmpty(id)){//新增
+            //新增时 创建时间和最后修改时间都为当前时间
+            createDate=new Date();
+            lastUpdateDate=new Date();
+
+            dept = new Dept(null,name,code,parentCode,createDate,lastUpdateDate);
+
+            deptService.addDept(dept);
+            log.debug("新增部门{}成功 "+dept);
+        }else{//修改
+            //获取选择修改的部门的创建时间
+            String createDate1 = req.getParameter("createDate");
+
+            log.debug("创建时间是:"+createDate1);
+
+            //转换成日期格式
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = sdf.parse(createDate1);
+
+            //设置最后修改时间为当前时间
+            lastUpdateDate=new Date();
+
+            dept=new Dept(Integer.parseInt(id),name,code,parentCode,date,lastUpdateDate);
+
+            log.debug("{}"+dept);
+
+            deptService.updateDept(dept);
+            log.debug("修改部门{}成功 "+dept);
+        }
+        resp.sendRedirect(req.getContextPath()+"/manager/deptServlet?action=list&curPage="+curPage+"&pageSize="+pageSize);
+    }
 
 
 

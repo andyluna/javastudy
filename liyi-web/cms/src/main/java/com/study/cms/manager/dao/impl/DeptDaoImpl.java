@@ -5,7 +5,7 @@ import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.comm.vo.PageTotal;
 import com.study.cms.manager.dao.DeptDao;
 import com.study.cms.manager.entity.Dept;
-import com.study.cms.manager.entity.User;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +35,7 @@ public class DeptDaoImpl implements DeptDao {
 
     @Override
     public Dept queryDeptById(Integer id) {
-        String sql="select id,name,code,parent_code,create_date,last_update_date from c_dept where id=?";
+        String sql="select id,name,code,parent_code parentCode,create_date createDate,last_update_date lastUpdateDate from c_dept where id=?";
         Dept dept= BaseDao.queryJavaBean(Dept.class,sql,id);
         return dept;
     }
@@ -67,7 +67,7 @@ public class DeptDaoImpl implements DeptDao {
 
     @Override
     public int updateDept(Dept dept) {
-        String sql="update c_dept set name=? code=? parent_code=? create_date=? last_update_date=? where id=?";
+        String sql="update c_dept set name=? , code=? ,parent_code=? ,create_date=? ,last_update_date=? where id=?";
         return BaseDao.update(sql,dept.getName(),dept.getCode(),dept.getParentCode(),dept.getCreateDate(),dept.getLastUpdateDate(),dept.getId());
 
     }

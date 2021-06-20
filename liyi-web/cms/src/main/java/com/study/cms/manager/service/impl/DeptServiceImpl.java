@@ -61,4 +61,14 @@ public class DeptServiceImpl implements DeptService {
         Dept dept = deptDao.queryDeptById(id);
         return dept;
     }
+
+    @Override
+    public void addDept(Dept dept) {
+        deptDao.addDept(dept);
+    }
+
+    @Override
+    public void updateDept(Dept dept) {
+        deptDao.updateDept(dept);
+    }
 }
