@@ -6,6 +6,9 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -70,7 +73,42 @@ public class JDBCUtils {
         }
     }
 
+    /**
+     * 关闭方法
+     * @param con
+     * @param stmt
+     * @param resultSet
+     */
+    public static void close(Connection con, Statement stmt, ResultSet resultSet){
+        //6.关闭结果集
+        if(resultSet!=null){
+            try {
+                resultSet.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
 
+
+        //7.关闭结果集
+        if(stmt!=null){
+            try {
+                stmt.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
+
+        //8.关闭结果集
+        if(con !=null){
+            try {
+                con.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
 
 
 
