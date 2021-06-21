@@ -13,6 +13,7 @@ import java.util.List;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/16 18:33  星期三
  */
+@Deprecated
 public abstract class BaseDao {
 
     //使用Dbutils操作数据库

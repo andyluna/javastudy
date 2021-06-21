@@ -109,6 +109,17 @@
         <url-pattern>/manager/deptServlet</url-pattern>
     </servlet-mapping>
 
+    <!--菜单增删改查Servlet-->
+    <servlet>
+        <servlet-name>MenuServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.MenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuServlet</servlet-name>
+        <url-pattern>/manager/menuServlet</url-pattern>
+    </servlet-mapping>
+
+
 
 
 
