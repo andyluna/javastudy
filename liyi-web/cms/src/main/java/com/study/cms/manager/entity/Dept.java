@@ -1,5 +1,10 @@
 package com.study.cms.manager.entity;
 
+import com.study.cms.comm.anno.MyColumn;
+import com.study.cms.comm.anno.MyId;
+import com.study.cms.comm.anno.MyTableName;
+import com.study.cms.comm.anno.MyTransient;
+
 import java.util.Date;
 
 /**
@@ -7,13 +12,31 @@ import java.util.Date;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/19 10:35  星期六
  */
+@MyTableName(value = "c_dept")
 public class Dept {
+    @MyId
     private Integer id;
     private String name;
     private String code;
+    @MyColumn("parent_code")
     private String parentCode;
+
+    @MyColumn("create_date")
     private Date createDate;
+
+    @MyColumn("last_update_date")
     private Date lastUpdateDate;
+
+
+    @MyTransient
+    private String outher;
+    @MyTransient
+    private String outher1;
+    @MyTransient
+    private String outher2;
+
+
+
 
 
     public Dept() {

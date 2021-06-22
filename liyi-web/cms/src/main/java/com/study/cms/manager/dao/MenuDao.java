@@ -1,4 +1,4 @@
-package com.study.cms.manager;
+package com.study.cms.manager.dao;
 
 
 

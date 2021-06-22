@@ -24,16 +24,17 @@ public class JDBCUtilsTest {
 
     public static void main(String[] args) {
 
-        List<User> users = test1(User.class);
-        for (User user:users){
-            System.out.println(user);
-        }
-
-
-        List<Dept> depts = test1(Dept.class);
-        for (Dept user:depts){
-            System.out.println(user);
-        }
+//        List<User> users = test1(User.class);
+//        for (User user:users){
+//            System.out.println(user);
+//        }
+//
+//
+//        List<Dept> depts = test1(Dept.class);
+//        for (Dept user:depts){
+//            System.out.println(user);
+//        }
+        test2();
     }
 
     //从类里面 查找一个方法

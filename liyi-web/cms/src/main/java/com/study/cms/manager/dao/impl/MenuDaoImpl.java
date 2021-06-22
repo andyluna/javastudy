@@ -3,9 +3,8 @@ package com.study.cms.manager.dao.impl;
 import com.study.cms.comm.dao.BaseDao;
 import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.comm.vo.PageTotal;
-import com.study.cms.manager.MenuDao;
+import com.study.cms.manager.dao.MenuDao;
 
-import com.study.cms.manager.entity.Dept;
 import com.study.cms.manager.entity.Menu;
 
 import java.util.ArrayList;
@@ -86,7 +85,7 @@ public class MenuDaoImpl implements MenuDao {
 
     @Override
     public int updateMenu(Menu menu) {
-        String sql="update c_dept set name=? , url=? ,open_type=? ,parent_id=? ,create_date=? ,last_update_date=? where id=?";
+        String sql="update c_menu set name=? , url=? ,open_type=? ,parent_id=? ,create_date=? ,last_update_date=? where id=?";
         return BaseDao.update(sql,menu.getName(),menu.getUrl(),menu.getOpenType(),menu.getParentId(),menu.getCreateDate(),menu.getLastUpdateDate(),menu.getId());
 
     }

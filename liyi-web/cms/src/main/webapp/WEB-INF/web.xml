@@ -119,6 +119,17 @@
         <url-pattern>/manager/menuServlet</url-pattern>
     </servlet-mapping>
 
+    <!--角色增删改查Servlet-->
+    <servlet>
+        <servlet-name>RoleServlet</servlet-name>
+        <servlet-class>com.study.cms.manager.servlet.RoleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RoleServlet</servlet-name>
+        <url-pattern>/manager/roleServlet</url-pattern>
+    </servlet-mapping>
+
+
 
 
 

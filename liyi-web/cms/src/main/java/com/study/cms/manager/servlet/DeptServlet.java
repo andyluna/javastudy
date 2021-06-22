@@ -75,7 +75,7 @@ public class DeptServlet extends HttpServlet {
         String code       = req.getParameter("code");
         String parentCode =  req.getParameter("parentCode");
 
-        //查询全部bum,en
+        //查询全部
         PageRes pageRes = deptService.queryDeptsPage(name,code,parentCode,curPage,pageSize);
         //保存到request域中
 

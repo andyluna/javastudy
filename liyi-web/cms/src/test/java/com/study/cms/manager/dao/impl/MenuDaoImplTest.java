@@ -1,13 +1,7 @@
 package com.study.cms.manager.dao.impl;
 
-import com.study.cms.manager.MenuDao;
-import com.study.cms.manager.entity.Menu;
+import com.study.cms.manager.dao.MenuDao;
 import org.junit.Test;
-
-import java.util.Date;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @TODO: javastudy

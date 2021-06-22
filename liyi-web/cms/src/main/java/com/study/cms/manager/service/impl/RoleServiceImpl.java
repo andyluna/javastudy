@@ -1,11 +1,11 @@
 package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
-import com.study.cms.manager.dao.MenuDao;
-import com.study.cms.manager.dao.impl.MenuDaoImpl;
-
+import com.study.cms.manager.dao.RoleDao;
+import com.study.cms.manager.dao.impl.RoleDaoImpl;
 import com.study.cms.manager.entity.Menu;
-import com.study.cms.manager.service.MenuService;
+import com.study.cms.manager.entity.Role;
+import com.study.cms.manager.service.RoleService;
 
 import java.util.List;
 
@@ -14,15 +14,16 @@ import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
- * @time: 2021/6/21 15:59  星期一
+ * @time: 2021/6/22 17:09  星期二
  */
-public class MenuServiceImpl implements MenuService {
-    MenuDao menuDao=new MenuDaoImpl();
+public class RoleServiceImpl implements RoleService {
+
+    RoleDao roleDao=new RoleDaoImpl();
 
     @Override
-    public PageRes queryMenusPage(String name, String openType, Integer parentId, Integer curPage, Integer pageSize) {
+    public PageRes queryRolesPage(String code, String name, Integer createUserId, Integer curPage, Integer pageSize) {
         //1.根据参数查询数据库记录的总数
-        int total = menuDao.queryMenuTotal(name,openType,parentId);
+        int total = roleDao.queryRoleTotal(code,name,createUserId);
 
 
         //2.计算总共有多少页
@@ -36,7 +37,7 @@ public class MenuServiceImpl implements MenuService {
         // 总共有多少页
         // 当前展示的是第几页
         // 当前页的真实数据
-        List list = menuDao.queryMenuList(name, openType, parentId,curPage,pageSize);
+        List list = roleDao.queryRoleList(code,name,createUserId,curPage,pageSize);
 
         PageRes pageRes = new PageRes();
         pageRes.setTotal(total);
@@ -49,25 +50,26 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void deleteMenuById(Integer id) {
-        menuDao.deleteMenu(id);
+    public void deleteRoleById(Integer id) {
+        roleDao.deleteRole(id);
+
     }
 
     @Override
-    public Menu queryMenuById(Integer id) {
-        Menu menu=menuDao.queryMenuById(id);
-        return menu;
+    public Role queryRoleById(Integer id) {
+        Role role = roleDao.queryRoleById(id);
+        return role;
     }
 
     @Override
-    public void addMenu(Menu menu) {
-        menuDao.addMenu(menu);
+    public void addRole(Role role) {
+        roleDao.addRole(role);
+
     }
 
     @Override
-    public void updateMenu(Menu menu) {
-        menuDao.updateMenu(menu);
+    public void updateRole(Role role) {
+        roleDao.updateRole(role);
+
     }
-
-
 }

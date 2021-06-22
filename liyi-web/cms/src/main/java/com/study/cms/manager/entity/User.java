@@ -1,13 +1,15 @@
 package com.study.cms.manager.entity;
 
+import com.study.cms.comm.anno.MyId;
 import com.study.cms.comm.anno.MyTableName;
 
 /**
  * @time: 2021/6/16 六月 11:04
  * @author: xiangdan/xiangdan@dtxytech.com
  */
-@MyTableName(tableName="c_user")
+@MyTableName(value="c_user")
 public class User {
+    @MyId
     private Integer id;//存储的id
     private String username;//用户名
     private String password;//密码

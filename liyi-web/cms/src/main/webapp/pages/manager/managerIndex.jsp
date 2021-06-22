@@ -14,7 +14,7 @@
         <li><a href="${path}/manager/userServlet" target="_blank">用户管理</a></li>
         <li><a href="${path}/manager/deptServlet" target="_blank">部门管理</a></li>
         <li><a href="${path}/manager/menuServlet" target="_blank">菜单管理</a></li>
-        <li><a href="${path}/manager/roleList"    target="_blank">角色管理</a></li>
+        <li><a href="${path}/manager/roleServlet"    target="_blank">角色管理</a></li>
 
     </ol>
 

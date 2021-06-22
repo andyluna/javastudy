@@ -12,12 +12,12 @@
 	<tr>
 		<td>登录名</td>
 		<td>
-			<input id="username" name="username" type="text" style="width: 400px;height: 40px;">
+			<input id="username" name="username" type="text" style="width: 400px;height: 40px;" value="admin">
 		</td>
 	</tr>
 	<tr>
 		<td>密  码</td>
-		<td><input id="password" name="password" type="password" style="width: 400px;height: 40px;"></td>
+		<td><input id="password" name="password" type="password" style="width: 400px;height: 40px;" value="123"></td>
 	</tr>
 	<tr id="errorTr">
 		<td id="errorTd" colspan="2" align="center" style="color: red">
@@ -33,8 +33,9 @@
 <script type="text/javascript">
 
 $(function(){
+	$('#username').focus();
 	$('#errorTr').hide();
-	$('#password').keydown(function (r){
+	$('#username,#password').keydown(function (r){
 		if(r.keyCode==13){
 			$('#submit').click();
 		}

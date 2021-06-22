@@ -62,11 +62,11 @@ public class PageRes {
     @Override
     public String toString() {
         return "PageRes{" +
-                "total=" + total +
-                ", totalPage=" + totalPage +
-                ", curPage=" + curPage +
-                ", pageSize=" + pageSize +
-                ", data=" + data +
+                "\ntotal=" + total +
+                ", \ntotalPage=" + totalPage +
+                ", \ncurPage=" + curPage +
+                ", \npageSize=" + pageSize +
+                ", \ndata=" + data +
                 '}';
     }
 }

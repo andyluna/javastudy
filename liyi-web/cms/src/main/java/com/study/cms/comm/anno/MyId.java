@@ -7,13 +7,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * 主键注解
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/20 23:39  星期日
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface MyTableName {
+@Target(ElementType.FIELD)
+public @interface MyId {
     String value() default "";
 }
