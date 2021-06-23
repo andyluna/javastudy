@@ -1,5 +1,6 @@
 package com.study.cms.comm.dao;
 
+import com.study.cms.comm.utils.SqlAndParam;
 import com.study.cms.comm.vo.PageRes;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public interface CommonDao {
      * @return 影响条数
      */
     int update(String sql,Object ... param);
+
+
+    int updateBySqlAndParam(SqlAndParam sqlAndParam);
+
 
     /**
      * 2.分页查询的sql语句

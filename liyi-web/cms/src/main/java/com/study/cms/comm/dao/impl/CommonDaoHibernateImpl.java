@@ -1,6 +1,7 @@
 package com.study.cms.comm.dao.impl;
 
 import com.study.cms.comm.dao.CommonDao;
+import com.study.cms.comm.utils.SqlAndParam;
 import com.study.cms.comm.vo.PageRes;
 
 import java.util.List;
@@ -13,6 +14,11 @@ import java.util.List;
 public class CommonDaoHibernateImpl implements CommonDao {
     @Override
     public int update(String sql, Object... param) {
+        return 0;
+    }
+
+    @Override
+    public int updateBySqlAndParam(SqlAndParam sqlAndParam) {
         return 0;
     }
 

@@ -1,7 +1,9 @@
 package com.study.cms.comm.dao.impl;
 
+import com.study.cms.comm.anno.MyColumn;
 import com.study.cms.comm.dao.CommonDao;
 import com.study.cms.comm.utils.JDBCUtils;
+import com.study.cms.comm.utils.SqlAndParam;
 import com.study.cms.comm.vo.PageRes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -80,6 +83,13 @@ public class CommonDaoJdbcImpl implements CommonDao {
             JDBCUtils.close(conn,pstmt,null);
         }
         return n;
+    }
+
+    @Override
+    public int updateBySqlAndParam(SqlAndParam sqlAndParam) {
+        String sql = sqlAndParam.getSql();
+        Object[] paramArray = sqlAndParam.getParamArray();
+        return this.update(sql,paramArray);
     }
 
     @Override
@@ -182,7 +192,16 @@ public class CommonDaoJdbcImpl implements CommonDao {
 
     private <T> T resovleResultSet(ResultSet rs,Class<T> returnType) throws SQLException, InstantiationException, IllegalAccessException {
         Object res = null;
-        if(map.containsKey(returnType)){
+
+        ResultSetMetaData metaData = rs.getMetaData();//元数据
+
+        int columnCount = metaData.getColumnCount();
+        if(columnCount==1){//只有1个值吗
+            int columnType     = metaData.getColumnType(1);
+            String typeName    = metaData.getColumnTypeName(1);
+            String columnName  = metaData.getColumnName(1);
+            String columnLabel = metaData.getColumnLabel(1);
+
             Class<?> aClass = map.get(returnType);
             if(aClass==Boolean.class){
                 res = rs.getBoolean(1);
@@ -209,43 +228,69 @@ public class CommonDaoJdbcImpl implements CommonDao {
                 res = rs.getDate(1);
             }else if(aClass== Timestamp.class){
                 res = rs.getTimestamp(1);
+            }else{
+                res = rs.getObject(1);
             }
-
-        }else{//是一个具体的java类
+        } else{
             res = returnType.newInstance();
-            Field[] fields = returnType.getDeclaredFields();
-            for(Field f :fields){
-                String columnName = f.getName();
-                Class<?> type = f.getType();
-                Object value = null;
-                try {
-                    value = rs.getObject(columnName,type);
-                }catch (Exception e){
-                    log.warn("字段:{} 在查询语句中不存在",columnName);
+            for (int i = 1; i <= columnCount; i++) {
+                int columnType     = metaData.getColumnType(i);
+                String typeName    = metaData.getColumnTypeName(i);
+                String columnName  = metaData.getColumnName(i);
+                String columnLabel = metaData.getColumnLabel(i);
+                Field field = getFieldByName(returnType, columnLabel);
+                if(field==null){
                     continue;
                 }
 
-                String methodName ="set"+columnName.substring(0,1).toUpperCase()+columnName.substring(1);//得到一个属性对应的set 方法名
+                Class<?> type = field.getType();
+                Object value = null;
+
+                if(Date.class.isAssignableFrom(type)){
+                    value = rs.getTimestamp(i);
+                }else{
+                    value = rs.getObject(i,type);
+                }
+                String methodName ="set"+field.getName().substring(0,1).toUpperCase()+field.getName().substring(1);//得到一个属性对应的set 方法名
+
                 try {
                     Method m = returnType.getMethod(methodName,type);
                     m.setAccessible(true);
                     m.invoke(res, value);
                 }catch (Exception e){
                     log.error("调用方法{}出错:{}",methodName,e.getMessage());
-                    f.setAccessible(true);
+                    field.setAccessible(true);
                     try {
-                        f.set(res, value);
+                        field.set(res, value);
                     }catch (Exception e1){
                         log.error("给字段[{}]赋值时出错了",e1);
                     }
                 }
             }
-        }
 
+        }
         return (T)res;
     }
 
 
+
+
+
+    private <T> Field getFieldByName(Class<T> clz,String name){//parent_code
+        Field[] fields = clz.getDeclaredFields();
+        for(Field field:fields){
+            MyColumn column = field.getAnnotation(MyColumn.class);
+            String tmp = field.getName();
+            if(column!=null){
+                tmp = column.value();
+            }
+            if(tmp.equals(name)){
+                return field;
+            }
+        }
+        return null;
+
+    }
 
 
 }
