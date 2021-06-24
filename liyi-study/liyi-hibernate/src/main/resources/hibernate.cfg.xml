@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--表明解析本XML文件的DTD文档位置，DTD是Document Type Definition 的缩写,即文档类型的定义,XML解析器使用DTD文档来检查XML文件的合法性。hibernate.sourceforge.net/hibernate-configuration-3.0dtd可以在Hibernate3.1.3软件包中的src\org\hibernate目录中找到此文件-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/cms?serverTimezone=Asia/Shanghai</property>
+        <property name="hibernate.connection.username">liyi</property>
+        <property name="hibernate.connection.password">liyi</property>
+        <property name="hibernate.connection.pool.size">20</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="jdbc.fetch_size">50</property>
+        <property name="jdbc.batch_size">23</property>
+        <property name="jdbc.use_scrollable_resultset">false</property>
+        <property name="Connection.useUnicode">true</property>
+        <property name="connection.characterEncoding">UTF-8</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+
+        <mapping resource="com/study/liyi/hibernate/entity/User.hbm.xml"></mapping>
+    </session-factory>
+</hibernate-configuration>
+
+

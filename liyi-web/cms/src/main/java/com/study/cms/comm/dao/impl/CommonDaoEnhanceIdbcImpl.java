@@ -18,6 +18,7 @@ public class CommonDaoEnhanceIdbcImpl extends CommonDaoJdbcImpl implements Commo
         return super.updateBySqlAndParam(SqlUtils.getUpdateSql(o));
     }
 
+
     @Override
     public int insert(Object o) {
         SqlAndParam sqlAndParam = SqlUtils.getInsertSql(o);

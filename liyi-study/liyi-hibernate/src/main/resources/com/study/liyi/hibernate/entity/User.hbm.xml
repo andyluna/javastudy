@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.study.liyi.hibernate.entity">
+    <!-- 标识一个类的xml映射,name为类名,table为表名 -->
+    <class name="User" table="c_user">
+        <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植所以.嘿嘿!你懂的 -->
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="native"/>
+        </id>
+        <property name="username"   type="string" column="username" />
+        <property name="password"   type="string" column="password" />
+        <property name="phone"      type="string" column="phone" />
+        <property name="name"       type="string" column="name" />
+        <property name="address"    type="string" column="address" />
+        <property name="sex"        type="int"    column="sex" />
+        <property name="deptId"     type="int"    column="dept_id" />
+    </class>
+</hibernate-mapping>
