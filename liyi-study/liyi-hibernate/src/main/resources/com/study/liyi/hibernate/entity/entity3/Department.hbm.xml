@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!-- 标识一个类的xml映射,name为类名,table为表名 -->
+    <class name="com.study.liyi.hibernate.entity.entity3.Department" table="DEPARTMENTS1">
+        <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植-->
+        <id name="deptId" type="java.lang.Integer">
+            <column name="DEPT_ID"/>
+            <!--使用外键的方式来生成当前主键-->
+            <generator class="foreign">
+                <!--property 属性指定当前持久化类的哪一个属性的主键作为外键-->
+                <param name="property">mgr</param>
+            </generator>
+        </id>
+        <property name="deptName"   type="java.lang.String" column="DEPT_NAME" />
+
+        <!--采用foreign 主键生成器的一端增加one-to-one元素映射关联属性
+            其one-to-one节点还应该增加 constrained="true"属性,使当前的主键添加上外键约束
+        -->
+        <one-to-one name="mgr" class="com.study.liyi.hibernate.entity.entity3.Manager" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

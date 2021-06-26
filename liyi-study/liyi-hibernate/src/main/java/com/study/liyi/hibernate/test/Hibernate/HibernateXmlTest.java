@@ -1,4 +1,4 @@
-package com.study.liyi.hibernate.test;
+package com.study.liyi.hibernate.test.Hibernate;
 
 import com.study.liyi.hibernate.entity.User;
 import org.hibernate.Session;

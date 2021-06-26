@@ -1,7 +1,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.study.liyi.hibernate.entity">
     <!-- 标识一个类的xml映射,name为类名,table为表名 -->
-    <class name="User" table="c_user">
+    <class name="com.study.liyi.hibernate.entity.User" table="c_user" select-before-update="true">
         <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植所以.嘿嘿!你懂的 -->
         <id name="id" type="int">
             <column name="id"/>

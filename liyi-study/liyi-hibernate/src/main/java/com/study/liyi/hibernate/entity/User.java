@@ -15,6 +15,20 @@ public class User {
     private Integer sex;//性别
     private Integer deptId;//所属部门
 
+    public User() {
+    }
+
+    public User(Integer id, String username, String password, String phone, String name, String address, Integer sex, Integer deptId) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.name = name;
+        this.address = address;
+        this.sex = sex;
+        this.deptId = deptId;
+    }
+
     public Integer getId() {
         return id;
     }

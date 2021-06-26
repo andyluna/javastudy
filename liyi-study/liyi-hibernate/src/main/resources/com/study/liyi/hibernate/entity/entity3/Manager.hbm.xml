@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!-- 标识一个类的xml映射,name为类名,table为表名 -->
+    <class name="com.study.liyi.hibernate.entity.entity3.Manager" table="MANAGERS1">
+        <!-- 主键的设置,generator标识主键生成方式,因为native便于数据库的移植-->
+        <id name="mgrId" type="java.lang.Integer">
+            <column name="MGR_ID"/>
+            <generator class="native"/>
+        </id>
+        <property name="mgrName"   type="java.lang.String" column="MGR_NAME" />
+
+        <!--映射1-1的关联关系:在对应的数据表中已经有外键了,当前持久化类使用one-to-one进行映射-->
+        <one-to-one name="dept" class="com.study.liyi.hibernate.entity.entity3.Department" ></one-to-one>
+
+    </class>
+</hibernate-mapping>
