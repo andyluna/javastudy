@@ -14,6 +14,7 @@
         <property name="hibernate.format_sql">true</property>
         <property name="jdbc.fetch_size">50</property>
         <property name="jdbc.batch_size">23</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="jdbc.use_scrollable_resultset">false</property>
         <property name="Connection.useUnicode">true</property>
         <property name="connection.characterEncoding">UTF-8</property>
@@ -39,8 +40,8 @@
         <mapping resource="com/study/liyi/hibernate/entity/entity1/Order.hbm.xml"></mapping>
         <mapping resource="com/study/liyi/hibernate/entity/entity2/Manager.hbm.xml"></mapping>
         <mapping resource="com/study/liyi/hibernate/entity/entity2/Department.hbm.xml"></mapping>
-        <mapping resource="com/study/liyi/hibernate/entity/entity3/Manager.hbm.xml"></mapping>
-        <mapping resource="com/study/liyi/hibernate/entity/entity3/Department.hbm.xml"></mapping>
+        <mapping resource="com/study/liyi/hibernate/entity/entity3/Manager3.hbm.xml"></mapping>
+        <mapping resource="com/study/liyi/hibernate/entity/entity3/Department3.hbm.xml"></mapping>
     </session-factory>
 </hibernate-configuration>
 

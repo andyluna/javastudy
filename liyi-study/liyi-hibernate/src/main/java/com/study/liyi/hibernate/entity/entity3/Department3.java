@@ -5,11 +5,11 @@ package com.study.liyi.hibernate.entity.entity3;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/26 22:23  星期六
  */
-public class Department {
+public class Department3 {
     private Integer deptId;
     private String deptName;
 
-    private Manager mgr;
+    private Manager3 mgr;
 
     public Integer getDeptId() {
         return deptId;
@@ -27,11 +27,11 @@ public class Department {
         this.deptName = deptName;
     }
 
-    public Manager getMgr() {
+    public Manager3 getMgr() {
         return mgr;
     }
 
-    public void setMgr(Manager mgr) {
+    public void setMgr(Manager3 mgr) {
         this.mgr = mgr;
     }
 }

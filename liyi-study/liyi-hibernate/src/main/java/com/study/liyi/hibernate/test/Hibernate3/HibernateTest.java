@@ -1,7 +1,7 @@
 package com.study.liyi.hibernate.test.Hibernate3;
 
-import com.study.liyi.hibernate.entity.entity3.Department;
-import com.study.liyi.hibernate.entity.entity3.Manager;
+import com.study.liyi.hibernate.entity.entity3.Department3;
+import com.study.liyi.hibernate.entity.entity3.Manager3;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -46,10 +46,10 @@ public class HibernateTest {
 
     @Test
     public void testSave(){
-        Department department=new Department();
+        Department3 department=new Department3();
         department.setDeptName("DEPT-AA");
 
-        Manager manager=new Manager();
+        Manager3 manager=new Manager3();
         manager.setMgrName("MGR-AA");
 
         //设定关联关系
@@ -63,7 +63,7 @@ public class HibernateTest {
 
     @Test
     public void testGet(){
-        Department department=session.get(Department.class,1);
+        Department3 department=session.get(Department3.class,1);
 
     }
 
