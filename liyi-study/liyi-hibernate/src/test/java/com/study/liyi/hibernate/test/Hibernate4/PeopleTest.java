@@ -33,6 +33,7 @@ public class PeopleTest {
                 new StandardServiceRegistryBuilder()
                         .configure("hibernate4.cfg.xml").build();
 
+
         Metadata metadata = new MetadataSources( standardRegistry ).buildMetadata();
         this.sessionFactory = metadata.buildSessionFactory();
         session = this.sessionFactory.openSession();

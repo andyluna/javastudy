@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
- * @time: 2021/6/22 0:01  星期二
+ * @time: 2021/6/28 22:45  星期一
  */
-public class CommonDaoHibernateImpl extends CommonDaoJdbcImpl implements CommonDaoEnhance {
+public class CommonDaoMybatisImpl extends CommonDaoJdbcImpl implements CommonDaoEnhance {
 
     @Override
     public int update(Object o) {
@@ -46,5 +46,4 @@ public class CommonDaoHibernateImpl extends CommonDaoJdbcImpl implements CommonD
     public <T> PageRes selectPage(Object o, Integer curPage, Integer pageSize) {
         return null;
     }
-
 }
