@@ -58,6 +58,7 @@ public class PeopleTest {
         people.setCreateDate(new Date());
         people.setFavor("打球");
 
+
         session.save(people);
     }
 }
