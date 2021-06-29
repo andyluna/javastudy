@@ -1,5 +1,6 @@
 import com.study.liyi.mybatis.bean.Employee;
 import com.study.liyi.mybatis.dao.EmployeeMapper;
+import com.study.liyi.mybatis.dao.EmployeeMapperAnnotation;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,18 +17,19 @@ import java.io.InputStream;
  */
 public class MyBatisTest {
 
-    public SqlSession getSqlSession() throws IOException {
+    public SqlSessionFactory getSqlSessionFactory() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        return  sqlSession;
+
+        return  sqlSessionFactory;
     }
 
 
     @Test
     public void test1() throws IOException {
-        SqlSession sqlSession=getSqlSession();
+        SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+        SqlSession sqlSession=sqlSessionFactory.openSession();
         try{
             Employee employee=sqlSession.selectOne("selectEmp",1);
             System.out.println(employee);
@@ -45,7 +47,8 @@ public class MyBatisTest {
      */
     @Test
     public void test2() throws IOException {
-        SqlSession sqlSession=getSqlSession();
+        SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+        SqlSession sqlSession=sqlSessionFactory.openSession();
         try{
             //获取接口的实现类对象
             EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
@@ -55,6 +58,49 @@ public class MyBatisTest {
 
             Employee emp = mapper.getEmpById(1);
             System.out.println(emp);
+        }finally {
+            sqlSession.close();
+        }
+    }
+
+
+    @Test
+    public void test3() throws IOException {
+        SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        try{
+            //获取接口的实现类对象
+            EmployeeMapperAnnotation mapper = sqlSession.getMapper(EmployeeMapperAnnotation.class);
+
+            Employee emp = mapper.getEmpById(1);
+            System.out.println(emp);
+        }finally {
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 测试增删改
+     * @throws IOException
+     */
+    @Test
+    public void test4() throws IOException {
+        SqlSessionFactory sqlSessionFactory=getSqlSessionFactory();
+        //获取到的SqlSession不会自动提交
+        SqlSession sqlSession=sqlSessionFactory.openSession();
+        try{
+            //获取接口的实现类对象
+            EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
+
+
+            //添加  修改
+            //Employee employee = new Employee(2, "Jerry", "0", "45544545454@qq.com");
+            //mapper.addEmp(employee);
+            //mapper.updateEmp(employee);
+            mapper.deleteEmpById(2);   //删除
+
+            //手动提交
+            sqlSession.commit();
         }finally {
             sqlSession.close();
         }

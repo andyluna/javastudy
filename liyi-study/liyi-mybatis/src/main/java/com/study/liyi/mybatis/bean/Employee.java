@@ -1,15 +1,28 @@
 package com.study.liyi.mybatis.bean;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/28 20:28  星期一
  */
+@Alias("emp")
 public class Employee {
     private Integer id;
     private String lastName;
     private String gender;
     private String email;
+
+    public Employee() {
+    }
+
+    public Employee(Integer id, String lastName, String gender, String email) {
+        this.id = id;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+    }
 
     public Integer getId() {
         return id;
