@@ -3,13 +3,24 @@ package com.study.cms.manager.entity;
 import com.study.cms.comm.anno.MyId;
 import com.study.cms.comm.anno.MyTableName;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @time: 2021/6/16 六月 11:04
  * @author: xiangdan/xiangdan@dtxytech.com
  */
 @MyTableName(value="c_user")
+@Entity
+@Table(name = "c_user")
 public class User {
     @MyId
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;//存储的id
     private String username;//用户名
     private String password;//密码
@@ -17,6 +28,8 @@ public class User {
     private String name;//真实姓名
     private String address;//地址
     private Integer sex;//性别
+
+    @Column(name = "dept_id")
     private Integer dept_id;//所属部门
 
     public User() {

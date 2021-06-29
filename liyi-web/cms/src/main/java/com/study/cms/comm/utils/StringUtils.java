@@ -12,4 +12,8 @@ public class StringUtils {
     public static boolean isEmpty(Object str){
         return str==null|| str.toString().trim().length()==0;
     }
+
+    public static boolean isNotEmpty(Object str){
+        return !isEmpty(str);
+    }
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.cms.manager.mapper.DeptMapper">
+
+    <resultMap id="resultMap1" type="com.study.cms.manager.entity.Dept">
+        <id     property="id"   column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="code" column="code"></result>
+        <result property="parentCode"     column="parent_code"></result>
+        <result property="createDate"     column="create_date"></result>
+        <result property="lastUpdateDate" column="last_update_date"></result>
+
+
+    </resultMap>
+
+    <select id="queryByName" parameterType="string" resultType="com.study.cms.manager.entity.Dept">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+        from c_dept
+        where  name=#{name}
+    </select>
+
+    <select id="queryByName1" parameterType="com.study.cms.manager.entity.Dept" resultType="com.study.cms.manager.entity.Dept">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+        from c_dept
+        where id=#{id} and name=#{name}
+    </select>
+    <select id="queryDeptById" parameterType="integer" resultType="com.study.cms.manager.entity.Dept">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+        from c_dept
+        where id=#{id}
+    </select>
+
+    <select id="queryDeptByCode" parameterType="string" resultType="com.study.cms.manager.entity.Dept">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+        from c_dept
+        where code=#{code}
+    </select>
+
+    <select id="DeptList"   resultType="com.study.cms.manager.entity.Dept">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+        from c_dept
+
+    </select>
+
+    <insert id="addDept"  parameterType="com.study.cms.manager.entity.Dept">
+        insert into c_dept(name  ,code  ,parent_code ,
+                           create_date ,last_update_date)
+           values (#{name,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{parentCode,jdbcType=VARCHAR},
+                   #{createDate,jdbcType=TIMESTAMP},#{lastUpdateDate,jdbcType=TIMESTAMP}      )
+    </insert>
+
+    <delete id="deleteDept" parameterType="integer">
+        delete from c_dept where id=#{id,jdbcType=VARCHAR}
+    </delete>
+
+
+
+
+    <select id="selectAll"  parameterType="dept" resultMap="resultMap1">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+         from c_dept
+        where 1=1
+        <if test="name!=null and name !='' ">
+            and name like #{name}
+        </if>
+        <if test="code!=null and code !='' ">
+            and code like #{code}
+        </if>
+        <if test="parentCode!=null and parentCode !='' ">
+            and parentCode like #{parentCode}
+        </if>
+    </select>
+
+</mapper>

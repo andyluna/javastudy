@@ -1,5 +1,11 @@
 package com.study.cms.manager.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -7,14 +13,22 @@ import java.util.Date;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/22 15:30  星期二
  */
+@Entity
+@Table(name="c_role")
 public class Role {//角色
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String code; //角色编码
     private String name; //角色名称
+    @Column(name="create_date")
     private Date createDate; //创建时间
+    @Column(name="create_user_id")
     private Integer createUserId; //创建人Id
+    @Column(name="last_update_date")
     private Date lastUpdateDate; //最后修改时间
+    @Column(name="last_update_id")
     private Integer lastUpdateId; //最后修改人Id
 
     public Role() {

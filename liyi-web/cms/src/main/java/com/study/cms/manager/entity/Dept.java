@@ -4,7 +4,15 @@ import com.study.cms.comm.anno.MyColumn;
 import com.study.cms.comm.anno.MyId;
 import com.study.cms.comm.anno.MyTableName;
 import com.study.cms.comm.anno.MyTransient;
+import com.sun.xml.bind.v2.model.core.ID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -12,27 +20,39 @@ import java.util.Date;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/19 10:35  星期六
  */
+@Entity
+@Table(name = "c_dept")
 @MyTableName(value = "c_dept")
 public class Dept {
     @MyId
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String code;
     @MyColumn("parent_code")
+    @Column(name = "parent_code")
     private String parentCode;
 
     @MyColumn("create_date")
+    @Column(name = "create_date")
     private Date createDate;
 
     @MyColumn("last_update_date")
+    @Column(name = "last_update_date")
     private Date lastUpdateDate;
 
 
     @MyTransient
+    @Transient
     private String outher;
+
     @MyTransient
+    @Transient
     private String outher1;
+
     @MyTransient
+    @Transient
     private String outher2;
 
 

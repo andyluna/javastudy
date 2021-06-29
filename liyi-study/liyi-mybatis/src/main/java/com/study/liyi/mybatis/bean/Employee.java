@@ -12,7 +12,12 @@ public class Employee {
     private Integer id;
     private String lastName;
     private String gender;
+
+
+
     private String email;
+
+    private Department dept;
 
     public Employee() {
     }
@@ -23,6 +28,7 @@ public class Employee {
         this.gender = gender;
         this.email = email;
     }
+
 
     public Integer getId() {
         return id;
@@ -54,6 +60,14 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Department getDept() {
+        return dept;
+    }
+
+    public void setDept(Department dept) {
+        this.dept = dept;
     }
 
     @Override

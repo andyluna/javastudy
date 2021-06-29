@@ -1,6 +1,9 @@
 package com.study.cms.manager.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
@@ -10,16 +13,22 @@ import java.util.Date;
  * @author: xiangdan/xiangdan@dtxytech.com
  * @time: 2021/6/21 15:34  星期一
  */
-@Table
+@Entity
+@Table(name = "c_menu")
 public class Menu {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="abc")
+    @Column(name="name")
     private String name;//菜单名
     private String url;//菜单路径
+    @Column(name="open_type")
     private String openType;//菜单打开类型
+    @Column(name="parent_id")
     private String parentId;//父菜单ID
+    @Column(name="create_date")
     private Date createDate;//创建时间
+    @Column(name="last_update_date")
     private Date lastUpdateDate;//最后一次修改时间
 
     public Menu() {
