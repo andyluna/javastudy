@@ -1,5 +1,6 @@
 package com.study.liyi.mybatis;
 
+import com.study.liyi.mybatis.bean.Employee;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -30,7 +31,8 @@ public class MybatisMain {
 
         try{
             //4.执行sql操作
-            //sqlSession.select("", "");
+//            sqlSession.selectOne();
+
             log.debug("执行成功,开始提交");
         }catch (Exception e){
             log.debug("执行出错,开始回滚",e);

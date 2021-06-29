@@ -6,6 +6,16 @@
     <!--引入外部键值对 属性文件-->
     <properties resource="jdbc.properties"></properties>
 
+    <!-- settings包含很多重要的设置项
+         setting: 用来设置每一个设置项
+         name   : 设置项名
+         value  : 设置项取值
+      -->
+    <settings>
+        <!--开启驼峰命名规范-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <environments default="development">
 
         <environment id="development">
@@ -18,7 +28,9 @@
             </dataSource>
         </environment>
     </environments>
+
+    <!-- 将我们写好的SQl映射文件注册到全局配置文件中 -->
     <mappers>
-       <!-- <mapper resource="org/mybatis/example/BlogMapper.xml"/>-->
+        <mapper resource="com/study/liyi/mybatis/entity/beanxml/EmployeeMapper.xml"/>
     </mappers>
 </configuration>
