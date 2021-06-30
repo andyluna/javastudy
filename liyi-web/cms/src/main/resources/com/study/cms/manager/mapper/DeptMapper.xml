@@ -63,7 +63,7 @@
         where id=#{id}
     </update>
 
-    <select id="queryDeptList"  parameterType="dept" resultMap="resultMap1">
+    <select id="queryDeptList"  parameterType="map" resultMap="resultMap1">
         select id ,name  ,code  ,parent_code ,
             create_date ,last_update_date
         from c_dept
@@ -96,7 +96,7 @@
         limit #{firstPage} , #{pageSize}
     </select>
 
-    <select id="queryDeptTotal" resultType="integer">
+    <select id="queryDeptTotal" parameterType="map" resultType="integer">
         select  count(id)  total from c_dept where 1=1
         <if test="name!=null and name !='' ">
             and name like #{name}
