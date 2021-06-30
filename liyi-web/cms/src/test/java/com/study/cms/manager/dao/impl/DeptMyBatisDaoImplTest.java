@@ -4,6 +4,9 @@ import com.study.cms.manager.dao.DeptDao;
 import com.study.cms.manager.entity.Dept;
 import org.junit.Test;
 
+import java.util.Date;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -23,6 +26,37 @@ public class DeptMyBatisDaoImplTest {
     public void queryByName1() {
         Dept dept = deptDao.queryByName(1,"大唐能源集团");
         System.out.println(dept);
+    }
+
+
+    @Test
+    public void updateDept(){
+        int i = deptDao.updateDept(new Dept(57, "大唐mybatis", "999", "001", new Date(), new Date()));
+        System.out.println("影响了"+i+"行");
+    }
+
+
+    @Test
+    public void queryDeptList(){
+        List<Dept> depts = deptDao.queryDeptList("%大唐%", null, null);
+        for (Dept dept:depts){
+            System.out.println(dept);
+        }
+    }
+
+    @Test
+    public void queryDeptList1(){
+        List<Dept> depts = deptDao.queryDeptList("%大唐%", null, null, 2, 10);
+        for (Dept dept:depts){
+            System.out.println(dept);
+        }
+    }
+
+
+    @Test
+    public void queryDeptTotal(){
+        int i = deptDao.queryDeptTotal("%大唐%", null, null);
+        System.out.println(i);
     }
 
 }

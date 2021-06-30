@@ -18,6 +18,11 @@ public class PageRes {
     public PageRes() {
     }
 
+    public PageRes(int curPage, long pageSize, List<?> data) {
+        this.curPage = curPage;
+        this.pageSize = pageSize;
+        this.data = data;
+    }
 
     public long getTotal() {
         return total;

@@ -1,13 +1,18 @@
 package com.study.cms.manager.dao.impl;
 
 import com.study.cms.comm.utils.MyBatisUtil;
+import com.study.cms.comm.vo.PageRes;
+import com.study.cms.comm.vo.PageTotal;
 import com.study.cms.manager.dao.DeptDao;
 import com.study.cms.manager.entity.Dept;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @TODO: javastudy
@@ -71,21 +76,37 @@ public class DeptMyBatisDaoImpl implements DeptDao {
 
     @Override
     public int updateDept(Dept dept) {
-        return 0;
+        SqlSession session = MyBatisUtil.getSession(true);
+        session.update("com.study.cms.manager.mapper.DeptMapper.updateDept",dept);
+        return 1;
     }
 
     @Override
     public List<Dept> queryDeptList(String name, String code, String parentCode) {
-        return null;
+        SqlSession session = MyBatisUtil.getSession(true);
+        List<Dept> list = session.selectList("com.study.cms.manager.mapper.DeptMapper.queryDeptList", new Dept(null, name, code, parentCode, null, null));
+        return list;
     }
 
     @Override
     public List<Dept> queryDeptList(String name, String code, String parentCode, Integer curPage, Integer pageSize) {
-        return null;
+        SqlSession session = MyBatisUtil.getSession(true);
+        Map map=new HashMap();
+        map.put("name",name);
+        map.put("code",code);
+        map.put("parentCode",parentCode);
+        map.put("curPage",curPage);
+        map.put("pageSize",pageSize);
+
+        List<Dept> list = session.selectList("com.study.cms.manager.mapper.DeptMapper.queryDeptList1", map);
+        return list;
     }
 
     @Override
     public int queryDeptTotal(String name, String code, String parentCode) {
-        return 0;
+        SqlSession session = MyBatisUtil.getSession(true);
+        PageTotal total = session.selectOne("com.study.cms.manager.mapper.DeptMapper.queryDeptTotal", new Dept(null, name, code, parentCode, null, null));
+        return total.getTotal();
+
     }
 }
