@@ -1,6 +1,6 @@
 package com.study.cms.manager.dao;
 
-import com.study.cms.manager.dao.impl.RoleDaoImpl;
+import com.study.cms.manager.dao.impl.jdbc.RoleDaoImpl;
 import com.study.cms.manager.entity.Role;
 import org.junit.Test;
 

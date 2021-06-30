@@ -1,6 +1,6 @@
 package com.study.cms.manager.dao;
 
-import com.study.cms.manager.dao.impl.UserDaoImpl;
+import com.study.cms.manager.dao.impl.jdbc.UserDaoImpl;
 import com.study.cms.manager.entity.User;
 import org.junit.Test;
 

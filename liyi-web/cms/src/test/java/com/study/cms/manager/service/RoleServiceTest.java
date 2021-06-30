@@ -1,13 +1,11 @@
 package com.study.cms.manager.service;
 
 import com.study.cms.manager.dao.RoleDao;
-import com.study.cms.manager.dao.impl.RoleDaoImpl;
+import com.study.cms.manager.dao.impl.jdbc.RoleDaoImpl;
 import com.study.cms.manager.entity.Role;
 import org.junit.Test;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * @TODO: javastudy

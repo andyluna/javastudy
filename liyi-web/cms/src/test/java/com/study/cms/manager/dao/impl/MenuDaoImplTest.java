@@ -1,6 +1,7 @@
 package com.study.cms.manager.dao.impl;
 
 import com.study.cms.manager.dao.MenuDao;
+import com.study.cms.manager.dao.impl.jdbc.MenuDaoImpl;
 import org.junit.Test;
 
 /**

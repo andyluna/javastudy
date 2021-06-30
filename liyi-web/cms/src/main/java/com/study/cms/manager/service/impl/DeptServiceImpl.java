@@ -2,7 +2,7 @@ package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.dao.DeptDao;
-import com.study.cms.manager.dao.impl.DeptDaoImpl;
+import com.study.cms.manager.dao.impl.jdbc.DeptDaoImpl;
 import com.study.cms.manager.entity.Dept;
 import com.study.cms.manager.service.DeptService;
 import org.slf4j.Logger;

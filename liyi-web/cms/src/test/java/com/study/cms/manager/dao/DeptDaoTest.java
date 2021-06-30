@@ -1,13 +1,10 @@
 package com.study.cms.manager.dao;
 
-import com.study.cms.manager.dao.impl.DeptDaoImpl;
-import com.study.cms.manager.dao.impl.UserDaoImpl;
+import com.study.cms.manager.dao.impl.jdbc.DeptDaoImpl;
 import com.study.cms.manager.entity.Dept;
 import org.junit.Test;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * @TODO: javastudy

@@ -1,4 +1,4 @@
-package com.study.cms.manager.dao.impl;
+package com.study.cms.manager.dao.impl.jdbc;
 
 import com.study.cms.comm.dao.BaseDao;
 import com.study.cms.comm.utils.StringUtils;

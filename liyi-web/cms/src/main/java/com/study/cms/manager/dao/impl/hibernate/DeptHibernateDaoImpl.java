@@ -1,4 +1,4 @@
-package com.study.cms.manager.dao.impl;
+package com.study.cms.manager.dao.impl.hibernate;
 
 import com.study.cms.comm.dao.CommonDaoEnhance;
 import com.study.cms.comm.dao.impl.CommonDaoHibernateImpl;

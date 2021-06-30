@@ -1,15 +1,12 @@
-package com.study.cms.manager.dao.impl;
+package com.study.cms.manager.dao.impl.mybatis;
 
 import com.study.cms.comm.utils.MyBatisUtil;
-import com.study.cms.comm.vo.PageRes;
-import com.study.cms.comm.vo.PageTotal;
 import com.study.cms.manager.dao.DeptDao;
 import com.study.cms.manager.entity.Dept;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

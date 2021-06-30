@@ -2,8 +2,7 @@ package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.dao.RoleDao;
-import com.study.cms.manager.dao.impl.RoleDaoImpl;
-import com.study.cms.manager.entity.Menu;
+import com.study.cms.manager.dao.impl.jdbc.RoleDaoImpl;
 import com.study.cms.manager.entity.Role;
 import com.study.cms.manager.service.RoleService;
 

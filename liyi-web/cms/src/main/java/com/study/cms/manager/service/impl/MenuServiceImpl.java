@@ -2,7 +2,7 @@ package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.dao.MenuDao;
-import com.study.cms.manager.dao.impl.MenuDaoImpl;
+import com.study.cms.manager.dao.impl.jdbc.MenuDaoImpl;
 
 import com.study.cms.manager.entity.Menu;
 import com.study.cms.manager.service.MenuService;
