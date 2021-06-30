@@ -15,6 +15,7 @@
         <module>liyi-java-core</module>
         <module>liyi-hibernate</module>
         <module>liyi-mybatis</module>
+        <module>liyi-spring</module>
     </modules>
 
 

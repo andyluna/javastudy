@@ -37,7 +37,7 @@ public class DeptMyBatisDaoImplTest {
 
     @Test
     public void queryDeptList(){
-        List<Dept> depts = deptDao.queryDeptList("%大唐%", null, null);
+        List<Dept> depts = deptDao.queryDeptList("%大唐%", null, "001");
         for (Dept dept:depts){
             System.out.println(dept);
         }
@@ -45,7 +45,7 @@ public class DeptMyBatisDaoImplTest {
 
     @Test
     public void queryDeptList1(){
-        List<Dept> depts = deptDao.queryDeptList("%大唐%", null, null, 2, 10);
+        List<Dept> depts = deptDao.queryDeptList("大唐", null, "001", 2, 10);
         for (Dept dept:depts){
             System.out.println(dept);
         }

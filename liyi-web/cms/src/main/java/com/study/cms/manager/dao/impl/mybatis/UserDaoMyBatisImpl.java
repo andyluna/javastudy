@@ -1,11 +1,15 @@
 package com.study.cms.manager.dao.impl.mybatis;
 
+import com.study.cms.comm.utils.MyBatisUtil;
 import com.study.cms.manager.dao.UserDao;
 import com.study.cms.manager.entity.User;
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @time: 2021/6/30 六月 15:54
@@ -21,12 +25,19 @@ public class UserDaoMyBatisImpl implements UserDao {
      */
     @Override
     public User queryByUsername(String username) {
-        return null;
+        SqlSession session = MyBatisUtil.getSession(true);
+        User user = session.selectOne("com.study.cms.manager.mapper.UserMapper.queryByUsername2", username);
+        return user;
     }
 
     @Override
     public User queryByUsername(Integer id, String username) {
-        return null;
+        SqlSession session = MyBatisUtil.getSession(true);
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("id",id);
+        map.put("username",username);
+        User user = session.selectOne("com.study.cms.manager.mapper.UserMapper.queryByUsername1", map);
+        return user;
     }
 
     /**
@@ -38,7 +49,12 @@ public class UserDaoMyBatisImpl implements UserDao {
      */
     @Override
     public User queryByUsernameAndPassword(String username, String password) {
-        return null;
+        SqlSession session = MyBatisUtil.getSession(true);
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("username",username);
+        map.put("password",password);
+        User user = session.selectOne("com.study.cms.manager.mapper.UserMapper.queryByUsernameAndPassword", map);
+        return user;
     }
 
     /**
@@ -49,13 +65,12 @@ public class UserDaoMyBatisImpl implements UserDao {
      */
     @Override
     public User queryUserById(Integer id) {
-        return null;
+        SqlSession session = MyBatisUtil.getSession(true);
+        User user = session.selectOne("com.study.cms.manager.mapper.UserMapper.queryUserById",id);
+        return user;
     }
 
-    @Override
-    public List userList() {
-        return null;
-    }
+
 
     /**
      * 保存一个用户
@@ -65,7 +80,8 @@ public class UserDaoMyBatisImpl implements UserDao {
      */
     @Override
     public int addUser(User user) {
-        return 0;
+        SqlSession session = MyBatisUtil.getSession(true);
+        return session.insert("com.study.cms.manager.mapper.UserMapper.addUser",user);
     }
 
     /**
@@ -76,7 +92,8 @@ public class UserDaoMyBatisImpl implements UserDao {
      */
     @Override
     public int deleteUserById(Integer id) {
-        return 0;
+        SqlSession session = MyBatisUtil.getSession(true);
+        return session.insert("com.study.cms.manager.mapper.UserMapper.deleteUserById",id);
     }
 
     /**
@@ -87,21 +104,34 @@ public class UserDaoMyBatisImpl implements UserDao {
      */
     @Override
     public int updateUser(User user) {
-        return 0;
+        SqlSession session = MyBatisUtil.getSession(true);
+        session.update("com.study.cms.manager.mapper.UserMapper.updateUser",user);
+        return 1;
+    }
+
+
+    @Override
+    public List<User> queryUsers(String username, String name, Integer sex, Integer curPage, Integer pageSize) {
+        SqlSession session = MyBatisUtil.getSession(true);
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("username",username==null?null:username+"%");
+        map.put("name",name==null?null:name+"%");
+        map.put("sex",sex==null?null:sex+"%");
+
+        map.put("firstPage",(curPage-1)*pageSize);
+        map.put("pageSize",pageSize);
+        List<User> userList = session.selectList("com.study.cms.manager.mapper.UserMapper.queryUsers", map);
+        return userList;
     }
 
     @Override
-    public List<User> queryUsers(String username, String user, String sex) {
-        return null;
-    }
-
-    @Override
-    public List<User> queryUsers(String username, String user, String sex, Integer curPage, Integer pageSize) {
-        return null;
-    }
-
-    @Override
-    public int queryUsersTotal(String username, String user, String sex) {
-        return 0;
+    public int queryUsersTotal(String username, String name, Integer sex) {
+        SqlSession session = MyBatisUtil.getSession(true);
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("username",username==null?null:username+"%");
+        map.put("name",name==null?null:name+"%");
+        map.put("sex",sex==null?null:sex+"%");
+        Integer total = session.selectOne("com.study.cms.manager.mapper.UserMapper.queryUsersTotal", map);
+        return total;
     }
 }

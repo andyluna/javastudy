@@ -2,6 +2,7 @@ package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.dao.RoleDao;
+import com.study.cms.manager.dao.impl.hibernate.RoleDaoHibernateImpl;
 import com.study.cms.manager.dao.impl.jdbc.RoleDaoImpl;
 import com.study.cms.manager.entity.Role;
 import com.study.cms.manager.service.RoleService;
@@ -17,7 +18,7 @@ import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
  */
 public class RoleServiceImpl implements RoleService {
 
-    RoleDao roleDao=new RoleDaoImpl();
+    private RoleDao roleDao= new RoleDaoHibernateImpl();
 
     @Override
     public PageRes queryRolesPage(String code, String name, Integer createUserId, Integer curPage, Integer pageSize) {

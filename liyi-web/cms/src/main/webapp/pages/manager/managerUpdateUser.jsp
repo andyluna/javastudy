@@ -71,8 +71,9 @@
 			<td>所属部门</td>
 			<td>
 				<select name="dept_id" id="dept_id">
-					<option value="1" <c:if test="${dipt_id=='1'}"> selected="selected"</c:if> >财务部</option>
-					<option value="0" <c:if test="${dept_id=='0'}"> selected="selected"</c:if>>开发部</option>
+					<c:forEach items="${requestScope.allDept}" var="dept" varStatus="mystatus">
+						<option value="${dept.id}" <c:if test="${dept.id==user.dept_id}"> selected="selected"</c:if> >${dept.name}</option>
+					</c:forEach>
 				</select>
 			</td>
 		</tr>

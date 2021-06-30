@@ -83,4 +83,7 @@ public interface DeptDao {
 
     int queryDeptTotal(String name, String code, String parentCode);
 
+
+    List<Dept> queryAll();
+
 }

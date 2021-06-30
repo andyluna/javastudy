@@ -40,12 +40,7 @@ public class UserDaoTest {
         System.out.println("新增成功");
     }
 
-    @Test
-    public void userList(){
-        for (Object o : userDao.userList()) {
-            System.out.println(o);
-        }
-    }
+
 
     @Test
     public void addUserList() {

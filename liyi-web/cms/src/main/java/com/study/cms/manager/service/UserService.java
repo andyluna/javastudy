@@ -30,16 +30,8 @@ public interface UserService {
     //根据用户id查找用户
     public User queryUserById(Integer id);
 
-    //查询所有用户保存到List集合中
-    public List<User> queryUsers();
 
-    List<User> queryUsers(String username,String user,String sex);
-
-
-
-
-
-    PageRes queryUsersPage(String username, String user, String sex, Integer curPage, Integer pageSize);
+    PageRes queryUsersPage(String username, String user, Integer sex, Integer curPage, Integer pageSize);
 
 
 }

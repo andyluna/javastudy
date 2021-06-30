@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @time: 2021/6/16 六月 11:04
@@ -32,6 +33,10 @@ public class User {
     @Column(name = "dept_id")
     private Integer dept_id;//所属部门
 
+    @Transient
+    private Dept dept;
+
+
     public User() {
     }
 
@@ -44,6 +49,14 @@ public class User {
         this.address = address;
         this.sex = sex;
         this.dept_id = dept_id;
+    }
+
+    public Dept getDept() {
+        return dept;
+    }
+
+    public void setDept(Dept dept) {
+        this.dept = dept;
     }
 
     public Integer getId() {

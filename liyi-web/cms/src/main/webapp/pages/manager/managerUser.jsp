@@ -53,25 +53,24 @@
       <td colspan="2">操作</td>
     </tr>
 
-  <c:forEach items="${requestScope.pageRes.data}" var="users" varStatus="mystatus">
+  <c:forEach items="${requestScope.pageRes.data}" var="user" varStatus="mystatus">
     <tr>
       <td>${mystatus.count}</td>
-      <td>${users.id}</td>
-      <td>${users.username}</td>
-      <td>${users.password}</td>
-      <td>${users.phone}</td>
-      <td>${users.name}</td>
-      <td>${users.address}</td>
+      <td>${user.id}</td>
+      <td>${user.username}</td>
+      <td>${user.password}</td>
+      <td>${user.phone}</td>
+      <td>${user.name}</td>
+      <td>${user.address}</td>
       <td>
-        <c:if test="${users.sex==1}">男</c:if>
-        <c:if test="${users.sex==0}">女</c:if>
+        <c:if test="${user.sex==1}">男</c:if>
+        <c:if test="${user.sex==0}">女</c:if>
       </td>
       <td>
-        <c:if test="${users.dept_id==1}">财务部</c:if>
-        <c:if test="${users.dept_id==0}">开发部</c:if>
+         ${user.dept.name}
       </td>
-      <td><a href="${path}/manager/userServlet?action=getUser&id=${users.id}&curPage=${pageRes.curPage}&pageSize=${pageRes.pageSize}">修改</a></td>
-      <td><a class="deleteClass"  myattrid="${users.id}"   href="javascript:void(0)"  >删除</a></td>
+      <td><a href="${path}/manager/userServlet?action=getUser&id=${user.id}&curPage=${pageRes.curPage}&pageSize=${pageRes.pageSize}">修改</a></td>
+      <td><a class="deleteClass"  myattrid="${user.id}"   href="javascript:void(0)"  >删除</a></td>
     </tr>
     </c:forEach>
 

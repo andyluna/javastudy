@@ -2,6 +2,7 @@ package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.dao.MenuDao;
+import com.study.cms.manager.dao.impl.hibernate.MenuDaoHibernateImpl;
 import com.study.cms.manager.dao.impl.jdbc.MenuDaoImpl;
 
 import com.study.cms.manager.entity.Menu;
@@ -17,7 +18,7 @@ import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
  * @time: 2021/6/21 15:59  星期一
  */
 public class MenuServiceImpl implements MenuService {
-    MenuDao menuDao=new MenuDaoImpl();
+    private MenuDao menuDao=new MenuDaoHibernateImpl();
 
     @Override
     public PageRes queryMenusPage(String name, String openType, Integer parentId, Integer curPage, Integer pageSize) {

@@ -2,6 +2,7 @@ package com.study.cms.manager.service.impl;
 
 import com.study.cms.comm.vo.PageRes;
 import com.study.cms.manager.dao.DeptDao;
+import com.study.cms.manager.dao.impl.hibernate.DeptHibernateDaoImpl;
 import com.study.cms.manager.dao.impl.jdbc.DeptDaoImpl;
 import com.study.cms.manager.entity.Dept;
 import com.study.cms.manager.service.DeptService;
@@ -20,7 +21,7 @@ import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
 public class DeptServiceImpl implements DeptService {
     public static final Logger logger = LoggerFactory.getLogger(DeptServiceImpl.class);
 
-    private DeptDao deptDao = new DeptDaoImpl();
+    private DeptDao deptDao = new DeptHibernateDaoImpl();
 
     @Override
     public PageRes queryDeptsPage(String name, String code, String parentCode, Integer curPage, Integer pageSize) {
@@ -49,6 +50,11 @@ public class DeptServiceImpl implements DeptService {
         pageRes.setData(list);
 
         return pageRes;
+    }
+
+    @Override
+    public List<Dept> getAllDept() {
+        return deptDao.queryAll();
     }
 
     @Override

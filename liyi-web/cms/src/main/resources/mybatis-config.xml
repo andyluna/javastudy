@@ -32,5 +32,8 @@
 
     <mappers>
         <mapper resource="com/study/cms/manager/mapper/DeptMapper.xml"></mapper>
+        <mapper resource="com/study/cms/manager/mapper/MenuMapper.xml"></mapper>
+        <mapper resource="com/study/cms/manager/mapper/RoleMapper.xml"></mapper>
+        <mapper resource="com/study/cms/manager/mapper/UserMapper.xml"></mapper>
     </mappers>
 </configuration>

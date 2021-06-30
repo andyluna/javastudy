@@ -4,8 +4,11 @@ import com.study.cms.comm.utils.AjaxRes;
 import com.study.cms.comm.utils.ResponseUtils;
 import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.comm.vo.PageRes;
+import com.study.cms.manager.entity.Dept;
 import com.study.cms.manager.entity.User;
+import com.study.cms.manager.service.DeptService;
 import com.study.cms.manager.service.UserService;
+import com.study.cms.manager.service.impl.DeptServiceImpl;
 import com.study.cms.manager.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import static com.study.cms.comm.utils.Constants.DEFAULT_CURPAGE;
 import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
@@ -29,7 +33,8 @@ import static com.study.cms.comm.utils.Constants.DEFAULT_PAGESIZE;
 public class UserServlet extends HttpServlet {
     private final static Logger log = LoggerFactory.getLogger(UserServlet.class);
 
-    UserService userService=new UserServiceImpl();
+    private UserService userService=new UserServiceImpl();
+    private DeptService deptService=new DeptServiceImpl();
 
 
     @Override
@@ -71,13 +76,13 @@ public class UserServlet extends HttpServlet {
 
         String username = req.getParameter("username");
         String name     = req.getParameter("name");
-        String sex      =  req.getParameter("sex");
+        Integer sex =StringUtils.isEmpty(req.getParameter("sex"))?null:Integer.parseInt(req.getParameter("sex"));;// 当前第每页展示多少条
 
         //查询全部用户
         PageRes pageRes = userService.queryUsersPage(username,name,sex,curPage,pageSize);
         //保存到request域中
         if(StringUtils.isEmpty(sex)){
-            sex = "2";
+            sex = 2;
         }
         req.setAttribute("pageRes",pageRes);
         req.setAttribute("username",username);
@@ -131,8 +136,14 @@ public class UserServlet extends HttpServlet {
         String id1 = req.getParameter("id");
         String curPage = req.getParameter("curPage");
         String pageSize = req.getParameter("pageSize");
-        if(StringUtils.isEmpty(id1)){//新增
 
+        List<Dept> allDept = deptService.getAllDept();
+
+        if(StringUtils.isEmpty(id1)){//新增
+            //设置新增的时候默认值
+            User user = new User();
+            user.setDept_id(allDept.get(0).getId());
+            req.setAttribute("user", user) ;
         }else{//修改
             //1 获取请求的参数
             int id = Integer.parseInt(id1);
@@ -145,8 +156,11 @@ public class UserServlet extends HttpServlet {
             req.setAttribute("user", user) ;
         }
 
+
+
         req.setAttribute("curPage",curPage);
         req.setAttribute("pageSize",pageSize);
+        req.setAttribute("allDept",allDept);
         //4 请求转发到/pages/manager/managerUpdateUser.jsp页面
         req.getRequestDispatcher("/pages/manager/managerUpdateUser.jsp").forward(req,resp);
     }

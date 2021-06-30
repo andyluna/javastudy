@@ -141,4 +141,11 @@ public class DeptDaoImpl implements DeptDao {
 
 
     }
+
+    @Override
+    public List<Dept> queryAll() {
+        StringBuilder sql=new StringBuilder("select id,name,code,parent_code parentCode,create_date createDate,last_update_date lastUpdateDate from c_dept where 1=1");
+        List<Dept> depts = BaseDao.queryJavaBeanList(Dept.class, sql.toString(),null);
+        return depts;
+    }
 }

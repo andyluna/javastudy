@@ -37,7 +37,7 @@ public interface UserDao {
     public User queryUserById(Integer id);
 
 
-    public List userList();
+
 
 
     /**
@@ -64,9 +64,7 @@ public interface UserDao {
     public int updateUser(User user);
 
 
-    List<User> queryUsers(String username, String user, String sex);
+    List<User> queryUsers(String username, String name, Integer sex,Integer curPage,Integer pageSize);
 
-    List<User> queryUsers(String username, String user, String sex,Integer curPage,Integer pageSize);
-
-    int queryUsersTotal(String username,String user,String sex);
+    int queryUsersTotal(String username,String name,Integer sex);
 }

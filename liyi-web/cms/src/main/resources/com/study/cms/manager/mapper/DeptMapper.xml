@@ -17,6 +17,14 @@
         from c_dept
         where  name=#{name}
     </select>
+    <select id="queryAll" resultType="com.study.cms.manager.entity.Dept">
+        select id ,name  ,code  ,parent_code ,
+               create_date ,last_update_date
+        from c_dept
+
+    </select>
+
+
 
     <select id="queryByName1" parameterType="com.study.cms.manager.entity.Dept" resultType="com.study.cms.manager.entity.Dept">
         select id ,name  ,code  ,parent_code ,
@@ -75,7 +83,7 @@
             and code like #{code}
         </if>
         <if test="parentCode!=null and parentCode !='' ">
-            and parentCode like #{parentCode}
+            and parent_code  like #{parentCode}
         </if>
     </select>
 
@@ -91,12 +99,12 @@
             and code like #{code}
         </if>
         <if test="parentCode!=null and parentCode !='' ">
-            and parentCode like #{parentCode}
+            and parent_code like #{parentCode}
         </if>
         limit #{firstPage} , #{pageSize}
     </select>
 
-    <select id="queryDeptTotal" parameterType="map" resultType="integer">
+    <select id="queryDeptTotal" parameterType="map" resultType="Integer">
         select  count(id)  total from c_dept where 1=1
         <if test="name!=null and name !='' ">
             and name like #{name}
@@ -105,7 +113,7 @@
             and code like #{code}
         </if>
         <if test="parentCode!=null and parentCode !='' ">
-            and parentCode like #{parentCode}
+            and parent_code like #{parentCode}
         </if>
     </select>
 </mapper>

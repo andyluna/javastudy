@@ -14,11 +14,6 @@ import java.util.List;
 public class UserServiceImplTest {
 
     UserService userService=new UserServiceImpl();
-    @Test
-    public void queryUsers() {
-        List<User> users = userService.queryUsers();
-        System.out.println(users);
-    }
 
 
     @Test

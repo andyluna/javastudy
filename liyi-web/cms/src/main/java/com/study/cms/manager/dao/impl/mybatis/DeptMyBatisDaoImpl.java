@@ -96,8 +96,7 @@ public class DeptMyBatisDaoImpl implements DeptDao {
         map.put("name",name==null?null:name+"%");
         map.put("code",code==null?null:code+"%");
         map.put("parentCode",parentCode==null?null:parentCode+"%");
-//        map.put("curPage",curPage);
-//        map.put("pageSize",pageSize);
+
         map.put("firstPage",(curPage-1)*pageSize);
         map.put("pageSize",pageSize);
         List<Dept> list = session.selectList("com.study.cms.manager.mapper.DeptMapper.queryDeptList1", map);
@@ -114,5 +113,11 @@ public class DeptMyBatisDaoImpl implements DeptDao {
         Integer total = session.selectOne("com.study.cms.manager.mapper.DeptMapper.queryDeptTotal", map);
         return total;
 
+    }
+
+    @Override
+    public List<Dept> queryAll() {
+        SqlSession session = MyBatisUtil.getSession(true);
+        return session.selectList("com.study.cms.manager.mapper.DeptMapper.queryAll");
     }
 }

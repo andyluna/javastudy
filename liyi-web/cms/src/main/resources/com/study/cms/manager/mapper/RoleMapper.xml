@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.cms.manager.mapper.RoleMapper">
+    <resultMap id="resultMap1" type="com.study.cms.manager.entity.Role">
+        <id     property="id"   column="id"></id>
+        <result property="code" column="code"></result>
+        <result property="name" column="name"></result>
+        <result property="createDate"     column="create_date"></result>
+        <result property="createUserId"     column="create_user_id"></result>
+        <result property="lastUpdateDate" column="last_update_date"></result>
+        <result property="lastUpdateId"     column="last_update_id"></result>
+    </resultMap>
+
+    <select id="queryRoleList" parameterType="map" resultMap="resultMap1">
+        select id ,code ,name ,create_date ,
+        create_user_id ,last_update_date,last_update_id
+        from c_role
+        where 1=1
+        <if test="code !=null and code !='' ">
+            and code like #{code}
+        </if>
+        <if test="name !=null and name !='' ">
+            and name like #{name}
+        </if>
+        <if test="createUserId!=null and createUserId !='' ">
+            and create_user_id like #{createUserId}
+        </if>
+        limit #{firstPage} , #{pageSize}
+    </select>
+
+    <select id="queryRoleTotal" parameterType="map" resultType="Integer">
+        select  count(id)  total from c_role where 1=1
+        <if test="code !=null and code !='' ">
+            and code like #{code}
+        </if>
+        <if test="name !=null and name !='' ">
+            and name like #{name}
+        </if>
+        <if test="createUserId!=null and createUserId !='' ">
+            and create_user_id like #{createUserId}
+        </if>
+    </select>
+
+    <delete id="deleteRole" parameterType="integer">
+        delete from c_role where id=#{id,jdbcType=VARCHAR}
+    </delete>
+
+    <update id="updateRole" >
+        update c_role set code=#{code},name=#{name},create_date=#{createDate},create_user_id=#{createUserId}
+                          ,last_update_date=#{lastUpdateDate},last_update_id=#{lastUpdateId}
+        where id=#{id}
+    </update>
+
+    <insert id="addRole"  parameterType="com.study.cms.manager.entity.Role">
+        insert into c_role(code  ,name  ,create_date ,create_user_id,
+                           last_update_date ,last_update_id)
+        values (#{code}, #{name} ,#{createDate} ,#{createUserId} ,#{lastUpdateDate} ,#{lastUpdateId})
+    </insert>
+
+    <select id="queryRoleById" parameterType="integer" resultType="com.study.cms.manager.entity.Role">
+        select id ,code ,name ,create_date ,create_user_id,
+               last_update_date ,last_update_id
+        from c_role
+        where id=#{id}
+    </select>
+
+
+</mapper>

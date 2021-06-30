@@ -6,6 +6,7 @@ import com.study.cms.comm.utils.HibernateUtil;
 import com.study.cms.comm.utils.StringUtils;
 import com.study.cms.manager.dao.DeptDao;
 import com.study.cms.manager.entity.Dept;
+import com.study.cms.manager.entity.Role;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.slf4j.Logger;
@@ -160,5 +161,23 @@ public class DeptHibernateDaoImpl implements DeptDao {
         Number list = (Number) query.getSingleResult();
         HibernateUtil.close(session);
         return list.intValue();
+    }
+
+    @Override
+    public List<Dept> queryAll() {
+        Session session = null;
+        List<Dept> depts=null;
+        try{
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            String hql ="select d from Dept d";
+            depts = session.createQuery(hql).getResultList();
+            session.getTransaction().commit();
+            HibernateUtil.close(session);
+        }catch (Exception e){
+            session.getTransaction().rollback();
+            HibernateUtil.close(session);
+        }
+        return depts;
     }
 }
