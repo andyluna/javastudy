@@ -84,20 +84,25 @@ public class DeptMyBatisDaoImpl implements DeptDao {
     @Override
     public List<Dept> queryDeptList(String name, String code, String parentCode) {
         SqlSession session = MyBatisUtil.getSession(true);
-        List<Dept> list = session.selectList("com.study.cms.manager.mapper.DeptMapper.queryDeptList", new Dept(null, name, code, parentCode, null, null));
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("name",name==null?null:name+"%");
+        map.put("code",code==null?null:code+"%");
+        map.put("parentCode",parentCode==null?null:parentCode+"%");
+        List<Dept> list = session.selectList("com.study.cms.manager.mapper.DeptMapper.queryDeptList", map);
         return list;
     }
 
     @Override
     public List<Dept> queryDeptList(String name, String code, String parentCode, Integer curPage, Integer pageSize) {
         SqlSession session = MyBatisUtil.getSession(true);
-        Map map=new HashMap();
-        map.put("name",name);
-        map.put("code",code);
-        map.put("parentCode",parentCode);
-        map.put("curPage",curPage);
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("name",name==null?null:name+"%");
+        map.put("code",code==null?null:code+"%");
+        map.put("parentCode",parentCode==null?null:parentCode+"%");
+//        map.put("curPage",curPage);
+//        map.put("pageSize",pageSize);
+        map.put("firstPage",(curPage-1)*pageSize);
         map.put("pageSize",pageSize);
-
         List<Dept> list = session.selectList("com.study.cms.manager.mapper.DeptMapper.queryDeptList1", map);
         return list;
     }
@@ -105,8 +110,12 @@ public class DeptMyBatisDaoImpl implements DeptDao {
     @Override
     public int queryDeptTotal(String name, String code, String parentCode) {
         SqlSession session = MyBatisUtil.getSession(true);
-        PageTotal total = session.selectOne("com.study.cms.manager.mapper.DeptMapper.queryDeptTotal", new Dept(null, name, code, parentCode, null, null));
-        return total.getTotal();
+        Map<String,Object> map=new HashMap<String,Object>();
+        map.put("name",name==null?null:name+"%");
+        map.put("code",code==null?null:code+"%");
+        map.put("parentCode",parentCode==null?null:parentCode+"%");
+        Integer total = session.selectOne("com.study.cms.manager.mapper.DeptMapper.queryDeptTotal", map);
+        return total;
 
     }
 }
