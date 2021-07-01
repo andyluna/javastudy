@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 集合类型注入 -->
+    <bean id="stu" class="com.liyi.spring.spring5.bean.Student">
+        <!-- 数组类型属性注入 -->
+        <property name="courses">
+            <array>
+                <value>JAVA</value>
+                <value>MySQL数据库</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="C++" value="c++"></entry>
+                <entry key="PHP" value="php"></entry>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>set1</value>
+                <value>set2</value>
+            </set>
+        </property>
+        <!-- 注入list集合类型,值是对象 -->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"></ref>
+                <ref bean="course2"></ref>
+                <ref bean="course3"></ref>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 创建多个course对象 -->
+    <bean id="course1" class="com.liyi.spring.spring5.bean.Course">
+        <property name="cname" value="语文"></property>
+    </bean>
+    <bean id="course2" class="com.liyi.spring.spring5.bean.Course">
+        <property name="cname" value="数学"></property>
+    </bean>
+    <bean id="course3" class="com.liyi.spring.spring5.bean.Course">
+        <property name="cname" value="英语"></property>
+    </bean>
+
+</beans>
