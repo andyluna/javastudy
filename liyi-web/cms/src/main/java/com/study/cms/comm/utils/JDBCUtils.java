@@ -80,7 +80,6 @@ public class JDBCUtils {
      * @param resultSet
      */
     public static void close(Connection con, Statement stmt, ResultSet resultSet){
-        //6.关闭结果集
         if(resultSet!=null){
             try {
                 resultSet.close();
@@ -88,9 +87,6 @@ public class JDBCUtils {
                 throwables.printStackTrace();
             }
         }
-
-
-        //7.关闭结果集
         if(stmt!=null){
             try {
                 stmt.close();
@@ -98,9 +94,6 @@ public class JDBCUtils {
                 throwables.printStackTrace();
             }
         }
-
-
-        //8.关闭结果集
         if(con !=null){
             try {
                 con.close();

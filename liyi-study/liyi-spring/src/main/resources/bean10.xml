@@ -13,7 +13,13 @@
     <!-- 开启Aspect生成代理对象 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
+    <bean id="dataSource" class="com.liyi.spring.spring5.jdbc.JDBCUtils">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/cms?serverTimezone=Asia/Shanghai"/>
+        <property name="username" value="liyi"/>
+        <property name="password" value="liyi"/>
+    </bean>
 
     <!-- JdbcTemplate对象 -->
-<!--    <bean id="" class="org.springframework.jdbc.core.JdbcTemplate"></bean>-->
+<!--    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"></bean>-->
 </beans>
