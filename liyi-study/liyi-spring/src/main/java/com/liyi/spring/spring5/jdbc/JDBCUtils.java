@@ -1,5 +1,9 @@
 package com.liyi.spring.spring5.jdbc;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * @TODO: javastudy
  * @author: xiangdan/xiangdan@dtxytech.com
@@ -13,6 +17,20 @@ public class JDBCUtils {
     private String username;
 
     private String password;
+
+
+    public Connection getConnection() throws SQLException {
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return DriverManager.getConnection(url,username,password);
+    }
+
+
+
+
 
     public void setDriver(String driver) {
         this.driver = driver;
@@ -30,6 +48,19 @@ public class JDBCUtils {
         this.password = password;
     }
 
+    public String getDriver() {
+        return driver;
+    }
 
+    public String getUrl() {
+        return url;
+    }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }
