@@ -27,7 +27,7 @@ public class JdbcUtilTest {
     @Test
     public void test2() throws SQLException {
         ApplicationContext context=new ClassPathXmlApplicationContext("jdbc/bean-jdbc2.xml");
-        JDBCUtils2 jdbcUtils2 = context.getBean("jDBCUtils", JDBCUtils2.class);
+        JDBCUtils2 jdbcUtils2 = context.getBean("jDBCUtils2", JDBCUtils2.class);
         System.out.println(jdbcUtils2);
         Connection connection = jdbcUtils2.getConnection();
         System.out.println(connection);
