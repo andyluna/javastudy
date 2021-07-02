@@ -32,9 +32,30 @@
 
     @Value:注入普通类型属性
 
+
 5.完全注解开发
     5.1.创建配置类,代替xml配置文件
-        @Configuration                       表示作为配置类
-        @ComponentScan(basePackages = (""))  表示开启组件扫描并确定扫描的路径
+        @Configuration                                          表示作为配置类
+        @ComponentScan(basePackages = (""))                     表示开启组件扫描并确定扫描的路径
+        @EnableAspectJAutoProxy(proxyTargetClass = true)        开启Aspect生成代理对象
+
+
+6.AOP术语:
+    1.连接点:类里面哪些方法可以被增强,这些方法称为连接点
+
+    2.切入点:实际被真正增强的方法,称为切入点
+        表达式:execution([权限修饰符][返回类型][类全路径][方法名称]([参数列表]))
+
+    3.通知(增强):
+        (1)实际增强的逻辑部分称为通知(增强)
+        (2)通知有多钟类型
+            前置通知         @Before
+            后置通知         @AfterReturning
+            环绕通知         @Around
+            异常通知         @AfterThrowing
+            最终通知         @After
+
+    4.切面(是动作):把通知应用到切入点的过程
+
 
 

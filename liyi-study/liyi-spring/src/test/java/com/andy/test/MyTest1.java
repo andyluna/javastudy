@@ -2,7 +2,7 @@ package com.andy.test;
 
 import com.liyi.spring.spring5.Book;
 import com.liyi.spring.spring5.Order;
-import com.liyi.spring.spring5.User;
+import com.liyi.spring.spring5.aop.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

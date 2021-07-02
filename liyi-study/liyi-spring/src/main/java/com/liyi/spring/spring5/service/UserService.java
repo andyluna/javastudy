@@ -1,9 +1,6 @@
 package com.liyi.spring.spring5.service;
 
-import com.liyi.spring.spring5.User;
 import com.liyi.spring.spring5.dao.UserDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

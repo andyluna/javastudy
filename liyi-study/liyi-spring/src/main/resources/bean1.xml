@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 配置User对象的创建 -->
-<!--    <bean id="user" class="com.liyi.spring.spring5.User"></bean>-->
+<!--    <bean id="user" class="com.liyi.spring.spring5.aop.User"></bean>-->
 
     <!--set方法注入属性 -->
     <bean id="book" class="com.liyi.spring.spring5.Book">

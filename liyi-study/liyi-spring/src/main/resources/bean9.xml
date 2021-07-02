@@ -7,7 +7,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 开启组件扫描 -->
+    <!-- 开启注解扫描 -->
 <!--    <context:component-scan base-package="com.liyi.spring.spring5"></context:component-scan>-->
 
     <!-- use-default-filters="false" 表示现在不使用默认的filter 自己配置
