@@ -30,10 +30,9 @@ public class JDBCUtils3 implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         dataSource = new DruidDataSource();
-        Class<?> driverClz = Class.forName(driver);
-        Driver d = (Driver) driverClz.newInstance();
+
         dataSource.setUrl(url);
-        dataSource.setDriver(d);
+        dataSource.setDriverClassName(driver);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         dataSource.init();
