@@ -65,4 +65,16 @@ public class JdbcUtilTest {
         DataSource dataSource = context.getBean("dataSource", DataSource.class);
         System.out.println("这里的 dataSource = "+dataSource);
     }
+
+    //JDBCUtils工具类的目标是获取数据库连接
+    //既然这个 DataSource 他是管理连接的 它可以返回连接 那不需要这个JDBCUtils也可以啊
+    @Test
+    public void test4_1() throws SQLException {
+        ApplicationContext context=new ClassPathXmlApplicationContext("jdbc/bean-jdbc4-1.xml");
+        DataSource dataSource = context.getBean("dataSource", DataSource.class);
+        System.out.println("这里的 dataSource = "+dataSource);
+
+        Connection connection = dataSource.getConnection();
+        System.out.println("这里的 connection = "+connection);
+    }
 }
