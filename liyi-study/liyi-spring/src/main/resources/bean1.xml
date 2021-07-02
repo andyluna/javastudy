@@ -1,34 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:aop="http://www.springframework.org/schema/aop"
 
-    <!-- 配置User对象的创建 -->
-<!--    <bean id="user" class="com.liyi.spring.spring5.aop.User"></bean>-->
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--set方法注入属性 -->
-    <bean id="book" class="com.liyi.spring.spring5.Book">
-      <!-- 使用property完成属性注入 -->
+<!--
+    0. 是否单例
+
+    1. 实例化 根据  class = com.liyi.spring.spring5.Book
+        Class clz = Class.forName(class)
+        Book book = clz.newInstance();
+        实例化 从0 到1 的一个过程
+
+
+    2. 初始化
+        Book book = new Book();
+        book.setBname("神墓");
+        book.setBauthor("辰东");
+        book.setAddress("南京");
+
+
+    3. 执行生命周期的方法 (多个 )
+        book is instance of InitializingBean
+        ((InitializingBean)book).afterPropertiesSet();
+
+
+     4.   是否需要创建代理
+
+
+
+
+    -->
+
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com.liyi.spring.spring5.bean" />
+
+
+
+
+
+    <bean id="mydate" class="java.util.Date">
+            <property name="time" value="1625241083119"></property>
+    </bean>
+
+    <bean id="author" class="com.liyi.spring.spring5.Author">
+        <constructor-arg index="0" value="李四"/>
+        <constructor-arg index="1" ref="mydate"/>
+        <constructor-arg index="2" value="1231456456456"/>
+    </bean>
+
+    <bean id="author2" class="com.liyi.spring.spring5.Author">
+        <constructor-arg name="birthDay" ref="mydate"/>
+        <constructor-arg name="name" value="王五"/>
+        <constructor-arg name="sfzh" value="1231456456456123"/>
+    </bean>
+    <bean id="book" class="com.liyi.spring.spring5.Book"
+          init-method="init1"
+          destroy-method="destory1"  primary="true"  >
+
         <property name="bname" value="神墓"></property>
         <property name="bauthor" value="辰东"></property>
-        <!-- 设置null值 -->
-<!--        <property name="address">-->
-<!--            <null/>-->
-<!--        </property>-->
-        <!-- 属性值中包含特殊符号 -->
         <property name="address">
             <value><![CDATA[<<南京>>]]></value>
         </property>
+        <property name="author" ref="author"/>
     </bean>
 
-<!--    &lt;!&ndash; 有参构造注入属性 &ndash;&gt;-->
-<!--    <bean id="orders" class="com.liyi.spring.spring5.Order">-->
-<!--        <constructor-arg name="oname" value="电脑订单"></constructor-arg>-->
-<!--        <constructor-arg name="address" value="China"></constructor-arg>-->
-<!--    </bean>-->
 
-    <!-- p名称空间注入属性 -->
-<!--    <bean id="book" class="com.liyi.spring.spring5.Book" p:bname="圣墟" p:bauthor="辰东"></bean>-->
 
+    <bean id="book2" class="com.liyi.spring.spring5.Book"
+          init-method="init1"
+          destroy-method="destory1" scope="prototype"  >
+
+        <property name="bname" value="神墓2"></property>
+        <property name="bauthor" value="辰东2"></property>
+        <property name="address">
+            <value><![CDATA[<<南京2>>]]></value>
+        </property>
+        <property name="author" ref="author2"/>
+    </bean>
 </beans>

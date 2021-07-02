@@ -58,4 +58,29 @@
     4.切面(是动作):把通知应用到切入点的过程
 
 
+7.Spring进行事务操作:编程式(通过java代码)   声明式(底层使用AOP原理)
+    7.1.声明式:
+        7.1.1注解式 基于注解方式:
+            (1)在Spring配置文件中配置事务管理器
+                <!-- 创建事务管理器 -->
+                <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+                 <!-- 注入数据源 -->
+                 <property name="dataSource" ref="dataSource"></property>
+                </bean>
+
+            (2)在Spring配置文件,开启事务注解
+                1.在Spring配置文件引入名称空间tx
+                    xmlns:tx="http://www.springframework.org/schema/tx"
+                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                2.开启事务注解
+                    <!--开启事务注解-->
+                    <tx:annotation-driven transactionManager="transactionManager"></tx:annotation-driven>
+
+            (3)在 service 类上面（或者 service 类里面方法上面）添加事务注解 @Transactional
+                1.这个注解添加到类上面，也可以添加方法上面
+                2.如果把这个注解添加类上面，这个类里面所有的方法都添加事务
+                3.如果把这个注解添加方法上面，为这个方法添加事务
+
+
+
 

@@ -2,6 +2,7 @@ package com.liyi.spring.spring5.jdbc;
 
 import org.springframework.beans.factory.InitializingBean;
 
+import javax.annotation.PostConstruct;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,6 +35,10 @@ public class JDBCUtils2 implements InitializingBean {
     }
 
 
+    @PostConstruct
+    public void init1(){
+       // asdsad
+    }
 
 
 
