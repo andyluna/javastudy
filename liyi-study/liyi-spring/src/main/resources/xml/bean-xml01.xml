@@ -15,4 +15,14 @@
         <property name="name"  value="围城"/>
         <property name="price" value="39.9"/>
     </bean>
+
+    <bean id="car" class="com.liyi.spring.spring5.xml.entity.Car">
+        <property name="id"    value="2"/>
+        <property name="name"  value="奔驰"/>
+    </bean>
+
+
+    <bean id="car1" class="com.liyi.spring.spring5.xml.CarFactoryBean">
+
+    </bean>
 </beans>

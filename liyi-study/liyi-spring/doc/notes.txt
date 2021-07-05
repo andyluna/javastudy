@@ -21,16 +21,16 @@
     @Component
     @Service
     @Controller
-    @Repository   DaoImpl
+    @Repository
 
 4.Spring基于注解方式实现属性注入
-    @AutoWired:根据属性类型进行自动装配
+    @AutoWired:根据属性类型进行自动装配(Spring所提供的注解)
 
     @Qualifier:根据属性名称进行注入,需要和@AutoWired一起进行使用
 
-    @Resource:可以根据类型注入,也可以根据名称注入
+    @Resource:可以根据类型注入,也可以根据名称注入(Java层面所提供的注解)
 
-    @Value:注入普通类型属性
+    @Value:注入普通类型属性,Spring会把#{}中的字符串当做beanName进行解析,并从Spring容器中找对应的bean,找到则进行属性注入,没有则报错
 
 
 5.完全注解开发
