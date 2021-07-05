@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.andy.study</groupId>
-    <artifactId>liyi-spring</artifactId>
+    <artifactId>liyi-spring-bak</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -38,11 +38,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>5.3.3</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
         </dependency>
 
 
